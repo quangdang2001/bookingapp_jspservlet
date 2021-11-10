@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 public class BookingServiceIplm implements BookingService {
 
     private final BookingDAO bookingDAO;

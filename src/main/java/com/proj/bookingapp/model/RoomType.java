@@ -16,4 +16,7 @@ public class RoomType {
     @Column(unique = true)
     private String name;
 
+    @Lob
+    private String description;
+
 }

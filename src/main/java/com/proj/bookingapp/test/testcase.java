@@ -22,11 +22,11 @@ public class testcase {
     public testcase() {
     }
 
-    //    @Test
+    @Test
     void testdb(){
         System.out.println(HiberConfig.getSessionFactory());
     }
-//    @Test
+    @Test
     void testcityDAO(){
         City city = new City(null,"city",null);
 
@@ -34,7 +34,7 @@ public class testcase {
         System.out.println(cityDAOIplm.getTotalCity());
     }
 
-//    @Test
+    @Test
     void testBookingTransaction(){
         for (int i = 1;i<10;i++)
         System.out.println(HiberConfig.getSessionFactory());
