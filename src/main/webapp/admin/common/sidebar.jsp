@@ -173,9 +173,14 @@
                             <c:param name="object" value="roomtype"></c:param>
                             <c:param name="action" value="load"></c:param>
                         </c:url>
+                        <c:url var="urlBuilding" value="adminPage">
+                            <c:param name="object" value="building"></c:param>
+                            <c:param name="action" value="load"></c:param>
+                        </c:url>
                         <li><a href="${pageContext.request.contextPath}/${urlCity}">City</a></li>
                         <li><a href="${pageContext.request.contextPath}/${urlPayment}">Payment</a></li>
                         <li><a href="${pageContext.request.contextPath}/${urlRoomType}">Room Type</a></li>
+                        <li><a href="${pageContext.request.contextPath}/${urlBuilding}">Building</a></li>
 
                     </ul>
                 </li>

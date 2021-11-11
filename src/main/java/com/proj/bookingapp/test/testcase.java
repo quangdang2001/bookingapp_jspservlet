@@ -2,11 +2,16 @@ package com.proj.bookingapp.test;
 
 
 import com.proj.bookingapp.config.HiberConfig;
+import com.proj.bookingapp.dao.RoomTypeDAO;
 import com.proj.bookingapp.dao.iplm.CityDAOIplm;
-import com.proj.bookingapp.model.Booking;
-import com.proj.bookingapp.model.City;
+import com.proj.bookingapp.dao.iplm.RoomTypeDAOIplm;
+import com.proj.bookingapp.model.*;
+import com.proj.bookingapp.service.BuildingService;
 import com.proj.bookingapp.service.CityService;
+import com.proj.bookingapp.service.PaymentService;
+import com.proj.bookingapp.service.iplm.BuildingServiceIplm;
 import com.proj.bookingapp.service.iplm.CityServiceIplm;
+import com.proj.bookingapp.service.iplm.PaymentServiceIplm;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
@@ -15,10 +20,10 @@ import javax.inject.Inject;
 public class testcase {
     private static final long serialVersionUID = 1L;
     CityDAOIplm cityDAOIplm = new CityDAOIplm();
-
-
+    RoomTypeDAO roomTypeDAO = new RoomTypeDAOIplm();
+    BuildingService buildingService = new BuildingServiceIplm();
     CityService cityService= new CityServiceIplm();
-
+    PaymentService paymentService = new PaymentServiceIplm();
     public testcase() {
     }
 
@@ -42,8 +47,28 @@ public class testcase {
 
     @Test
     void testCityService(){
-        City city = new City(null,"HCM",null);
-        cityService.saveCity(city);
+        System.out.println(cityService.findById(Long.valueOf(9)).getName());
 
     }
+    @Test
+    void testBuildingService(){
+        Building city = buildingService.findById(Long.valueOf(1));
+        City city1 = city.getCity();
+        System.out.println(city1.getName());
+
+    }
+    @Test
+    void da(){
+        RoomType roomType = new RoomType(null,"quang","test");
+        roomTypeDAO.saveRoomType(roomType);
+    }
+
+    @Test
+    void asd(){
+        Payment payment = new Payment(null ,"ghjknl");
+
+        paymentService.savePayment(payment);
+    }
+
+
 }

@@ -50,7 +50,7 @@ public class PaymentController extends HttpServlet {
 
     private void deletePayment(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        Long id = Long.valueOf(request.getParameter("id"));
+        Long id =  Long.parseLong(request.getParameter("id"));
         paymentService.deletePayment(id);
         response.sendRedirect("payment");
     }

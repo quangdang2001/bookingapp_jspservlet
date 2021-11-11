@@ -17,8 +17,9 @@ public class City {
     @Column(unique = true,nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "city",fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "city",fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Building> buildings;
+
 
 }

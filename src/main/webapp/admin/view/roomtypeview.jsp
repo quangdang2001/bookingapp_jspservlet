@@ -84,17 +84,18 @@
                 </div>
                 <form action="${pageContext.request.contextPath}/adminPage/roomtype" method="post">
                     <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="id" value="${roomtype.id}">
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Room Type</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="name" class="form-control" type="text">
+                            <input name="name" class="form-control" type="text" value="${roomtype.name}">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Description</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="description" class="form-control" type="text">
+                            <input name="description" class="form-control" type="text" value="${roomtype.description}">
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary " value="Save">
@@ -102,10 +103,11 @@
 
             </div>
         </div>
+        <c:import url="../common/footer.jsp"/>
     </div>
 
 </div>
 <!-- js -->
-<c:import url="../common/footer.jsp"/>
+<c:import url="../common/library.jsp"/>
 </body>
 </html>

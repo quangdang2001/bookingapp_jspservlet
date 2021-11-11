@@ -31,7 +31,7 @@
             <!-- Simple Datatable start -->
             <div class="card-box mb-30">
                 <div class="pd-20">
-                    <h4 class="text-green h4">Room Type</h4>
+                    <h4 class="text-green h4">Building</h4>
                 </div>
                 <div class="pb-20">
                     <table class="data-table table stripe hover nowrap">
@@ -39,18 +39,20 @@
                         <tr>
                             <th class="table-plus datatable-nosort">ID</th>
                             <th>Name</th>
-                            <th>Description</th>
+                            <th>Address</th>
+                            <th>City</th>
                             <th class="datatable-nosort">Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <c:forEach var="roomtype" items="${roomtypes}">
+                        <c:forEach var="build" items="${buildings}">
 
                             <tr>
-                                <td class="table-plus">${roomtype.id}</td>
-                                <td>${roomtype.name}</td>
-                                <td>${roomtype.description}</td>
+                                <td class="table-plus">${build.id}</td>
+                                <td>${build.name}</td>
+                                <td>${build.address}</td>
+                                <td>${build.city.name}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -60,10 +62,10 @@
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                 <%--                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>--%>
                                             <a class="dropdown-item"
-                                               href="${pageContext.request.contextPath}/adminPage/roomtype?id=${roomtype.id}&action=update"><i
+                                               href="${pageContext.request.contextPath}/adminPage/building?id=${build.id}&action=update"><i
                                                     class="dw dw-edit2"></i> Edit</a>
                                             <a class="dropdown-item"
-                                               href="${pageContext.request.contextPath}/adminPage/roomtype?id=${roomtype.id}&action=delete"><i
+                                               href="${pageContext.request.contextPath}/adminPage/building?id=${build.id}&action=delete"><i
                                                     class="dw dw-delete-3"></i> Delete</a>
                                         </div>
                                     </div>
@@ -79,30 +81,46 @@
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix">
                     <div class="pull-left">
-                        <h4 class="text-blue h4">Form add room type</h4>
+                        <h4 class="text-blue h4">Form add buidling</h4>
                     </div>
                 </div>
-                <form action="${pageContext.request.contextPath}/adminPage/roomtype" method="post">
+                <form action="${pageContext.request.contextPath}/adminPage/building" method="post">
                     <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="id" value="${roomtype.id}">
+                    <input type="hidden" name="id" value="${building.id}">
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Room Type</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Building</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="name" class="form-control" type="text" value="${roomtype.name}">
+                            <input name="name" class="form-control" type="text" value="${building.name}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Address</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="address" class="form-control" type="text" value="${building.address}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">City name</label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="custom-select2 form-control" name="city"
+                                        style="width: 100%; height: 38px;">
+                                    <optgroup>
+                                        <c:forEach var="city" items="${cities}">
+                                            <option value="${city.id}">${city.name}</option>
+                                        </c:forEach>
+                                    </optgroup>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Description</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input name="description" class="form-control" type="text" value="${roomtype.description}">
-                        </div>
-                    </div>
                     <input type="submit" class="btn btn-primary " value="Save">
                 </form>
 
             </div>
         </div>
+
         <c:import url="../common/footer.jsp"/>
     </div>
 

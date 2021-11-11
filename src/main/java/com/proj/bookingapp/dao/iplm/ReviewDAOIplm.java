@@ -2,6 +2,7 @@ package com.proj.bookingapp.dao.iplm;
 
 import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.ReviewDAO;
+import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.Building;
 import com.proj.bookingapp.model.Review;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ public class ReviewDAOIplm implements ReviewDAO {
             Query<Review> theQuery =
                     currentSession.createQuery("from Review", Review.class);
             reviews  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
         } catch (Exception e) {
             log.error("Review find all error");
         } finally {
@@ -35,6 +37,7 @@ public class ReviewDAOIplm implements ReviewDAO {
         try {
             currentSession.beginTransaction();
             currentSession.saveOrUpdate(review);
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("Review save error");
         } finally {
@@ -46,7 +49,17 @@ public class ReviewDAOIplm implements ReviewDAO {
     @Override
     public Review findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        return currentSession.get(Review.class,id);
+        Review review = null;
+        try {
+            currentSession.beginTransaction();
+            review = currentSession.get(Review.class, id);
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("Review find by id error");
+        } finally {
+            currentSession.close();
+        }
+        return review;
     }
 
     @Override
@@ -57,6 +70,7 @@ public class ReviewDAOIplm implements ReviewDAO {
             Query theQuery = currentSession.createQuery("delete from Review where id=:theid");
             theQuery.setParameter("theid", id);
             theQuery.executeUpdate();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("Review delete error");
         } finally {

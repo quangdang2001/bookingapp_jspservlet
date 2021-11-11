@@ -33,6 +33,9 @@ public class AdminPageController extends HttpServlet {
             case "roomtype":
                 roomTypeObject(request,response);
                 break;
+            case "building":
+                buildingObject(request,response);
+                break;
             default:
                 System.out.println("default");
         }
@@ -50,6 +53,11 @@ public class AdminPageController extends HttpServlet {
     private void cityObject(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         RequestDispatcher rd=request.getServletContext().getRequestDispatcher("/adminPage/city");
+        rd.forward(request,response);
+    }
+    private void buildingObject(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        RequestDispatcher rd=request.getServletContext().getRequestDispatcher("/adminPage/building");
         rd.forward(request,response);
     }
 }

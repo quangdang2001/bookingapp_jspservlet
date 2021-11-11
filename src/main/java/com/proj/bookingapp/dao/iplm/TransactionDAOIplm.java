@@ -2,6 +2,7 @@ package com.proj.bookingapp.dao.iplm;
 
 import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.TransactionDAO;
+import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.Transaction;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
@@ -21,6 +22,7 @@ public class TransactionDAOIplm implements TransactionDAO {
             Query<Transaction> theQuery =
                     currentSession.createQuery("from Transaction ", Transaction.class);
             transactions  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
         } catch (Exception e) {
             log.error("Transaction find all error");
         } finally {
@@ -36,6 +38,7 @@ public class TransactionDAOIplm implements TransactionDAO {
         try {
             currentSession.beginTransaction();
             currentSession.saveOrUpdate(transaction);
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("transaction save error");
         } finally {
@@ -47,7 +50,17 @@ public class TransactionDAOIplm implements TransactionDAO {
     @Override
     public Transaction findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        return currentSession.get(Transaction.class,id);
+        Transaction transaction = null;
+        try {
+            currentSession.beginTransaction();
+            transaction = currentSession.get(Transaction.class, id);
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("transaction find by id error");
+        } finally {
+            currentSession.close();
+        }
+        return transaction;
     }
 
     @Override
@@ -58,6 +71,7 @@ public class TransactionDAOIplm implements TransactionDAO {
             Query theQuery = currentSession.createQuery("delete from Transaction where id=:theid");
             theQuery.setParameter("theid", id);
             theQuery.executeUpdate();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("Transaction delete error");
         } finally {

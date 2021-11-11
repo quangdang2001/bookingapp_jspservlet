@@ -90,10 +90,12 @@
 
             </div>
         </div>
+
+        <c:import url="../common/footer.jsp"/>
     </div>
 
 </div>
 <!-- js -->
-<c:import url="../common/footer.jsp"/>
+<c:import url="../common/library.jsp"/>
 </body>
 </html>

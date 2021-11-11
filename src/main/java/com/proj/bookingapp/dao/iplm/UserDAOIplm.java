@@ -2,6 +2,7 @@ package com.proj.bookingapp.dao.iplm;
 
 import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.UserDAO;
+import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.City;
 import com.proj.bookingapp.model.User;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,7 @@ public class UserDAOIplm implements UserDAO {
             Query<User> theQuery =
                     currentSession.createQuery("from User order by firstName", User.class);
             users  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
         } catch (Exception e) {
             log.error("User find all error");
         } finally {
@@ -37,6 +39,7 @@ public class UserDAOIplm implements UserDAO {
         try {
             currentSession.beginTransaction();
             currentSession.saveOrUpdate(user);
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("user save error");
         } finally {
@@ -47,7 +50,17 @@ public class UserDAOIplm implements UserDAO {
     @Override
     public User findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        return currentSession.get(User.class,id);
+        User user = null;
+        try {
+            currentSession.beginTransaction();
+            user = currentSession.get(User.class, id);
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("user find by id error");
+        } finally {
+            currentSession.close();
+        }
+        return user;
     }
 
     @Override
@@ -59,6 +72,7 @@ public class UserDAOIplm implements UserDAO {
             Query<User> theQuery = currentSession.createQuery(" from User where email=:theEmail",User.class);
             theQuery.setParameter("theEmail", email);
             user = theQuery.getSingleResult();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("User find by email error");
         } finally {
@@ -75,6 +89,7 @@ public class UserDAOIplm implements UserDAO {
             Query theQuery = currentSession.createQuery("delete from User where id=:theid");
             theQuery.setParameter("theid", id);
             theQuery.executeUpdate();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("User delete error");
         } finally {
@@ -90,6 +105,7 @@ public class UserDAOIplm implements UserDAO {
             currentSession.beginTransaction();
             Query theQuery = currentSession.createQuery("select count (*) from User");
             total= (int) theQuery.getSingleResult();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("User get total error");
         } finally {
@@ -113,6 +129,7 @@ public class UserDAOIplm implements UserDAO {
                 theQuery.setParameter("theEmail", email);
                 theQuery.setParameter("thePass", pass);
                 user = theQuery.getSingleResult();
+                currentSession.getTransaction().commit();
             } catch (Exception e) {
                 log.error("User find by email password error");
             } finally {

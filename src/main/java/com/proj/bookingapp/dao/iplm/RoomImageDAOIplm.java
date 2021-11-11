@@ -2,6 +2,7 @@ package com.proj.bookingapp.dao.iplm;
 
 import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.RoomImageDAO;
+import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.Building;
 import com.proj.bookingapp.model.RoomImage;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ public class RoomImageDAOIplm implements RoomImageDAO {
             Query<RoomImage> theQuery =
                     currentSession.createQuery("from RoomImage order by name", RoomImage.class);
             roomImages  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
         } catch (Exception e) {
             log.error("RoomImage find all error");
         } finally {
@@ -35,6 +37,7 @@ public class RoomImageDAOIplm implements RoomImageDAO {
         try {
             currentSession.beginTransaction();
             currentSession.saveOrUpdate(roomImage);
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("roomImage save error");
         } finally {
@@ -46,7 +49,17 @@ public class RoomImageDAOIplm implements RoomImageDAO {
     @Override
     public RoomImage findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        return currentSession.get(RoomImage.class,id);
+        RoomImage roomImage = null;
+        try {
+            currentSession.beginTransaction();
+            roomImage = currentSession.get(RoomImage.class, id);
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("RoomImage find by id error");
+        } finally {
+            currentSession.close();
+        }
+        return roomImage;
     }
 
     @Override
@@ -57,6 +70,7 @@ public class RoomImageDAOIplm implements RoomImageDAO {
             Query theQuery = currentSession.createQuery("delete from RoomImage where id=:theid");
             theQuery.setParameter("theid", id);
             theQuery.executeUpdate();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("RoomImage delete error");
         } finally {

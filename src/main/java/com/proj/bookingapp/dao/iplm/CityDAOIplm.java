@@ -5,12 +5,17 @@ import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.model.City;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.query.Query;
 
+import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Slf4j
 public class CityDAOIplm implements CityDAO {
+
 
     @Override
     public List<City> findAll() {
@@ -20,7 +25,8 @@ public class CityDAOIplm implements CityDAO {
             currentSession.beginTransaction();
             Query<City> theQuery =
                     currentSession.createQuery("from City order by name", City.class);
-            cities  = theQuery.getResultList();
+            cities = theQuery.getResultList();
+            currentSession.getTransaction().commit();
         } catch (Exception e) {
             log.error("City find all error");
         } finally {
@@ -36,7 +42,8 @@ public class CityDAOIplm implements CityDAO {
         try {
             currentSession.beginTransaction();
             currentSession.saveOrUpdate(city);
-        }catch (Exception e) {
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
             log.error("City save error");
         } finally {
             currentSession.close();
@@ -47,7 +54,19 @@ public class CityDAOIplm implements CityDAO {
     @Override
     public City findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        return currentSession.get(City.class,id);
+
+        City city = null;
+        try {
+            currentSession.beginTransaction();
+            city = currentSession.get(City.class, id);
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("city find by id error");
+        } finally {
+             currentSession.close();
+        }
+
+        return city;
     }
 
     @Override
@@ -58,7 +77,8 @@ public class CityDAOIplm implements CityDAO {
             Query theQuery = currentSession.createQuery("delete from City where id=:theid");
             theQuery.setParameter("theid", id);
             theQuery.executeUpdate();
-        }catch (Exception e) {
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
             log.error("City delete error");
         } finally {
             currentSession.close();
@@ -68,12 +88,13 @@ public class CityDAOIplm implements CityDAO {
     @Override
     public int getTotalCity() {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        int total=0;
+        int total = 0;
         try {
             currentSession.beginTransaction();
             Query theQuery = currentSession.createQuery("select count (*) from City");
-            total= (int) theQuery.getSingleResult();
-        }catch (Exception e) {
+            total = (int) theQuery.getSingleResult();
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
             log.error("City get total error");
         } finally {
             currentSession.close();

@@ -2,6 +2,7 @@ package com.proj.bookingapp.dao.iplm;
 
 import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.RoomTypeDAO;
+import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.RoomType;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
@@ -21,6 +22,7 @@ public class RoomTypeDAOIplm implements RoomTypeDAO {
             Query<RoomType> theQuery =
                     currentSession.createQuery("from RoomType order by name", RoomType.class);
             roomTypes  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
         } catch (Exception e) {
             log.error("Room type find all error");
         } finally {
@@ -35,6 +37,7 @@ public class RoomTypeDAOIplm implements RoomTypeDAO {
         try {
             currentSession.beginTransaction();
             currentSession.saveOrUpdate(roomtype);
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("roomtype save error");
         } finally {
@@ -46,7 +49,17 @@ public class RoomTypeDAOIplm implements RoomTypeDAO {
     @Override
     public RoomType findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        return currentSession.get(RoomType.class,id);
+        RoomType roomType = null;
+        try {
+            currentSession.beginTransaction();
+            roomType = currentSession.get(RoomType.class, id);
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("RoomType find by id error");
+        } finally {
+            currentSession.close();
+        }
+        return roomType;
     }
 
     @Override
@@ -57,6 +70,7 @@ public class RoomTypeDAOIplm implements RoomTypeDAO {
             Query theQuery = currentSession.createQuery("delete from RoomType where id=:theid");
             theQuery.setParameter("theid", id);
             theQuery.executeUpdate();
+            currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("RoomType delete error");
         } finally {
