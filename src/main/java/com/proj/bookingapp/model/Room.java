@@ -20,7 +20,7 @@ public class Room {
     @Lob
     private String description;
     private int bedCount;
-    private int badCount;
+    private int bathCount;
     private int accomodatesCount;
     private String area;
     private int rating;
@@ -31,7 +31,7 @@ public class Room {
     @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private RoomType roomType;
 
-    @OneToMany(mappedBy = "room",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "room",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.REMOVE})
     private List<RoomImage> roomImage;
 
     @OneToMany(mappedBy = "room",fetch = FetchType.LAZY,cascade = CascadeType.ALL)

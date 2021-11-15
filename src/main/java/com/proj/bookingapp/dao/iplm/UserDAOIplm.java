@@ -41,7 +41,7 @@ public class UserDAOIplm implements UserDAO {
             currentSession.saveOrUpdate(user);
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("user save error");
+            System.out.println((e.getMessage()));
         } finally {
             currentSession.close();
         }

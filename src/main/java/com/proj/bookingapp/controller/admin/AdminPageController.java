@@ -36,9 +36,17 @@ public class AdminPageController extends HttpServlet {
             case "building":
                 buildingObject(request,response);
                 break;
+            case "user":
+                userObject(request,response);
+                break;
             default:
                 System.out.println("default");
         }
+    }
+    private void userObject(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        RequestDispatcher rd=request.getServletContext().getRequestDispatcher("/adminPage/user");
+        rd.forward(request,response);
     }
     private void roomTypeObject(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{

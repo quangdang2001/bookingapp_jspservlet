@@ -2,8 +2,10 @@ package com.proj.bookingapp.test;
 
 
 import com.proj.bookingapp.config.HiberConfig;
+import com.proj.bookingapp.dao.RoomDAO;
 import com.proj.bookingapp.dao.RoomTypeDAO;
 import com.proj.bookingapp.dao.iplm.CityDAOIplm;
+import com.proj.bookingapp.dao.iplm.RoomDAOIplm;
 import com.proj.bookingapp.dao.iplm.RoomTypeDAOIplm;
 import com.proj.bookingapp.model.*;
 import com.proj.bookingapp.service.BuildingService;
@@ -24,13 +26,16 @@ public class testcase {
     BuildingService buildingService = new BuildingServiceIplm();
     CityService cityService= new CityServiceIplm();
     PaymentService paymentService = new PaymentServiceIplm();
+    RoomDAO roomDAO = new RoomDAOIplm();
     public testcase() {
     }
 
     @Test
     void testdb(){
-        System.out.println(HiberConfig.getSessionFactory());
+        for (int i=0;i<20;i++)
+        System.out.println(HiberConfig.getSessionFactory().getCurrentSession());
     }
+
     @Test
     void testcityDAO(){
         City city = new City(null,"city",null);
@@ -47,7 +52,7 @@ public class testcase {
 
     @Test
     void testCityService(){
-        System.out.println(cityService.findById(Long.valueOf(9)).getName());
+        System.out.println(cityService.findById(Long.valueOf(1)));
 
     }
     @Test
@@ -65,9 +70,9 @@ public class testcase {
 
     @Test
     void asd(){
-        Payment payment = new Payment(null ,"ghjknl");
+        Room room = roomDAO.findById(Long.valueOf(7));
+        System.out.println(room);
 
-        paymentService.savePayment(payment);
     }
 
 

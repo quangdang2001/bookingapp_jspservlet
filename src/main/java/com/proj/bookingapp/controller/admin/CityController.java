@@ -67,7 +67,7 @@ public class CityController extends HttpServlet {
 
         String cityName = request.getParameter("cityname");
         System.out.println(cityName);
-        cityService.saveCity(new City(null,cityName,null));
+        cityService.saveCity(new City(null,cityName,new ArrayList<>()));
 
         response.sendRedirect("city");
     }

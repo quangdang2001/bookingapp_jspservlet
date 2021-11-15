@@ -23,7 +23,7 @@ public class RoomDAOIplm implements RoomDAO {
             rooms  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("rooms find all error");
+            System.out.println(e.getMessage());
         } finally {
             currentSession.close();
         }
@@ -39,7 +39,7 @@ public class RoomDAOIplm implements RoomDAO {
             currentSession.saveOrUpdate(room);
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("room save error");
+            System.out.println(e.getMessage());
         } finally {
             currentSession.close();
 
@@ -55,7 +55,7 @@ public class RoomDAOIplm implements RoomDAO {
             room = currentSession.get(Room.class, id);
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("Room find by id error");
+            System.out.println(e.getMessage());
         } finally {
             currentSession.close();
         }
@@ -67,12 +67,11 @@ public class RoomDAOIplm implements RoomDAO {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
         try {
             currentSession.beginTransaction();
-            Query theQuery = currentSession.createQuery("delete from Room where id=:theid");
-            theQuery.setParameter("theid", id);
-            theQuery.executeUpdate();
+            Room room = currentSession.get(Room.class,id);
+            currentSession.delete(room);
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("Room delete error");
+            System.out.println(e.getMessage());
         } finally {
             currentSession.close();
         }
@@ -88,7 +87,7 @@ public class RoomDAOIplm implements RoomDAO {
             total= (int) theQuery.getSingleResult();
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("Room get total error");
+            System.out.println(e.getMessage());
         } finally {
             currentSession.close();
 
@@ -110,7 +109,7 @@ public class RoomDAOIplm implements RoomDAO {
             rooms  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("rooms search error");
+            System.out.println(e.getMessage());
         } finally {
             currentSession.close();
         }

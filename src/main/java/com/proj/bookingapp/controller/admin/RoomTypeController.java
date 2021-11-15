@@ -87,7 +87,6 @@ public class RoomTypeController extends HttpServlet {
             id =Long.valueOf(tempId);
         }
 
-
         String name = request.getParameter("name");
         String desc = request.getParameter("description");
         roomTypeService.saveRoomType(new RoomType(id,name,desc));

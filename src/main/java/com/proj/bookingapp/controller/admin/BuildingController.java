@@ -2,6 +2,7 @@ package com.proj.bookingapp.controller.admin;
 
 import com.proj.bookingapp.model.Building;
 import com.proj.bookingapp.model.City;
+import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.model.RoomType;
 import com.proj.bookingapp.service.BuildingService;
 import com.proj.bookingapp.service.CityService;
@@ -87,9 +88,11 @@ public class BuildingController extends HttpServlet {
             throws ServletException, IOException{
 
         String tempId = request.getParameter("id");
+        List<Room> rooms= null;
         Long id = null;
         if (!tempId.equals("")){
             id =Long.valueOf(tempId);
+            rooms = buildingService.findById(id).getRooms();
         }
 
         String name = request.getParameter("name");
@@ -98,7 +101,7 @@ public class BuildingController extends HttpServlet {
         Long idcity = Long.valueOf(request.getParameter("city"));
 
         City city = cityService.findById(idcity);
-        buildingService.saveBuilding(new Building(id,name,address,city,null));
+        buildingService.saveBuilding(new Building(id,name,address,city,rooms));
 
         response.sendRedirect("building");
     }

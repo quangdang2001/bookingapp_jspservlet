@@ -22,7 +22,6 @@ public class Booking {
     @Temporal(TemporalType.DATE)
     private Date checkOutDate;
     private double priceForStay;
-    private double taxPaid;
     @Temporal(TemporalType.DATE)
     private Date cancelDate;
     @Temporal(TemporalType.DATE)
@@ -43,7 +42,5 @@ public class Booking {
         if (tempUser.getBookings().equals(null)) tempUser.setBookings(new ArrayList<>());
         tempUser.getBookings().add(this);
     }
-
-
 
 }

@@ -54,7 +54,6 @@ public class CityDAOIplm implements CityDAO {
     @Override
     public City findById(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-
         City city = null;
         try {
             currentSession.beginTransaction();

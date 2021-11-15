@@ -68,9 +68,8 @@ public class BookingDAOIplm implements BookingDAO {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
         try {
             currentSession.beginTransaction();
-            Query theQuery = currentSession.createQuery("delete from Booking where id=:theid");
-            theQuery.setParameter("theid", id);
-            theQuery.executeUpdate();
+            Booking booking = currentSession.get(Booking.class,id);
+            currentSession.delete(booking);
             currentSession.getTransaction().commit();
         }catch (Exception e) {
             log.error("Booking delete error");

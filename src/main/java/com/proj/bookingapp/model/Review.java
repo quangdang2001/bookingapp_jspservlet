@@ -25,7 +25,7 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Room room;
 
     private void addReview(User tempuser, Room temprooms){

@@ -9,4 +9,5 @@ public interface RoomImageService {
     void saveRoomImage(RoomImage roomImage);
     RoomImage findById(Long id);
     void deleteRoomImage(Long id);
+
 }
