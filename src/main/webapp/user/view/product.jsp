@@ -648,7 +648,6 @@
         var quantity = parseInt(
             document.getElementById("room-people_btn").value
         );
-
         if (temp < 5) {
             temp += 1;
             quantity += 1;
