@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +12,7 @@
       rel="stylesheet"
     />
     <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
-    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="<c:url value="/user/styles/login.css"/> " />
   </head>
   <body>
     <div class="container" id="container">
