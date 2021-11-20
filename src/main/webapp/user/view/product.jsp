@@ -35,8 +35,8 @@
                     <a href="" class="logo">Travel Booking</a>
                     <div class="nav-menu">
                         <a href="" class="nav-menu__btn">Hỗ trợ</a>
-                        <a href="/view/login.html" class="nav-menu__btn">Đăng kí</a>
-                        <a href="/view/login.html" class="nav-menu__btn">Đăng nhập</a>
+                        <a href="./login.html" class="nav-menu__btn">Đăng kí</a>
+                        <a href="./login.html" class="nav-menu__btn">Đăng nhập</a>
                     </div>
                 </div>
                 <div id="nav-mode" class="nav-mode">
