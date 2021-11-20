@@ -5,6 +5,7 @@ import com.proj.bookingapp.dao.ReviewDAO;
 import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.Building;
 import com.proj.bookingapp.model.Review;
+import com.proj.bookingapp.model.Room;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -76,5 +77,27 @@ public class ReviewDAOIplm implements ReviewDAO {
         } finally {
             currentSession.close();
         }
+    }
+
+    @Override
+    public List<Review> findReviewByRoom(Long idRoom) {
+        Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
+        List<Review> reviews = null;
+        try {
+            currentSession.beginTransaction();
+            Query<Review> theQuery =
+                    currentSession.createQuery(
+                            "from Review r where r.room.id =:theId "
+                            , Review.class);
+            theQuery.setParameter("theId",idRoom);
+
+            reviews  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            currentSession.close();
+        }
+        return reviews;
     }
 }

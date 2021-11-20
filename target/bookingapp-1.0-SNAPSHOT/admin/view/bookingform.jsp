@@ -48,26 +48,32 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">User</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="idUser" readonly class="form-control" type="text" value="${booking.user.id}">
+                            <input name="idUser" readonly  class="form-control" type="text" value="${booking.user.id}">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Room</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="nameRoom" readonly class="form-control" type="text" value="${booking.room.name}">
+                            <input name="nameRoom" readonly  class="form-control" type="text" value="${booking.room.name}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Price for stay</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="priceForStay" readonly  class="form-control" type="text" value="${booking.priceForStay}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Check in</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="checkInDate" readonly class="form-control" type="text" value="${booking.checkInDate}">
+                            <input name="checkInDate" readonly  class="form-control" type="text" value="${booking.checkInDate}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Check out</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="checkOutDate" readonly class="form-control" type="text" value="${booking.checkOutDate}">
+                            <input name="checkOutDate" readonly  class="form-control" type="text" value="${booking.checkOutDate}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -81,7 +87,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Booking date</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="bookingDate" readonly class="form-control" type="text"
+                            <input name="bookingDate" readonly  class="form-control" type="text"
                                    value="${booking.bookingDate}">
                         </div>
                     </div>
@@ -89,7 +95,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Payment</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="paymentName" readonly class="form-control" type="text" value="${booking.transaction.paymemt.name}">
+                            <input name="paymentName" readonly  class="form-control" type="text" value="${booking.transaction.paymemt.name}">
                         </div>
                     </div>
                     <div class="form-group row">

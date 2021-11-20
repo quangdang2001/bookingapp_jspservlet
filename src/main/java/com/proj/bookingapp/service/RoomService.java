@@ -2,6 +2,7 @@ package com.proj.bookingapp.service;
 
 import com.proj.bookingapp.model.Room;
 
+import java.util.Date;
 import java.util.List;
 
 public interface RoomService {
@@ -10,5 +11,9 @@ public interface RoomService {
     Room findById(Long id);
     void deleteRoom(Long id);
     int getTotalRoom();
-    List<Room> searchRoom(String keyword);
+    List<Room> searchRoom(String city, Integer acom, Date bookingDateF, Date bookingDayL);
+    List<Room> descendingPriceRoom(List<Room> rooms);
+    List<Room> ascendingPriceRoom(List<Room> rooms);
+    List<Room> filterRoom(String roomType,List<Integer> star,Double lowPrice,Double maxPrice,List<Room> rooms);
+    double getStarRoom(Long idRoom);
 }

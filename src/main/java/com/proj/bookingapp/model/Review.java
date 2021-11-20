@@ -25,17 +25,9 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Room room;
 
-    private void addReview(User tempuser, Room temprooms){
-        user=tempuser;
-        if (tempuser.getReviews().equals(null)) tempuser.setReviews(new ArrayList<>());
-        tempuser.getReviews().add(this);
-        room =temprooms;
-        if (temprooms.getReviews().equals(null)) temprooms.setReviews(new ArrayList<>());
-        temprooms.getReviews().add(this);
-    }
 
 }
 

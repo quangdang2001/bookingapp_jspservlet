@@ -66,10 +66,10 @@
                                 <td>${booking.bookingDate}</td>
                                 <td>${booking.transaction.paymemt.name}</td>
                                 <c:if test="${booking.status == true}" >
-                                    <td> <input class="form-check-input" type="checkbox" name="status" value="true"  checked readonly></td>
+                                    <td>Paid </td>
                                 </c:if>
                                 <c:if test="${booking.status == false}" >
-                                    <td> <input class="form-check-input" type="checkbox" name="status" value="false" readonly></td>
+                                    <td>Unpaid </td>
                                 </c:if>
 
                                 <td>

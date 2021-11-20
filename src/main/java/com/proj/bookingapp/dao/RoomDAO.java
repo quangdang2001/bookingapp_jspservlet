@@ -11,5 +11,6 @@ public interface RoomDAO {
     Room findById(Long id);
     void deleteRoom(Long id);
     int getTotalRoom();
-    List<Room> searchRoom(String keyword);
+    List<Room> searchRoom(String city,Integer acom);
+
 }

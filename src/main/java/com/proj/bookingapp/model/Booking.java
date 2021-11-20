@@ -3,8 +3,10 @@ package com.proj.bookingapp.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,8 +26,11 @@ public class Booking {
     private double priceForStay;
     @Temporal(TemporalType.DATE)
     private Date cancelDate;
-    @Temporal(TemporalType.DATE)
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date bookingDate;
+
     private boolean status;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})

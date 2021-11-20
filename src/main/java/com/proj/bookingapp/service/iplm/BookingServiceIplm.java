@@ -50,4 +50,9 @@ public class BookingServiceIplm implements BookingService {
     public List<Booking> findByBookingStatus(boolean status) {
         return bookingDAO.findByBookingStatus(status);
     }
+
+    @Override
+    public List<Booking> findBookingByRoomId(Long id) {
+        return null;
+    }
 }

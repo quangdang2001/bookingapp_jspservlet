@@ -12,4 +12,5 @@ public interface BookingService {
     int getTotalBooking();
     Booking findByUserId(Long id);
     List<Booking> findByBookingStatus(boolean status);
+    List<Booking> findBookingByRoomId(Long id);
 }

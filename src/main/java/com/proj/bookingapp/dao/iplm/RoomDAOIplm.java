@@ -3,15 +3,18 @@ package com.proj.bookingapp.dao.iplm;
 import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.RoomDAO;
 import com.proj.bookingapp.model.Booking;
+import com.proj.bookingapp.model.Review;
 import com.proj.bookingapp.model.Room;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 public class RoomDAOIplm implements RoomDAO {
+
     @Override
     public List<Room> findAll() {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
@@ -96,16 +99,18 @@ public class RoomDAOIplm implements RoomDAO {
     }
 
     @Override
-    public List<Room> searchRoom(String keyword) {
+    public List<Room> searchRoom(String city,Integer acom) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
         List<Room> rooms = null;
         try {
             currentSession.beginTransaction();
             Query<Room> theQuery =
                     currentSession.createQuery(
-                            "from Room r where concat(r.building.city, r.accomodatesCount) like :thekeyword"
+                            "from Room r where r.building.city.name like :theCity and r.accomodatesCount >=:theAcom " +
+                                    "order by rating DESC"
                             , Room.class);
-            theQuery.setParameter("thekeyword",keyword);
+            theQuery.setParameter("theCity","%"+city+"%");
+            theQuery.setParameter("theAcom",acom);
             rooms  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
@@ -116,5 +121,6 @@ public class RoomDAOIplm implements RoomDAO {
 
         return  rooms;
     }
+
 
 }

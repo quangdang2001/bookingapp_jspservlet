@@ -11,12 +11,15 @@ import com.proj.bookingapp.model.*;
 import com.proj.bookingapp.service.BuildingService;
 import com.proj.bookingapp.service.CityService;
 import com.proj.bookingapp.service.PaymentService;
+import com.proj.bookingapp.service.RoomService;
 import com.proj.bookingapp.service.iplm.BuildingServiceIplm;
 import com.proj.bookingapp.service.iplm.CityServiceIplm;
 import com.proj.bookingapp.service.iplm.PaymentServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
+import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
 
-import javax.inject.Inject;
+import java.util.*;
 
 
 public class testcase {
@@ -24,56 +27,34 @@ public class testcase {
     CityDAOIplm cityDAOIplm = new CityDAOIplm();
     RoomTypeDAO roomTypeDAO = new RoomTypeDAOIplm();
     BuildingService buildingService = new BuildingServiceIplm();
-    CityService cityService= new CityServiceIplm();
+    CityService cityService = new CityServiceIplm();
     PaymentService paymentService = new PaymentServiceIplm();
     RoomDAO roomDAO = new RoomDAOIplm();
+    RoomService roomService = new RoomServiceIplm();
+
     public testcase() {
     }
 
     @Test
-    void testdb(){
-        for (int i=0;i<20;i++)
-        System.out.println(HiberConfig.getSessionFactory().getCurrentSession());
-    }
-
-    @Test
-    void testcityDAO(){
-        City city = new City(null,"city",null);
-
-        cityDAOIplm.saveCity(city);
-        System.out.println(cityDAOIplm.getTotalCity());
-    }
-
-    @Test
-    void testBookingTransaction(){
-        for (int i = 1;i<10;i++)
-        System.out.println(HiberConfig.getSessionFactory());
-    }
-
-    @Test
-    void testCityService(){
-        System.out.println(cityService.findById(Long.valueOf(1)));
-
+    void testdb() {
+        for (int i = 0; i < 20; i++)
+            System.out.println(HiberConfig.getSessionFactory().getCurrentSession());
     }
     @Test
-    void testBuildingService(){
-        Building city = buildingService.findById(Long.valueOf(1));
-        City city1 = city.getCity();
-        System.out.println(city1.getName());
-
+    void searchRoom(){
+        List<Room> room = roomDAO.searchRoom("Nha Trang",1);
+        room.sort((o1, o2) -> {
+            double temp1 = o1.getPrice();
+            double temp2 = o2.getPrice();
+            return temp1 >= temp2 ? -1 : 0;
+        });
+        for (Room room1 : room){
+            System.out.println(room1.getPrice());
+        }
     }
     @Test
-    void da(){
-        RoomType roomType = new RoomType(null,"quang","test");
-        roomTypeDAO.saveRoomType(roomType);
-    }
-
-    @Test
-    void asd(){
-        Room room = roomDAO.findById(Long.valueOf(7));
-        System.out.println(room);
+    void findReview(){
+        System.out.println(roomService.getStarRoom(Long.parseLong("2490")));
 
     }
-
-
 }

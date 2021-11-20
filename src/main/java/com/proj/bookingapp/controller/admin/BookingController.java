@@ -99,20 +99,33 @@ public class BookingController extends HttpServlet {
         }
         Booking booking = bookingService.findById(id);
 
-        SimpleDateFormat hiberFormat=new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat hiberFormat=new SimpleDateFormat("dd MMM yyyy");
 //        Date checkInDate =hiberFormat.parse(request.getParameter("checkInDate"));
 //        Date checkOutDate =hiberFormat.parse(request.getParameter("checkOutDate"));
+//        System.out.println(checkOutDate);
+//        System.out.println(request.getParameter("cancelDate"));
         Date cancelDate =hiberFormat.parse(request.getParameter("cancelDate"));
+//        System.out.println(cancelDate);
 //        Date bookingDate =hiberFormat.parse(request.getParameter("bookingDate"));
 //        double priceForStay = Double.parseDouble(request.getParameter("priceForStay"));
         String status = request.getParameter("status");
         boolean bStatus;
-        if (status.equals("true")) bStatus=true;
+        if (status !=null && status.equals("true")) bStatus=true;
         else bStatus=false;
+
+//        booking = new Booking();
         booking.setStatus(bStatus);
         booking.setCancelDate(cancelDate);
+//
+//        booking.setId(null);
+//        booking.setCheckInDate(checkInDate);
+//        booking.setCheckOutDate(checkOutDate);
+//        booking.setCancelDate(cancelDate);
+//        booking.setPriceForStay(priceForStay);
+////        booking.setBookingDate(bookingDate);
+
 
         bookingService.saveBooking(booking);
-        response.sendRedirect("/adminPage/booking");
+        response.sendRedirect("booking");
     }
 }

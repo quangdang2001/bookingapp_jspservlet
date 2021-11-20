@@ -4,13 +4,14 @@ import com.proj.bookingapp.config.HiberConfig;
 import com.proj.bookingapp.dao.BookingDAO;
 import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.City;
-import lombok.extern.slf4j.Slf4j;
+
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-@Slf4j
+
 public class BookingDAOIplm implements BookingDAO {
     @Override
     public List<Booking> findAll() {
@@ -23,7 +24,7 @@ public class BookingDAOIplm implements BookingDAO {
             bookings  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("Booking find all error");
+            System.out.println("Booking find all error");
         } finally {
             currentSession.close();
         }
@@ -40,7 +41,7 @@ public class BookingDAOIplm implements BookingDAO {
             currentSession.saveOrUpdate(booking);
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("booking save error");
+            System.out.println("booking save error");
         } finally {
             currentSession.close();
 
@@ -56,7 +57,7 @@ public class BookingDAOIplm implements BookingDAO {
             booking = currentSession.get(Booking.class, id);
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("Booking find by id error");
+            System.out.println("Booking find by id error");
         } finally {
             currentSession.close();
         }
@@ -72,7 +73,7 @@ public class BookingDAOIplm implements BookingDAO {
             currentSession.delete(booking);
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("Booking delete error");
+            System.out.println("Booking delete error");
         } finally {
             currentSession.close();
         }
@@ -88,7 +89,7 @@ public class BookingDAOIplm implements BookingDAO {
             total= (int) theQuery.getSingleResult();
             currentSession.getTransaction().commit();
         }catch (Exception e) {
-            log.error("Booking get total error");
+            System.out.println("Booking get total error");
         } finally {
             currentSession.close();
 
@@ -108,7 +109,7 @@ public class BookingDAOIplm implements BookingDAO {
             bookings  = theQuery.getSingleResult();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("Booking find by user id error");
+            System.out.println("Booking find by user id error");
         } finally {
             currentSession.close();
         }
@@ -128,7 +129,26 @@ public class BookingDAOIplm implements BookingDAO {
             bookings  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
-            log.error("Booking find by status error");
+            System.out.println("Booking find by status error");
+        } finally {
+            currentSession.close();
+        }
+        return bookings;
+    }
+
+    @Override
+    public List<Booking> findBookingByRoomId(Long id) {
+        Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
+        List<Booking> bookings = null;
+        try {
+            currentSession.beginTransaction();
+            Query<Booking> theQuery =
+                    currentSession.createQuery("from Booking b where b.room.id=:theIdRoom ", Booking.class);
+            theQuery.setParameter("theIdRoom",id);
+            bookings  = theQuery.getResultList();
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Booking find by booking by room id error");
         } finally {
             currentSession.close();
         }

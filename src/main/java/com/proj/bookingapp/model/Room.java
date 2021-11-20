@@ -37,6 +37,7 @@ public class Room {
     @OneToMany(mappedBy = "room",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Review> reviews;
 
+
     public void addRoomImage(RoomImage temproomImage){
         if (roomImage==null) roomImage= new ArrayList<>();
         roomImage.add(temproomImage);

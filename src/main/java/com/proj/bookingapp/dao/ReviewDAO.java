@@ -10,4 +10,5 @@ public interface ReviewDAO {
     void saveReview(Review review);
     Review findById(Long id);
     void deleteReview(Long id);
+    List<Review> findReviewByRoom(Long idRoom);
 }
