@@ -66,6 +66,7 @@ body {
   color: var(--txt-color);
   padding-top: calc(var(--nav-height) + 30px);
   font-size: 16px;
+
 }
 .container-main {
   max-width: 1600px;

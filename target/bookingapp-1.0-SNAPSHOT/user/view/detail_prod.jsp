@@ -33,19 +33,51 @@
 <!-- top nav -->
 <div class="top-nav">
     <div class="container-main">
-        <div class="nav">
+        <div class="nav-bar">
             <div class="nav-content">
                 <a href="" class="logo">Travel Booking</a>
-                <div class="nav-menu">
-                    <a href="" class="nav-menu__btn">Hỗ trợ</a>
-                    <a href="" class="nav-menu__btn">Đăng kí</a>
-                    <a href="" class="nav-menu__btn">Đăng nhập</a>
+                <div class="header__nav-list">
+                    <div id="header__nav-item-user" class="header__nav-item-user">
+                        <div href="" class="header__nav-item-link">
+                    <span
+                            class="iconify header__nav-item-icon-bars"
+                            data-icon="bx:bx-menu"
+                            data-width="25"
+                            data-height="25"
+                    ></span>
+                            <span
+                                    class="iconify header__nav-item-icon-user"
+                                    data-icon="bx:bxs-user"
+                                    data-width="25"
+                                    data-height="25"
+                            ></span>
+                        </div>
+                    </div>
+
+                    <div class="nav-tablet">
+                        <ul class="nav-tablet__list">
+                            <li class="nav-tablet__item js-sign">
+                                <a href="#" class="nav-tablet__item-link">Đăng ký</a>
+                            </li>
+                            <li class="nav-tablet__item js-sign">
+                                <a href="#" class="nav-tablet__item-link">Đăng nhập</a>
+                            </li>
+                            <li class="nav-tablet__item">
+                                <a href="#" class="nav-tablet__item-link">
+                                    Cài đặt tài khoản
+                                </a>
+                            </li>
+                            <li class="nav-tablet__item">
+                                <a href="#" class="nav-tablet__item-link">
+                                    Lịch sử chuyến đi
+                                </a>
+                            </li>
+                            <li class="nav-tablet__item">
+                                <a href="#" class="nav-tablet__item-link"> Đăng xuất </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div id="nav-mode" class="nav-mode">
-                <span href="" class="nav-mode__btn-hotel active">Khách sạn</span>
-                <span href="" class="nav-mode__btn-hotel">Vé máy bay</span>
-                <span href="" class="nav-mode__btn-hotel">Tour và sự kiện</span>
             </div>
         </div>
     </div>

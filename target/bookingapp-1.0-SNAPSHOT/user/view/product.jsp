@@ -30,19 +30,47 @@
     <!-- top nav -->
     <div class="top-nav">
         <div class="container-main">
-            <div class="nav">
+            <div class="nav-bar">
                 <div class="nav-content">
                     <a href="" class="logo">Travel Booking</a>
-                    <div class="nav-menu">
-                        <a href="" class="nav-menu__btn">Hỗ trợ</a>
-                        <a href="./login.html" class="nav-menu__btn">Đăng kí</a>
-                        <a href="./login.html" class="nav-menu__btn">Đăng nhập</a>
+                    <div class="header__nav-list">
+                        <div id="header__nav-item-user" class="header__nav-item-user">
+                            <div href="" class="header__nav-item-link">
+                    <span
+                            class="iconify header__nav-item-icon-bars"
+                            data-icon="bx:bx-menu"
+                    ></span>
+                                <span
+                                        class="iconify header__nav-item-icon-user"
+                                        data-icon="bx:bxs-user"
+                                ></span>
+                            </div>
+                        </div>
+
+                        <div class="nav-tablet">
+                            <ul class="nav-tablet__list">
+                                <li class="nav-tablet__item js-sign">
+                                    <a href="#" class="nav-tablet__item-link">Đăng ký</a>
+                                </li>
+                                <li class="nav-tablet__item js-sign">
+                                    <a href="#" class="nav-tablet__item-link">Đăng nhập</a>
+                                </li>
+                                <li class="nav-tablet__item">
+                                    <a href="#" class="nav-tablet__item-link">
+                                        Cài đặt tài khoản
+                                    </a>
+                                </li>
+                                <li class="nav-tablet__item">
+                                    <a href="#" class="nav-tablet__item-link">
+                                        Lịch sử chuyến đi
+                                    </a>
+                                </li>
+                                <li class="nav-tablet__item">
+                                    <a href="#" class="nav-tablet__item-link"> Đăng xuất </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div id="nav-mode" class="nav-mode">
-                    <span href="" class="nav-mode__btn-hotel active">Khách sạn</span>
-                    <spanp href="" class="nav-mode__btn-hotel">Vé máy bay</spanp>
-                    <span href="" class="nav-mode__btn-hotel">Tour và sự kiện</span>
                 </div>
             </div>
         </div>
@@ -714,6 +742,61 @@
                 quantity + " Khách";
         }
     });
+</script>
+<script>
+
+    $("html").click(function () {
+        $(".location-search-select-list").removeClass("active");
+    });
+
+    $("#location-search").click(function (e) {
+        e.stopPropagation();
+    });
+
+    $("#location-search").click(function (e) {
+        $(".location-search-select-list").addClass("active");
+    });
+
+
+    // show room people
+
+    $("html").click(function () {
+        $(".room-people-number").removeClass("active");
+    });
+
+    $("#room-people").click(function (e) {
+        e.stopPropagation();
+    });
+
+    $("#room-people").click(function (e) {
+        $(".room-people-number").addClass("active");
+    });
+
+
+    $("html").click(function () {
+        $(".nav-tablet").removeClass("active");
+    });
+    $("#header__nav-item-user").click(function (e) {
+        e.stopPropagation();
+    });
+    $("#header__nav-item-user").click(function (e) {
+        $(".nav-tablet").addClass("active");
+    });
+
+
+    // product sort
+    $("html").click(function () {
+        $(".product-sort-select-list").removeClass("active");
+    });
+
+    $("#product-sort").click(function (e) {
+        e.stopPropagation();
+    });
+
+    $("#product-sort").click(function (e) {
+        $(".product-sort-select-list").addClass("active");
+    });
+
 </script>
 <!-- end btn add sub -->
 </body>

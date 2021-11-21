@@ -8,7 +8,7 @@
     z-index: 99;
 }
 
-.nav {
+.nav-bar {
     height: var(--nav-height);
 }
 
@@ -22,54 +22,75 @@
     font-weight: 500;
     color: var(--primary-color);
 }
-
-.nav-menu__btn:not(:last-child) {
-    margin-right: 32px;
-}
-
-.nav-menu__btn {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--txt-color);
-}
-
-.nav-mode {
-    position: absolute;
-    bottom: 0;
-    left: 100px;
-    transform: translateY(-10%);
-}
-
-.nav-mode__btn-hotel {
+.header__nav-list {
     position: relative;
-    margin-left: 50px;
-    color: var(--txt-color);
-    -ms-user-select: none;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+.header__nav-item-user {
+    list-style: none;
+}
+.header__nav-item-link {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__nav-item-icon-user,
+.header__nav-item-icon-bars {
+    color: var(--black-color);
+    font-size: 1.6rem;
+    cursor: pointer;
 }
 
-.nav-mode__btn-hotel::after {
-    display: block;
-    content: "";
-    width: 100%;
-    height: 1px;
-    background: var(--primary-color);
+.header__nav-item--acticve,
+.header__nav-item-link::after {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 100%;
-    transition: transform 0.5s;
-    transform: scaleX(0);
-    transform-origin: right;
+    content: "";
+    display: block;
+    bottom: -10px;
+    left: 8px;
+    right: 8px;
+    background-color: var(--white-color);
+    height: 2px;
 }
 
-.nav-mode__btn-hotel:hover {
-    color: var(--primary-hover);
+.nav-tablet {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    display: none;
+    visibility: hidden;
+    z-index: 98;
+}
+.nav-tablet.active {
+    display: block;
+    visibility: visible;
+}
+.nav-tablet__list {
+    background-color: #fff;
+    padding-left: 0;
+    width: 200px;
+    list-style: none;
+    box-shadow: 0px 0px 12px 2px #ccc;
+    border-radius: 12px;
 }
 
-.nav-mode__btn-hotel.active::after,
-.nav-mode__btn-hotel:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+.nav-tablet__item {
+    padding: 12px;
+}
+.nav-tablet__item:hover {
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+}
+
+.nav-tablet__item-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--txt-color);
 }
 
 /* end top nav */
