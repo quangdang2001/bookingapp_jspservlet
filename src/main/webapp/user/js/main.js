@@ -56,64 +56,6 @@ $("#room-people").click(function (e) {
 
 
 
-// btn add sub
-$(".room-people__btn-adult-add").click(function (e) {
-  var temp = parseInt(
-    document.getElementById("room-people__count--adult").innerHTML
-  );
-  var quantity= parseInt(document.getElementById("room-people_btn").value)
-
-  if (temp < 5) {
-    temp += 1;
-    quantity+=1;
-    document.getElementById("room-people__count--adult").innerHTML = temp;
-    document.getElementById("room-people_btn").value= quantity +" Khách";
-  }
-});
-$(".room-people__btn-adult-sub").click(function (e) {
-  var quantity= parseInt(document.getElementById("room-people_btn").value)
-  var temp = parseInt(
-    document.getElementById("room-people__count--adult").innerHTML
-  );
-  if (temp > 1) {
-    temp -= 1;
-    quantity-=1;
-    document.getElementById("room-people__count--adult").innerHTML = temp;
-    document.getElementById("room-people_btn").value= quantity +" Khách";
-  }
-});
-$(".room-people__btn-child-add").click(function (e) {
-  var temp = parseInt(
-    document.getElementById("room-people__count--child").innerHTML
-  );
-  var quantity= parseInt(document.getElementById("room-people_btn").value)
-  if (temp < 5) {
-    temp += 1;
-    quantity+=1;
-    document.getElementById("room-people__count--child").innerHTML = temp;
-    document.querySelector(".room-people-number-warning").className+=" active"
-    document.querySelector(".room-people-age-child").className+=" active"
-    document.getElementById("room-people_btn").value= quantity +" Khách";
-  }
-});
-$(".room-people__btn-child-sub").click(function (e) {
-  var temp = parseInt(
-    document.getElementById("room-people__count--child").innerHTML
-  );
-  var quantity= parseInt(document.getElementById("room-people_btn").value)
-  if (temp > 0) {
-    temp -= 1;
-    quantity-=1;
-    document.getElementById("room-people__count--child").innerHTML = temp;
-    document.querySelector(".room-people-number-warning").className= document.querySelector(".room-people-number-warning").className.replace(" active","")
-    document.querySelector(".room-people-age-child").className= document.querySelector(".room-people-age-child").className.replace(" active","")
-    document.getElementById("room-people_btn").value= quantity +" Khách";
-    
-  }
-});
-
-// end
-
 
 
 // product sort

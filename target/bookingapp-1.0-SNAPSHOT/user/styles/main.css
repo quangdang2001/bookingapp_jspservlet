@@ -1,3 +1,4 @@
+
 /* Top nav */
 .top-nav {
   background-color: var(--bg-content);
@@ -30,7 +31,7 @@
 .nav-mode {
   position: absolute;
   bottom: 0;
-  left: 100;
+  left: 100px;
   transform: translateY(-10%);
 }
 
@@ -427,7 +428,7 @@ input:focus {
   position: relative;
   background-color: #fff;
   border-radius: 10px;
-  border: 1px solid rgb(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 #sort {
   outline: 0;
@@ -1066,7 +1067,7 @@ input[type="text"]:disabled {
   position: sticky !important;
   top: 80px;
   margin-left: 10%;
-  box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }
 .room-review-container {
   padding: 24px;
@@ -1386,4 +1387,63 @@ input[type="text"]:disabled {
 .modal-body-wrapper__nav-bar {
 }
 .modal-body-wrapper__container-image {
+}
+
+.label__score {
+  display: inline;
+}
+#room-review-write-review__heading {
+  width: 100%;
+}
+.room-review-edit-block__score {
+  padding: 0 25px;
+}
+.room-review-edit-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.room-review-edit-btn {
+  background-color: var(--primary-color);
+  padding: 4px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+  color: #fff;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+.room-review-cancel-edit-btn {
+  padding: 4px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+  color: #000;
+  margin-top: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.room-review-edit-btn:hover {
+  background-color: var(--primary-hover);
+}
+.room-review-edit-wrapper {
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+.room-review-comment-container {
+  scroll-behavior: smooth;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.room-review-btn-edit {
+  margin: 12px 0;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+#room-review-edit-container {
+  display: none;
 }

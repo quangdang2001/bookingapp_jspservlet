@@ -55,7 +55,7 @@ input[type="text"]:disabled {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--txt-color);
 }
 
@@ -67,9 +67,10 @@ body {
   padding-top: calc(var(--nav-height) + 30px);
   font-size: 16px;
 }
-.container {
+.container-main {
   max-width: 1600px;
-  margin: 27px 15% 0 15%;
+  margin: 27px 15% 0 15% !important;
+  padding: 0;
 }
 .input {
   font: inherit;
@@ -172,7 +173,7 @@ input[type="checkbox"]:checked:before {
   body {
     font-size: 14px;
   }
-  .container {
+  .container_main {
     margin: 27px 5% 0 5%;
   }
 }

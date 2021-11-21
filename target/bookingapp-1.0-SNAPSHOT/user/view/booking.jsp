@@ -26,7 +26,7 @@
   <body>
   <!-- top nav -->
   <div class="top-nav">
-    <div class="container">
+    <div class="container-main">
       <div class="nav">
         <div class="nav-content">
           <a href="" class="logo">Travel Booking</a>
@@ -35,7 +35,7 @@
     </div>
   </div>
   <!-- end top nav -->
-  <div class="container">
+  <div class="container-main">
     <form>
     <div class="row">
       <div class="col-7">
@@ -56,7 +56,7 @@
             <div class="booking-content-wrapper--block">
               <div class="booking-content-wrapper--block--left">
                 <label
-                        for="booking-date"
+                        for="booking-checkin"
                         class="booking-content-wrapper--block--left__heading"
                 >
                   Ngày
@@ -79,7 +79,7 @@
             <div class="booking-content-wrapper--block">
               <div class="booking-content-wrapper--block--left">
                 <label
-                        for="booking-guesss"
+                        for="booking-guess"
                         class="booking-content-wrapper--block--left__heading"
                 >
                   Khách

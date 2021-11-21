@@ -83,3 +83,10 @@ $(".image-container").click(function (e) {
 $(".modal-body-btn-back").click(function (e) {
   document.getElementById("more_image").style.display = "none";
 });
+
+$(".room-review-btn-edit").click(function (e) {
+  document.getElementById("room-review-edit-container").style.display = "block";
+});
+$(".room-review-cancel-edit-btn").click(function (e) {
+  document.getElementById("room-review-edit-container").style.display = "none";
+});

@@ -32,7 +32,7 @@
 <body>
 <!-- top nav -->
 <div class="top-nav">
-  <div class="container">
+  <div class="container-main">
     <div class="nav">
       <div class="nav-content">
         <a href="" class="logo">Travel Booking</a>
@@ -52,7 +52,7 @@
 </div>
 <!-- end top nav -->
 <!-- main content -->
-<div class="container">
+<div class="container-main">
   <!-- image-container -->
   <div class="row">
     <div class="col-12">
@@ -577,7 +577,9 @@
                 </div>
               </div>
             </div>
+            <div class="room-review-btn-edit">Đánh giá ngay</div>
           </div>
+
           <div class="col-8 room-review-wrapper">
             <div class="room-review-comment-container">
               <div id="review-1" class="room-review-comment-wrapper">
@@ -588,14 +590,6 @@
                   <div class="room-review-comment-block__info-date">
                     <span class="iconify" data-icon="la:pen"></span>
                     20/12/2021
-                  </div>
-                  <div class="room-review-comment-block__info-guess-type">
-                        <span
-                                class="iconify"
-                                data-icon="bi:people-fill"
-                                data-flip="horizontal"
-                        ></span>
-                    Một mình
                   </div>
                 </div>
                 <div class="room-review-comment-block__main-comment">
@@ -618,7 +612,7 @@
                       >
                 </div>
               </div>
-              <div id="review-1" class="room-review-comment-wrapper">
+              <div id="review-6" class="room-review-comment-wrapper">
                 <div class="room-review-comment-block__info">
                   <div class="room-review-comment-block__info-name">
                     KHACH HANG
@@ -626,14 +620,6 @@
                   <div class="room-review-comment-block__info-date">
                     <span class="iconify" data-icon="la:pen"></span>
                     20/12/2021
-                  </div>
-                  <div class="room-review-comment-block__info-guess-type">
-                        <span
-                                class="iconify"
-                                data-icon="bi:people-fill"
-                                data-flip="horizontal"
-                        ></span>
-                    Một mình
                   </div>
                 </div>
                 <div class="room-review-comment-block__main-comment">
@@ -652,11 +638,11 @@
                 </div>
                 <div class="room-review-comment-block__score">
                       <span class="room-review-comment-block__score-total"
-                      >3</span
+                      >1</span
                       >
                 </div>
               </div>
-              <div id="review-1" class="room-review-comment-wrapper">
+              <div id="review-2" class="room-review-comment-wrapper">
                 <div class="room-review-comment-block__info">
                   <div class="room-review-comment-block__info-name">
                     KHACH HANG
@@ -664,14 +650,6 @@
                   <div class="room-review-comment-block__info-date">
                     <span class="iconify" data-icon="la:pen"></span>
                     20/12/2021
-                  </div>
-                  <div class="room-review-comment-block__info-guess-type">
-                        <span
-                                class="iconify"
-                                data-icon="bi:people-fill"
-                                data-flip="horizontal"
-                        ></span>
-                    Một mình
                   </div>
                 </div>
                 <div class="room-review-comment-block__main-comment">
@@ -690,14 +668,190 @@
                 </div>
                 <div class="room-review-comment-block__score">
                       <span class="room-review-comment-block__score-total"
-                      >4.5</span
+                      >1</span
                       >
                 </div>
               </div>
-
-              <div class="box room-review-comment-btn">Xem thêm</div>
+              <div id="review-3" class="room-review-comment-wrapper">
+                <div class="room-review-comment-block__info">
+                  <div class="room-review-comment-block__info-name">
+                    KHACH HANG
+                  </div>
+                  <div class="room-review-comment-block__info-date">
+                    <span class="iconify" data-icon="la:pen"></span>
+                    20/12/2021
+                  </div>
+                </div>
+                <div class="room-review-comment-block__main-comment">
+                  <div
+                          class="room-review-comment-block__main-comment-heading"
+                  >
+                    Khách sạn xinh đẹp với dịch vụ tuyệt vời
+                  </div>
+                  <div class="room-review-comment-block__main-comment-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Ipsum, deserunt ipsa! Consequatur fugit eveniet
+                    iusto modi voluptatum fuga eum nesciunt quis sed dolores
+                    cum magni inventore, quisquam dolorum dignissimos
+                    ratione.
+                  </div>
+                </div>
+                <div class="room-review-comment-block__score">
+                      <span class="room-review-comment-block__score-total"
+                      >1</span
+                      >
+                </div>
+              </div>
+              <div id="review-5" class="room-review-comment-wrapper">
+                <div class="room-review-comment-block__info">
+                  <div class="room-review-comment-block__info-name">
+                    KHACH HANG
+                  </div>
+                  <div class="room-review-comment-block__info-date">
+                    <span class="iconify" data-icon="la:pen"></span>
+                    20/12/2021
+                  </div>
+                </div>
+                <div class="room-review-comment-block__main-comment">
+                  <div
+                          class="room-review-comment-block__main-comment-heading"
+                  >
+                    Khách sạn xinh đẹp với dịch vụ tuyệt vời
+                  </div>
+                  <div class="room-review-comment-block__main-comment-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Ipsum, deserunt ipsa! Consequatur fugit eveniet
+                    iusto modi voluptatum fuga eum nesciunt quis sed dolores
+                    cum magni inventore, quisquam dolorum dignissimos
+                    ratione.
+                  </div>
+                </div>
+                <div class="room-review-comment-block__score">
+                      <span class="room-review-comment-block__score-total"
+                      >1</span
+                      >
+                </div>
+              </div>
+              <div id="review-4" class="room-review-comment-wrapper">
+                <div class="room-review-comment-block__info">
+                  <div class="room-review-comment-block__info-name">
+                    KHACH HANG
+                  </div>
+                  <div class="room-review-comment-block__info-date">
+                    <span class="iconify" data-icon="la:pen"></span>
+                    20/12/2021
+                  </div>
+                </div>
+                <div class="room-review-comment-block__main-comment">
+                  <div
+                          class="room-review-comment-block__main-comment-heading"
+                  >
+                    Khách sạn xinh đẹp với dịch vụ tuyệt vời
+                  </div>
+                  <div class="room-review-comment-block__main-comment-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Ipsum, deserunt ipsa! Consequatur fugit eveniet
+                    iusto modi voluptatum fuga eum nesciunt quis sed dolores
+                    cum magni inventore, quisquam dolorum dignissimos
+                    ratione.
+                  </div>
+                </div>
+                <div class="room-review-comment-block__score">
+                      <span class="room-review-comment-block__score-total"
+                      >1</span
+                      >
+                </div>
+              </div>
             </div>
-          </div>
+            <div
+                    id="room-review-edit-container"
+                    class="room-review-edit-container"
+            >
+              <div class="room-review-edit-wrapper">
+                <div class="room-review-comment-block__info">
+                  <div class="room-review-comment-block__info-name">
+                    KHACH HANG
+                  </div>
+                  <div class="room-review-comment-block__info-date">
+                    <span class="iconify" data-icon="la:pen"></span>
+                    20/12/2021
+                  </div>
+                </div>
+                <div class="room-review-edit-block__main-comment">
+                  <div
+                          class="room-review-comment-block__main-comment-heading"
+                  >
+                    <input
+                            type="text"
+                            id="room-review-write-review__heading"
+                    />
+                  </div>
+                  <div class="room-review-comment-block__main-comment-body">
+                        <textarea
+                                name=""
+                                id="room-review-write-review__body"
+                                cols="65"
+                                rows="4"
+                        ></textarea>
+                  </div>
+                  <div class="room-review-edit-btn-wrapper">
+                    <div class="room-review-cancel-edit-btn">Hủy</div>
+                    <button class="room-review-edit-btn">Đánh giá</button>
+                  </div>
+                </div>
+                <div class="room-review-edit-block__score">
+                  <input name="score" id="score-5" type="radio" value="5" />
+                  <label class="label__score" for="score-5"
+                  >5
+                    <span
+                            style="color: #ee6c4d"
+                            class="iconify"
+                            data-icon="bi:star-fill"
+                    ></span>
+                  </label>
+                  <br />
+                  <input name="score" id="score-4" type="radio" value="4" />
+                  <label class="label__score" for="score-4"
+                  >4
+                    <span
+                            style="color: #ee6c4d"
+                            class="iconify"
+                            data-icon="bi:star-fill"
+                    ></span>
+                  </label>
+                  <br />
+                  <input name="score" id="score-3" type="radio" value="3" />
+                  <label class="label__score" for="score-3"
+                  >3
+                    <span
+                            style="color: #ee6c4d"
+                            class="iconify"
+                            data-icon="bi:star-fill"
+                    ></span>
+                  </label>
+                  <br />
+                  <input name="score" id="score-2" type="radio" value="2" />
+                  <label class="label__score" for="score-2"
+                  >2
+                    <span
+                            style="color: #ee6c4d"
+                            class="iconify"
+                            data-icon="bi:star-fill"
+                    ></span>
+                  </label>
+                  <br />
+                  <input name="score" id="score-1" type="radio" value="1" />
+                  <label class="label__score" for="score-1"
+                  >1
+                    <span
+                            style="color: #ee6c4d"
+                            class="iconify"
+                            data-icon="bi:star-fill"
+                    ></span>
+                  </label>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
