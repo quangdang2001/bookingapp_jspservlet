@@ -5,7 +5,7 @@
   --bg-content: #fff;
   --nav-height: 70px;
   --primary-hover: rgba(238, 108, 77, 0.8);
-  --btn-hover: rgba(210, 80, 50);
+  --btn-hover: rgba(210, 80, 50,0.5);
   --shadow: rgba(0, 0, 0, 0.1);
   --litepicker-button-prev-month-color-hover: #ee6c4d !important;
   --litepicker-button-next-month-color-hover: #ee6c4d !important;

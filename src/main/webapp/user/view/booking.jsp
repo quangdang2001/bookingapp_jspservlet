@@ -272,7 +272,7 @@
         <div class="booking-move-wrapper">
           <div class="booking-move-heading-wrapper">
             <div class="booking-move-heading__image">
-              <img src="/images/bigsize.jpg" alt="" />
+              <img src="${pageContext.request.contextPath}/user/images/bigsize.jpg" alt="" />
             </div>
             <div class="booking-move-heading__content">
                 <span class="booking-move-heading__content-heading"

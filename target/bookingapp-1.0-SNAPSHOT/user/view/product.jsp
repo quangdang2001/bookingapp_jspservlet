@@ -526,12 +526,12 @@
                     <div class="row">
                         <div class="list-product-container">
                             <div id="product-1" class="product-container">
-                                <a href="#">
+                                <a href="${pageContext.request.contextPath}/user/view/detail_prod.jsp">
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="product-container-img">
                                                 <div class="product-img">
-                                                    <img src="/images/hotel.jpg" alt=""/>
+                                                    <img src="${pageContext.request.contextPath}/user/images/hotel.jpg" alt=""/>
                                                 </div>
                                             </div>
                                         </div>
