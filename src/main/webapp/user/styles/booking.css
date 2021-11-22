@@ -549,7 +549,7 @@ input[type="text"]:disabled {
   margin-left: 10%;
   width: 80%;
 
-  box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }
 .booking-success-heading h3 {
   margin-top: 12px;
