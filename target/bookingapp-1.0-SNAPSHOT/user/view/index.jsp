@@ -73,12 +73,17 @@
                       <span
                         class="iconify header__nav-item-icon-bars"
                         data-icon="bx:bx-menu"
+                        data-width="25"
+                        data-height="25"
+
                       ></span>
                     </label>
                     <label for="nav-input-tablet">
                       <span
                         class="iconify header__nav-item-icon-user"
                         data-icon="bx:bxs-user"
+                        data-width="25"
+                        data-height="25"
                       ></span>
                     </label>
                   </a>

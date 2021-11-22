@@ -363,10 +363,6 @@
 
 /* End search bar */
 /* Body content */
-.body-content {
-    height: 2000px;
-}
-
 
 .line-spacing {
     margin: 24px 0;
@@ -1536,10 +1532,6 @@ input[type="text"]:disabled {
     font-size: 10px;
 }
 
-.footer {
-    height: 500px;
-    width: 100%;
-}
 
 /* end css detail product page */
 
@@ -1650,4 +1642,39 @@ input[type="text"]:disabled {
 
 #room-review-edit-container {
     display: none;
+}
+/*footer*/
+.footer {
+    background-color: rgb(255, 255, 255);
+}
+
+.footer-end {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.footer__end-copyright-list {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.footer__end-copyright__item:first-of-type {
+    list-style: none;
+}
+.footer__end-copyright__item {
+    margin-right: 24px;
+}
+
+.footer__end-social-list {
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+}
+.footer__end-social-item {
+    margin-right: 12px;
 }

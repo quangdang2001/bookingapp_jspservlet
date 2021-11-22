@@ -1079,6 +1079,73 @@
 <!-- eend overlay image -->
 
 <!-- end main content -->
+
+<%--footer--%>
+<div class="footer">
+    <div class="container-main">
+        <div class="footer-end">
+            <div class="footer-copyright">
+                <ul class="footer__end-copyright-list">
+                    <li class="footer__end-copyright__item">
+                        <i class="fas fa-copyright"></i>
+                        <a href="" class="footer__end-copyright__item-link"
+                        >2021 Travel Booking, Inc</a
+                        >
+                    </li>
+                    <li class="footer__end-copyright__item">
+                        <a href="" class="footer__end-copyright__item-link"
+                        >Quyền riêng tư</a
+                        >
+                    </li>
+                    <li class="footer__end-copyright__item">
+                        <a href="" class="footer__end-copyright__item-link"
+                        >Điều khoản</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__end-social">
+                <ul class="footer__end-social-list">
+                    <li class="footer__end-social-item">
+                        <i class="fas fa-globe"></i>
+                        <span href="" class="footer__end-social-item-link">
+                  Tiếng Việt (VN)
+                </span>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span href="" class="footer__end-social-item-link"> USD </span>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="brandico:facebook-rect"
+                  ></span>
+                        </a>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="akar-icons:twitter-fill"
+                  ></span>
+                        </a>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="ant-design:instagram-filled"
+                  ></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<%--end footer--%>
 <script src="<c:url value="/user/js/detail_prod.js"/> "></script>
 <script src="<c:url value="/user/node_modules/moment/moment.js"/> "></script>
 <script>
@@ -1230,6 +1297,17 @@
         }
     });
     // end
+</script>
+<script>
+    $("html").click(function () {
+        $(".nav-tablet").removeClass("active");
+    });
+    $("#header__nav-item-user").click(function (e) {
+        e.stopPropagation();
+    });
+    $("#header__nav-item-user").click(function (e) {
+        $(".nav-tablet").addClass("active");
+    });
 </script>
 </body>
 <footer class="footer"></footer>
