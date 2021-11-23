@@ -25,8 +25,6 @@
             href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
-    <link rel="stylesheet" href="<c:url value="/user/styles/index.css" />"/>
-    <link rel="stylesheet" href="<c:url value="/user/styles/index_base.css" />"/>
     <link rel="stylesheet" href="<c:url value="/user/styles/root.css"/> "/>
     <link rel="stylesheet" href="<c:url value="/user/styles/grid.css"/> "/>
     <link rel="stylesheet" href="<c:url value="/user/styles/main.css"/> "/>
@@ -36,68 +34,64 @@
 <!-- top nav -->
 <div class="top-nav">
     <div class="container-main">
-        <div class="nav">
+        <div class="nav-bar">
             <div class="nav-content">
                 <a href="${pageContext.request.contextPath}/home" class="logo">Travel Booking</a>
                 <div class="nav-menu">
-                    <ul class="header__nav-list header__nav-list--hover" >
-                        <li class="header__nav-item header__nav-item-user" style="border: 1px solid #AEB6BF;">
-                            <input
-                                    type="checkbox"
-                                    class="nav-input"
-                                    id="nav-input-tablet"
-                            />
+                    <div class="header__nav-list ">
+                        <div class=" header__nav-item-user">
+                            <div id="header__nav-item-user" class="header__nav-item-user">
+                                <div href="" class="header__nav-item-link">
+                                    <span
+                                            class="iconify header__nav-item-icon-bars"
+                                            data-icon="bx:bx-menu"
+                                            data-width="25"
+                                            data-height="25"
+                                    ></span>
+                                    <span
+                                            class="iconify header__nav-item-icon-user"
+                                            data-icon="bx:bxs-user"
+                                            data-width="25"
+                                            data-height="25"
+                                    ></span>
+                                </div>
+                            </div>
 
-                            <label for="nav-input-tablet" class="nav-tablet">
+                            <div class="nav-tablet">
                                 <ul class="nav-tablet__list">
-                                    <c:if test="${sessionScope.user == null}">
-                                        <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link" style="display: block">Đăng ký</a>
-                                        </li>
-                                        <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
-                                        </li>
-                                    </c:if>
-                                    <c:if test="${sessionScope.user != null}">
-                                        <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link"  style="display: block">Xin
-                                                chào ${sessionScope.user.firstName}</a>
-                                        </li>
-                                        <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link" style="display: block">Nhật ký</a>
-                                        </li>
-                                        <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/login?action=logout"
-                                               class="nav-tablet__item-link" style="display: block">Đăng xuất</a>
-                                        </li>
-                                    </c:if>
+                                <c:if test="${sessionScope.user == null}">
+                                    <li class="nav-tablet__item js-sign">
+                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                           class="nav-tablet__item-link" style="display: block">Đăng ký</a>
+                                    </li>
+                                    <li class="nav-tablet__item js-sign">
+                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                           class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${sessionScope.user != null}">
+                                    <li class="nav-tablet__item js-sign">
+                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                           class="nav-tablet__item-link" style="display: block">Xin
+                                            chào ${sessionScope.user.firstName}</a>
+                                    </li>
+                                    <li class="nav-tablet__item js-sign">
+                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                           class="nav-tablet__item-link" style="display: block">Nhật ký</a>
+                                    </li>
+                                    <li class="nav-tablet__item js-sign">
+                                        <a href="${pageContext.request.contextPath}/login?action=logout"
+                                           class="nav-tablet__item-link" style="display: block">Đăng xuất</a>
+                                    </li>
+                                </c:if>
                                 </ul>
-                            </label>
-                            <a href="" class="header__nav-item-link">
-                                <label for="nav-input-tablet" class="nav__bars-btn">
-                      <span
-                              class="iconify header__nav-item-icon-bars"
-                              data-icon="bx:bx-menu"
-                      ></span>
-                                </label>
-                                <label for="nav-input-tablet">
-                      <span
-                              class="iconify header__nav-item-icon-user"
-                              data-icon="bx:bxs-user"
-                      ></span>
-                                </label>
-                            </a>
+                            </div>
+                        </div>
                         </li>
-                    </ul>
+                    </div>
                 </div>
             </div>
-            <div id="nav-mode" class="nav-mode">
-                <span href="" class="nav-mode__btn-hotel active">Khách sạn</span>
-            </div>
+
         </div>
     </div>
 </div>
@@ -678,7 +672,7 @@
                                 id="room-review-edit-container"
                                 class="room-review-edit-container"
                         >
-                            <form action="${pageContext.request.contextPath}/review" method="get" >
+                            <form action="${pageContext.request.contextPath}/review" method="get">
                                 <input type="hidden" name="reviewCount" value="${reviewCount}">
                                 <input type="hidden" name="email" value="${sessionScope.user.email}">
                                 <input type="hidden" name="idRoom" value="${room.id}">
@@ -919,7 +913,72 @@
 
 
 <!-- eend overlay image -->
-
+<%--footer--%>
+<div class="footer">
+    <div class="container-main">
+        <div class="footer-end">
+            <div class="footer-copyright">
+                <ul class="footer__end-copyright-list">
+                    <li class="footer__end-copyright__item">
+                        <i class="fas fa-copyright"></i>
+                        <a href="" class="footer__end-copyright__item-link"
+                        >2021 Travel Booking, Inc</a
+                        >
+                    </li>
+                    <li class="footer__end-copyright__item">
+                        <a href="" class="footer__end-copyright__item-link"
+                        >Quyền riêng tư</a
+                        >
+                    </li>
+                    <li class="footer__end-copyright__item">
+                        <a href="" class="footer__end-copyright__item-link"
+                        >Điều khoản</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__end-social">
+                <ul class="footer__end-social-list">
+                    <li class="footer__end-social-item">
+                        <i class="fas fa-globe"></i>
+                        <span href="" class="footer__end-social-item-link">
+                  Tiếng Việt (VN)
+                </span>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span href="" class="footer__end-social-item-link"> USD </span>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="brandico:facebook-rect"
+                  ></span>
+                        </a>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="akar-icons:twitter-fill"
+                  ></span>
+                        </a>
+                    </li>
+                    <li class="footer__end-social-item">
+                        <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="ant-design:instagram-filled"
+                  ></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<%--end footer--%>
 <!-- end main content -->
 <script src="<c:url value="/user/js/main.js"/> "></script>
 <script src="<c:url value="/user/js/detail_prod.js"/> "></script>
@@ -933,6 +992,20 @@
             document.getElementById("booking-box-btn").href = '${pageContext.request.contextPath}/view/booking.jsp';
         }
     })
+</script>
+
+<script>
+
+    $("html").click(function () {
+        $(".nav-tablet").removeClass("active");
+    });
+    $("#header__nav-item-user").click(function (e) {
+        e.stopPropagation();
+    });
+    $("#header__nav-item-user").click(function (e) {
+        $(".nav-tablet").addClass("active");
+    });
+
 </script>
 <script>
     var format = "DD-MM-YYYY";
@@ -1074,5 +1147,4 @@
     // end
 </script>
 </body>
-<footer class="footer"></footer>
 </html>

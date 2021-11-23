@@ -59,9 +59,12 @@
                     </ul>
                     <ul class="header__nav-list header__nav-list--hover">
                         <li class="header__nav-item header__nav-item-user">
-
-
-                            <label class="nav-tablet">
+                            <input
+                                    type="checkbox"
+                                    class="nav-input"
+                                    id="nav-input-tablet"
+                            />
+                            <label for="nav-input-tablet" class="nav-tablet">
                                 <ul class="nav-tablet__list">
                                     <c:if test="${sessionScope.user == null}">
                                         <li class="nav-tablet__item js-sign">
@@ -93,20 +96,20 @@
                                 </ul>
                             </label>
                             <a href="" class="header__nav-item-link">
-                                <label  class="nav__bars-btn">
+                                <label for="nav-input-tablet" class="nav__bars-btn">
                       <span
                               class="iconify header__nav-item-icon-bars"
                               data-icon="bx:bx-menu"
-                              data-width="25"
                               data-height="25"
+                              data-weight="25"
                       ></span>
                                 </label>
-                                <label >
+                                <label for="nav-input-tablet">
                       <span
                               class="iconify header__nav-item-icon-user"
                               data-icon="bx:bxs-user"
-                              data-width="25"
                               data-height="25"
+                              data-weight="25"
                       ></span>
                                 </label>
                             </a>
