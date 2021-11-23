@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
@@ -59,13 +59,9 @@
                     </ul>
                     <ul class="header__nav-list header__nav-list--hover">
                         <li class="header__nav-item header__nav-item-user">
-                            <input
-                                    type="checkbox"
-                                    class="nav-input"
-                                    id="nav-input-tablet"
-                            />
 
-                            <label for="nav-input-tablet" class="nav-tablet">
+
+                            <label class="nav-tablet">
                                 <ul class="nav-tablet__list">
                                     <c:if test="${sessionScope.user == null}">
                                         <li class="nav-tablet__item js-sign">
@@ -97,16 +93,20 @@
                                 </ul>
                             </label>
                             <a href="" class="header__nav-item-link">
-                                <label for="nav-input-tablet" class="nav__bars-btn">
+                                <label  class="nav__bars-btn">
                       <span
                               class="iconify header__nav-item-icon-bars"
                               data-icon="bx:bx-menu"
+                              data-width="25"
+                              data-height="25"
                       ></span>
                                 </label>
-                                <label for="nav-input-tablet">
+                                <label >
                       <span
                               class="iconify header__nav-item-icon-user"
                               data-icon="bx:bxs-user"
+                              data-width="25"
+                              data-height="25"
                       ></span>
                                 </label>
                             </a>
