@@ -47,15 +47,15 @@ function init() {
       container_4 = 0,
       container_5 = 0;
   container_score.forEach((x) => {
-    if (x < 5 && x >= 4) {
+    if ( x == 5) {
       container_1 += 1;
-    } else if (x < 4 && x >= 3) {
+    } else if (x == 4 ) {
       container_2 += 1;
-    } else if (x < 3 && x >= 2) {
+    } else if (x == 3) {
       container_3 += 1;
-    } else if (x < 2 && x >= 1) {
+    } else if ( x == 2) {
       container_4 += 1;
-    } else {
+    } else if(x==1){
       container_5 += 1;
     }
   });

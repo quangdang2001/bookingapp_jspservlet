@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
@@ -64,17 +64,16 @@
                                     class="nav-input"
                                     id="nav-input-tablet"
                             />
-
                             <label for="nav-input-tablet" class="nav-tablet">
                                 <ul class="nav-tablet__list">
                                     <c:if test="${sessionScope.user == null}">
                                         <li class="nav-tablet__item js-sign">
                                             <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link" style="display: block">Đăng ký</a>
+                                               class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
                                         </li>
                                         <li class="nav-tablet__item js-sign">
                                             <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
+                                               class="nav-tablet__item-link" style="display: block">Đăng ký</a>
                                         </li>
                                     </c:if>
                                     <c:if test="${sessionScope.user != null}">
@@ -101,12 +100,16 @@
                       <span
                               class="iconify header__nav-item-icon-bars"
                               data-icon="bx:bx-menu"
+                              data-height="25"
+                              data-weight="25"
                       ></span>
                                 </label>
                                 <label for="nav-input-tablet">
                       <span
                               class="iconify header__nav-item-icon-user"
                               data-icon="bx:bxs-user"
+                              data-height="25"
+                              data-weight="25"
                       ></span>
                                 </label>
                             </a>

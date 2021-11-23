@@ -26,7 +26,7 @@ public class Review {
 
     private double rate;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @CreationTimestamp
     private Date cmtDate;
 

@@ -1,9 +1,6 @@
 .app {
   overflow: hidden;
 }
-
-
-
 .background {
   /* background-image: url("https://a0.muscache.com/im/pictures/57b9f708-bb12-498c-bc33-769f8fc43e63.jpg?im_w=2560"); */
   background-image: url(/user/images/background.jpg);
@@ -39,8 +36,8 @@
 }
 
 .header__nav-item {
-  padding: 12px;
-  border-radius: 50%;
+  padding: 7px;
+  border-radius: 15px;
 }
 
 .header__nav-item-link {
@@ -56,7 +53,7 @@
   background-color: var(--white-color);
   /* width: 60px;
     height: 30px; */
-  border-radius: 50%;
+  border-radius: 15px;
   cursor: pointer;
   position: relative;
 }

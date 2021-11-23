@@ -62,11 +62,11 @@
                                 <c:if test="${sessionScope.user == null}">
                                     <li class="nav-tablet__item js-sign">
                                         <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                           class="nav-tablet__item-link" style="display: block">Đăng ký</a>
+                                           class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
                                     </li>
                                     <li class="nav-tablet__item js-sign">
                                         <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                           class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
+                                           class="nav-tablet__item-link" style="display: block">Đăng ký</a>
                                     </li>
                                 </c:if>
                                 <c:if test="${sessionScope.user != null}">
@@ -652,7 +652,7 @@
                                         </div>
                                         <div class="room-review-comment-block__info-date">
                                             <span class="iconify" data-icon="la:pen"></span>
-                                            20/12/2021
+                                            ${review.cmtDate}
                                         </div>
                                     </div>
                                     <div class="room-review-comment-block__main-comment">

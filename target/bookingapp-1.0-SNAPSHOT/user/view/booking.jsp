@@ -26,7 +26,7 @@
   <body>
   <!-- top nav -->
   <div class="top-nav">
-    <div class="container">
+    <div class=container-main>
       <div class="nav">
         <div class="nav-content">
           <a href="" class="logo">Travel Booking</a>
@@ -35,7 +35,7 @@
     </div>
   </div>
   <!-- end top nav -->
-  <div class="container">
+  <div class=container-main>
     <form>
     <div class="row">
       <div class="col-7">
@@ -56,7 +56,7 @@
             <div class="booking-content-wrapper--block">
               <div class="booking-content-wrapper--block--left">
                 <label
-                        for="booking-date"
+                        for="booking-checkin"
                         class="booking-content-wrapper--block--left__heading"
                 >
                   Ngày
@@ -79,7 +79,7 @@
             <div class="booking-content-wrapper--block">
               <div class="booking-content-wrapper--block--left">
                 <label
-                        for="booking-guesss"
+                        for="booking-guess"
                         class="booking-content-wrapper--block--left__heading"
                 >
                   Khách
@@ -267,7 +267,26 @@
             <button class="booking-btn-pay">Xác nhận & thanh toán</button>
           </div>
         </div>
+
+        <div class="booking-success-container">
+          <div class="booking-success-heading">
+            <div class="booking-success-heading__icons">
+                <span
+                        class="iconify"
+                        data-icon="bi:check-circle-fill"
+                        style="color: #8bc34a"
+                        data-width="30"
+                        data-height="30"
+                ></span>
+            </div>
+            <h3>Thanh toán thành công</h3>
+          </div>
+          <div class="booking-success-btn">
+            <span>Quay về trang chủ</span>
+          </div>
+        </div>
       </div>
+
       <div class="col-5 booking-move-container">
         <div class="booking-move-wrapper">
           <div class="booking-move-heading-wrapper">
@@ -366,6 +385,73 @@
     </div>
     </form>
   </div>
+
+  <%--  footer--%>
+  <div class="footer">
+    <div class="container-main">
+      <div class="footer-end">
+        <div class="footer-copyright">
+          <ul class="footer__end-copyright-list">
+            <li class="footer__end-copyright__item">
+              <i class="fas fa-copyright"></i>
+              <a href="" class="footer__end-copyright__item-link"
+              >2021 Travel Booking, Inc</a
+              >
+            </li>
+            <li class="footer__end-copyright__item">
+              <a href="" class="footer__end-copyright__item-link"
+              >Quyền riêng tư</a
+              >
+            </li>
+            <li class="footer__end-copyright__item">
+              <a href="" class="footer__end-copyright__item-link"
+              >Điều khoản</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer__end-social">
+          <ul class="footer__end-social-list">
+            <li class="footer__end-social-item">
+              <i class="fas fa-globe"></i>
+              <span href="" class="footer__end-social-item-link">
+                  Tiếng Việt (VN)
+                </span>
+            </li>
+            <li class="footer__end-social-item">
+              <i class="fas fa-dollar-sign"></i>
+              <span href="" class="footer__end-social-item-link"> USD </span>
+            </li>
+            <li class="footer__end-social-item">
+              <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="brandico:facebook-rect"
+                  ></span>
+              </a>
+            </li>
+            <li class="footer__end-social-item">
+              <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="akar-icons:twitter-fill"
+                  ></span>
+              </a>
+            </li>
+            <li class="footer__end-social-item">
+              <a href="" class="footer__end-social-item-link">
+                  <span
+                          class="iconify"
+                          data-icon="ant-design:instagram-filled"
+                  ></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%--  end footer--%>
 
   <script src="<c:url value="/user/js/booking.js"/> "></script>
   <script src="<c:url value="/user/node_modules/moment/moment.js"/> "></script>
@@ -500,6 +586,7 @@
       }
     });
   </script>
+
   </body>
-  <footer id="footer"></footer>
+
 </html>

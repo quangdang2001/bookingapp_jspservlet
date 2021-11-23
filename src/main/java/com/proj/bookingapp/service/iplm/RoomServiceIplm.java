@@ -11,6 +11,8 @@ import com.proj.bookingapp.model.Review;
 import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.service.RoomService;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 public class RoomServiceIplm implements RoomService {
@@ -133,8 +135,11 @@ public class RoomServiceIplm implements RoomService {
     public void updateRating(Long idRoom, double rate, int countReview) {
         Room room = roomDAO.findById(idRoom);
         double rateNow = room.getRating();
-        rateNow = (rateNow+rate)/(countReview+1);
-        room.setRating(rateNow);
+        rateNow = (rateNow*countReview+rate)/(countReview+1);
+        BigDecimal bd = new BigDecimal(rateNow).setScale(1, RoundingMode.HALF_UP);
+        double newRate = bd.doubleValue();
+
+        room.setRating(newRate);
         roomDAO.saveRoom(room);
     }
 
