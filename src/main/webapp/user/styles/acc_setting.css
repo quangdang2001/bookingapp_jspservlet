@@ -1,0 +1,59 @@
+body {
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+  padding-top: calc(var(--nav-height) + 30px);
+  font-size: 16px;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ee6c4d;
+}
+
+.form-control {
+  font-size: 14px;
+}
+.profile-button {
+  background: #ee6c4d;
+  box-shadow: none;
+  border: none;
+}
+
+.profile-button:hover {
+  background: #ee6c4d;
+}
+
+.profile-button:focus {
+  background: #ee6c4d;
+  box-shadow: none;
+}
+
+.profile-button:active {
+  background: #ee6c4d;
+  box-shadow: none;
+}
+
+.back:hover {
+  color: #ee6c4d;
+  cursor: pointer;
+}
+
+.labels {
+  font-size: 14px;
+}
+
+.add-experience:hover {
+  background: #ee6c4d;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #ee6c4d;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #f37a5f;
+  border-color: #f37a5f;
+}

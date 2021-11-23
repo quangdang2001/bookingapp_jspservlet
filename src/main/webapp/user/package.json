@@ -1,0 +1,24 @@
+{
+  "name": "travel-booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "litepicker": "^2.0.12",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaiThanhPhuc/Travel-Booking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaiThanhPhuc/Travel-Booking/issues"
+  },
+  "homepage": "https://github.com/MaiThanhPhuc/Travel-Booking#readme"
+}
