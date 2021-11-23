@@ -57,14 +57,9 @@
                             >
                         </li>
                     </ul>
-                    <ul class="header__nav-list header__nav-list--hover">
+                    <ul id="header__nav-item-user" class="header__nav-list header__nav-list--hover">
                         <li class="header__nav-item header__nav-item-user">
-                            <input
-                                    type="checkbox"
-                                    class="nav-input"
-                                    id="nav-input-tablet"
-                            />
-                            <label for="nav-input-tablet" class="nav-tablet">
+                            <div  class="nav-tablet">
                                 <ul class="nav-tablet__list">
                                     <c:if test="${sessionScope.user == null}">
                                         <li class="nav-tablet__item js-sign">
@@ -94,25 +89,23 @@
                                         </li>
                                     </c:if>
                                 </ul>
-                            </label>
-                            <a href="" class="header__nav-item-link">
-                                <label for="nav-input-tablet" class="nav__bars-btn">
+                            </div>
+                            <div href="" class="header__nav-item-link">
+
                       <span
                               class="iconify header__nav-item-icon-bars"
                               data-icon="bx:bx-menu"
                               data-height="25"
                               data-weight="25"
                       ></span>
-                                </label>
-                                <label for="nav-input-tablet">
                       <span
                               class="iconify header__nav-item-icon-user"
                               data-icon="bx:bxs-user"
                               data-height="25"
                               data-weight="25"
                       ></span>
-                                </label>
-                            </a>
+
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -1020,7 +1013,19 @@
         },
     });
 </script>
+<script>
 
+    $("html").click(function () {
+        $(".nav-tablet").removeClass("active");
+    });
+    $("#header__nav-item-user").click(function (e) {
+        e.stopPropagation();
+    });
+    $("#header__nav-item-user").click(function (e) {
+        $(".nav-tablet").addClass("active");
+    });
+
+</script>
 <script>
     // btn add sub
     var max_people = 5;

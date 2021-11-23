@@ -104,12 +104,14 @@
   display: none;
   z-index: 1;
 }
-
+.nav-tablet.active{
+  display: block;
+}
 .nav-tablet__list {
   padding-left: 0;
   width: 200px;
   list-style: none;
-  box-shadow: 0px 0px 12px 2px #ccc;
+  box-shadow: 0px 0px 12px 2px #999999;
   border-radius: 12px;
 }
 

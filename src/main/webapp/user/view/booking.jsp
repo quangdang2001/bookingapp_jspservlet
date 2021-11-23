@@ -36,7 +36,7 @@
   </div>
   <!-- end top nav -->
   <div class=container-main>
-    <form>
+
     <div class="row">
       <div class="col-7">
         <div class="booking-content-container">
@@ -267,26 +267,7 @@
             <button class="booking-btn-pay">Xác nhận & thanh toán</button>
           </div>
         </div>
-
-        <div class="booking-success-container">
-          <div class="booking-success-heading">
-            <div class="booking-success-heading__icons">
-                <span
-                        class="iconify"
-                        data-icon="bi:check-circle-fill"
-                        style="color: #8bc34a"
-                        data-width="30"
-                        data-height="30"
-                ></span>
-            </div>
-            <h3>Thanh toán thành công</h3>
-          </div>
-          <div class="booking-success-btn">
-            <span>Quay về trang chủ</span>
-          </div>
-        </div>
       </div>
-
       <div class="col-5 booking-move-container">
         <div class="booking-move-wrapper">
           <div class="booking-move-heading-wrapper">
@@ -383,7 +364,8 @@
         </div>
       </div>
     </div>
-    </form>
+    </div>
+
   </div>
 
   <%--  footer--%>
@@ -456,8 +438,8 @@
   <script src="<c:url value="/user/js/booking.js"/> "></script>
   <script src="<c:url value="/user/node_modules/moment/moment.js"/> "></script>
   <script>
-    var format = "DD-MM-YYYY";
-    var today = moment();
+    let format = "DD-MM-YYYY";
+    let today = moment();
     today.subtract(1, "days").format(format);
 
     const disallowedDates = [
@@ -465,7 +447,7 @@
       "2021-12-1",
       ["2021-11-21", "2021-11-22"],
     ];
-    var picker = new Litepicker({
+    let picker = new Litepicker({
       element: document.getElementById("booking-checkin"),
       singleMode: false,
       numberOfColumns: 2,
@@ -484,20 +466,20 @@
 
     $(".booking-content-edit-date").click(function (e) {
       picker.show();
-      var date = 0;
+      let date = 0;
 
       picker.on("selected", (date1, date2) => {
-        var start = picker.getStartDate().getTime();
-        var end = picker.getEndDate().getTime();
+        let start = picker.getStartDate().getTime();
+        let end = picker.getEndDate().getTime();
         const oneDay = 1000 * 60 * 60 * 24;
         const diffInTime = date2.getTime() - date1.getTime();
         const diffInDays = Math.round(diffInTime / oneDay);
         document.getElementById("booking-move-price__days").innerHTML =
                 diffInDays + " đêm";
-        var price_room = parseFloat(
+        let price_room = parseFloat(
                 document.getElementById("booking-move-price__room-price").innerHTML
         );
-        var fee = parseFloat(
+        let fee = parseFloat(
                 document.getElementById("booking-box-price__fee-service-total")
                         .innerHTML
         );
@@ -515,10 +497,10 @@
   </script>
   <script>
     $(".booking-box-guests__btn-adult-add").click(function (e) {
-      var temp = parseInt(
+      let temp = parseInt(
               document.getElementById("booking-box-guests__count--adult").innerHTML
       );
-      var quantity = parseInt(document.getElementById("booking-guess").value);
+      let quantity = parseInt(document.getElementById("booking-guess").value);
 
       if (temp < 5) {
         temp += 1;
@@ -530,8 +512,8 @@
       }
     });
     $(".booking-box-guests__btn-adult-sub").click(function (e) {
-      var quantity = parseInt(document.getElementById("booking-guess").value);
-      var temp = parseInt(
+      let quantity = parseInt(document.getElementById("booking-guess").value);
+      let temp = parseInt(
               document.getElementById("booking-box-guests__count--adult").innerHTML
       );
       if (temp > 1) {
@@ -544,7 +526,7 @@
       }
     });
     $(".booking-box-guests__btn-child-add").click(function (e) {
-      var temp = parseInt(
+      let temp = parseInt(
               document.getElementById("booking-box-guests__count--child").innerHTML
       );
       var quantity = parseInt(document.getElementById("booking-guess").value);
@@ -563,10 +545,10 @@
       }
     });
     $(".booking-box-guests__btn-child-sub").click(function (e) {
-      var temp = parseInt(
+      let temp = parseInt(
               document.getElementById("booking-box-guests__count--child").innerHTML
       );
-      var quantity = parseInt(document.getElementById("booking-guess").value);
+      let quantity = parseInt(document.getElementById("booking-guess").value);
       if (temp > 0) {
         temp -= 1;
         quantity -= 1;
