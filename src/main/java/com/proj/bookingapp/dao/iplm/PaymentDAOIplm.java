@@ -76,4 +76,23 @@ public class PaymentDAOIplm implements PaymentDAO {
             currentSession.close();
         }
     }
+
+    @Override
+    public Payment findByName(String name) {
+        Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
+        Payment payment = null;
+        try {
+            currentSession.beginTransaction();
+            Query<Payment> theQuery =
+                    currentSession.createQuery("from Payment p where p.name=:theName", Payment.class);
+            theQuery.setParameter("theName",name);
+            payment  = theQuery.getSingleResult();
+            currentSession.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Payment find all error");
+        } finally {
+            currentSession.close();
+        }
+        return payment;
+    }
 }

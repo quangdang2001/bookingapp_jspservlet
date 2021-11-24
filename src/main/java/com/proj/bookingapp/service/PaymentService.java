@@ -9,4 +9,5 @@ public interface PaymentService {
     void savePayment(Payment payment);
     Payment findById(Long id);
     void deletePayment(Long id);
+    Payment findByName(String name);
 }

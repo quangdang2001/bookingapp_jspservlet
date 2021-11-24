@@ -53,6 +53,6 @@ public class BookingServiceIplm implements BookingService {
 
     @Override
     public List<Booking> findBookingByRoomId(Long id) {
-        return null;
+        return bookingDAO.findBookingByRoomId(id);
     }
 }

@@ -34,4 +34,9 @@ public class PaymentServiceIplm implements PaymentService {
     public void deletePayment(Long id) {
         paymentDAO.deletePayment(id);
     }
+
+    @Override
+    public Payment findByName(String name) {
+        return paymentDAO.findByName(name);
+    }
 }

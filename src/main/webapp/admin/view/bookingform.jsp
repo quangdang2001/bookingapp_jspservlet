@@ -42,38 +42,44 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">ID</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="id" readonly class="form-control" type="text" value="${booking.id}">
+                            <input name="id"  readonly class="form-control" type="text" value="${booking.id}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">User</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="idUser" readonly  class="form-control" type="text" value="${booking.user.id}">
+                            <input  readonly  class="form-control" type="text" value="${booking.user.id}">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Room</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="nameRoom" readonly  class="form-control" type="text" value="${booking.room.name}">
+                            <input  readonly  class="form-control" type="text" value="${booking.room.name}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Price for stay</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="priceForStay" readonly  class="form-control" type="text" value="${booking.priceForStay}">
+                            <input  readonly  class="form-control" type="text" value="${booking.priceForStay}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Check in</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="checkInDate" readonly  class="form-control" type="text" value="${booking.checkInDate}">
+                            <input readonly  class="form-control" type="text" value="${booking.checkInDate}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Check out</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="checkOutDate" readonly  class="form-control" type="text" value="${booking.checkOutDate}">
+                            <input  readonly  class="form-control" type="text" value="${booking.checkOutDate}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Quantity people</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input  readonly  class="form-control" type="text" value="${booking.quantityPeople}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -87,7 +93,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Booking date</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="bookingDate" readonly  class="form-control" type="text"
+                            <input readonly  class="form-control" type="text"
                                    value="${booking.bookingDate}">
                         </div>
                     </div>
@@ -95,22 +101,22 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Payment</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="paymentName" readonly  class="form-control" type="text" value="${booking.transaction.paymemt.name}">
+                            <input name="paymentName" readonly  class="form-control" type="text" value="${booking.transaction.payment.name}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Status</label>
                         <c:choose>
-                            <c:when test="${booking.status == true}">
+                            <c:when test="${booking.transaction.status == true}">
                                 <div class="custom-control custom-checkbox mb-5" style="padding-left: 50px">
-                                    <input  name="status" value="false" type="checkbox" class="custom-control-input"
+                                    <input  name="status"  type="checkbox" class="custom-control-input"
                                             id="customCheck2"  checked>
                                     <label class="custom-control-label" for="customCheck2" >Tick if paid</label>
                                 </div>
                             </c:when>
                             <c:otherwise>
                                 <div class="custom-control custom-checkbox mb-5" style="padding-left: 50px">
-                                    <input  name="status" value="false" type="checkbox" class="custom-control-input"
+                                    <input  name="status"  type="checkbox" class="custom-control-input"
                                             id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1" >Tick if paid</label>
                                 </div>

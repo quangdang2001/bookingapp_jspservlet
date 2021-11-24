@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -25,13 +26,15 @@ public class Booking {
     private Date checkOutDate;
     private double priceForStay;
     @Temporal(TemporalType.DATE)
+
     private Date cancelDate;
+
+    private int quantityPeople;
+    @Column(length = 5)
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date bookingDate;
-
-    private boolean status;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private User user;

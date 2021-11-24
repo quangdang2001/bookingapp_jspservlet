@@ -64,11 +64,11 @@
                                 <td>${booking.checkOutDate}</td>
                                 <td>${booking.cancelDate}</td>
                                 <td>${booking.bookingDate}</td>
-                                <td>${booking.transaction.paymemt.name}</td>
-                                <c:if test="${booking.status == true}" >
+                                <td>${booking.transaction.payment.name}</td>
+                                <c:if test="${booking.transaction.status}" >
                                     <td>Paid </td>
                                 </c:if>
-                                <c:if test="${booking.status == false}" >
+                                <c:if test="${!booking.transaction.status}" >
                                     <td>Unpaid </td>
                                 </c:if>
 
@@ -80,10 +80,10 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                             <a class="dropdown-item"
-                                               href="${pageContext.request.contextPath}/adminPage/booking?id=${room.id}&action=update"><i
+                                               href="${pageContext.request.contextPath}/adminPage/booking?id=${booking.id}&action=update"><i
                                                     class="dw dw-edit2"></i> Edit</a>
                                             <a class="dropdown-item"
-                                               href="${pageContext.request.contextPath}/adminPage/booking?id=${room.id}&action=delete"><i
+                                               href="${pageContext.request.contextPath}/adminPage/booking?id=${booking.id}&action=delete"><i
                                                     class="dw dw-delete-3"></i> Delete</a>
                                         </div>
                                     </div>

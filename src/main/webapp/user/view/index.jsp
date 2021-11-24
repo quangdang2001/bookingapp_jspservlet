@@ -326,7 +326,6 @@
                                             <c:if test="${quantityPeople != null}">
                                                 value="${quantityPeople} Khách"
                                             </c:if>
-
                                             readonly
                                             type="text"
                                             style="display: none"

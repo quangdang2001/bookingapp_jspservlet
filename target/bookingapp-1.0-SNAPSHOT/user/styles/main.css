@@ -75,7 +75,7 @@
   padding-left: 0;
   width: 200px;
   list-style: none;
-  box-shadow: 0px 0px 12px 2px #ccc;
+  box-shadow: 0px 0px 12px 2px #999999;
   border-radius: 12px;
 }
 
@@ -1640,9 +1640,9 @@ input[type="text"]:disabled {
 .room-review-btn-edit {
   margin: 12px 0;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: underline;
-  color: var(--primary-color);
+  color: #1e2dba;
 }
 
 #room-review-edit-container {

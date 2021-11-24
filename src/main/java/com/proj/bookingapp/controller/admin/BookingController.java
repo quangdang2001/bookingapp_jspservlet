@@ -3,6 +3,7 @@ package com.proj.bookingapp.controller.admin;
 import com.proj.bookingapp.model.*;
 import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.RoomService;
+import com.proj.bookingapp.service.TransactionService;
 import com.proj.bookingapp.service.UserService;
 import lombok.SneakyThrows;
 
@@ -24,7 +25,10 @@ public class BookingController extends HttpServlet {
 
     @Inject
     private BookingService bookingService;
+    @Inject
+    private TransactionService transactionService;
 
+    @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -41,6 +45,9 @@ public class BookingController extends HttpServlet {
                 break;
             case "showForm":
                 showForm(request,response);
+                break;
+            case "save":
+                save(request,response);
                 break;
             default:
                 load(request,response);
@@ -76,17 +83,19 @@ public class BookingController extends HttpServlet {
             throws ServletException, IOException{
         Long id = Long.valueOf(request.getParameter("id"));
         bookingService.deleteBooking(id);
-        response.sendRedirect("room");
+        response.sendRedirect("booking");
     }
 
     private void load(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException, ParseException {
 
         List<Booking> bookings = bookingService.findAll();
+
         request.setAttribute("bookings",bookings);
 
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/admin/view/bookingview.jsp");
         rd.forward(request,response);
+
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response)
@@ -98,34 +107,28 @@ public class BookingController extends HttpServlet {
             id =Long.valueOf(tempId);
         }
         Booking booking = bookingService.findById(id);
+        Date cancelDate= null;
+        String cancelDateS = request.getParameter("cancelDate");
+        if (cancelDateS!=null && !cancelDateS.equals("")){
+            SimpleDateFormat hiberFormat=new SimpleDateFormat("dd MMM yyyy");
+            cancelDate =hiberFormat.parse(cancelDateS);
+        }
 
-        SimpleDateFormat hiberFormat=new SimpleDateFormat("dd MMM yyyy");
-//        Date checkInDate =hiberFormat.parse(request.getParameter("checkInDate"));
-//        Date checkOutDate =hiberFormat.parse(request.getParameter("checkOutDate"));
-//        System.out.println(checkOutDate);
-//        System.out.println(request.getParameter("cancelDate"));
-        Date cancelDate =hiberFormat.parse(request.getParameter("cancelDate"));
-//        System.out.println(cancelDate);
-//        Date bookingDate =hiberFormat.parse(request.getParameter("bookingDate"));
-//        double priceForStay = Double.parseDouble(request.getParameter("priceForStay"));
         String status = request.getParameter("status");
         boolean bStatus;
-        if (status !=null && status.equals("true")) bStatus=true;
+        if (status !=null && status.equals("on")) bStatus=true;
         else bStatus=false;
 
-//        booking = new Booking();
-        booking.setStatus(bStatus);
-        booking.setCancelDate(cancelDate);
-//
-//        booking.setId(null);
-//        booking.setCheckInDate(checkInDate);
-//        booking.setCheckOutDate(checkOutDate);
-//        booking.setCancelDate(cancelDate);
-//        booking.setPriceForStay(priceForStay);
-////        booking.setBookingDate(bookingDate);
+        Transaction transaction = booking.getTransaction();
+        transaction.setStatus(bStatus);
+        transactionService.saveTransaction(transaction);
 
+        booking.setCancelDate(cancelDate);
 
         bookingService.saveBooking(booking);
+
+        request.setAttribute("action","load");
+
         response.sendRedirect("booking");
     }
 }

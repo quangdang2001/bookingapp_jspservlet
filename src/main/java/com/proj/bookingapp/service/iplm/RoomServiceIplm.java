@@ -66,21 +66,22 @@ public class RoomServiceIplm implements RoomService {
     @Override
     public List<Room> searchRoom(String city, Integer acom, Date bookingDateF, Date bookingDateL) {
         List<Room> rooms = roomDAO.searchRoom(city,acom);
+        List<Room> rooms1 = new ArrayList<>(rooms);
         if (bookingDateF!=null && bookingDateL!=null){
             List<Booking> bookings= new ArrayList<>();
             if (rooms!=null){
                 for (Room room : rooms){
                     bookings = bookingDAO.findBookingByRoomId(room.getId());
                     for (Booking booking : bookings){
-                        if (compareDay(bookingDateF,bookingDateL,booking.getCheckInDate(),booking.getCheckOutDate())){
-                            rooms.remove(room);
+                        if (!compareDay(bookingDateF,bookingDateL,booking.getCheckInDate(),booking.getCheckOutDate())){
+                            rooms1.remove(room);
                             break;
                         }
                     }
                 }
             }
         }
-        return rooms;
+        return rooms1;
     }
 
     @Override

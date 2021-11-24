@@ -10,7 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 // show room people
 
-$("html").click(function () {
+$("html").click(function (e) {
   $(".booking-box-guests-number").removeClass("active");
 });
 

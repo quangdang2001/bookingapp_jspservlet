@@ -102,7 +102,6 @@
   width: 35%;
   user-select: none;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   cursor: pointer;
   grid-gap: 12px;
@@ -543,17 +542,23 @@ input[type="text"]:disabled {
   border-radius: 10px;
   padding: 20px;
 }
-.booking-success-heading {
-  font-size: 22px;
+
+.box-popup {
   padding: 50px;
   margin-left: 10%;
   width: 80%;
-
   box-shadow: rgba(0, 0, 0, 0.12) 0 6px 16px;
 }
+
 .booking-success-heading h3 {
   margin-top: 12px;
   text-align: center;
+  font-size: 22px;
+}
+.booking-success-heading p {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
 }
 .booking-success-heading__icons {
   display: flex;
@@ -574,4 +579,33 @@ input[type="text"]:disabled {
 }
 .booking-success-btn:hover {
   border: 2px solid var(--primary-color);
+}
+.booking-success-body-heading {
+  margin-top: 32px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.booking-success-body-room-quantity {
+  margin-top: 8px;
+  font-size: 14px;
+}
+.booking-success-body-date {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+.booking-success-body-date-checkout {
+  margin-left: 40%;
+}
+.booking-success-body-date-checkin span,
+.booking-success-body-date-checkout span {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.booking-success-body-guess {
+  margin-top: 16px;
+}
+.booking-success-body-footer {
+  margin-top: 24px;
+  font-size: 12px;
 }

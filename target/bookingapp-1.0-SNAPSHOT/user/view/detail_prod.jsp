@@ -59,31 +59,31 @@
 
                             <div class="nav-tablet">
                                 <ul class="nav-tablet__list">
-                                <c:if test="${sessionScope.user == null}">
-                                    <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                           class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
-                                    </li>
-                                    <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                           class="nav-tablet__item-link" style="display: block">Đăng ký</a>
-                                    </li>
-                                </c:if>
-                                <c:if test="${sessionScope.user != null}">
-                                    <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                           class="nav-tablet__item-link" style="display: block">Xin
-                                            chào ${sessionScope.user.firstName}</a>
-                                    </li>
-                                    <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                           class="nav-tablet__item-link" style="display: block">Nhật ký</a>
-                                    </li>
-                                    <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/login?action=logout"
-                                           class="nav-tablet__item-link" style="display: block">Đăng xuất</a>
-                                    </li>
-                                </c:if>
+                                    <c:if test="${sessionScope.user == null}">
+                                        <li class="nav-tablet__item js-sign">
+                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                               class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
+                                        </li>
+                                        <li class="nav-tablet__item js-sign">
+                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                               class="nav-tablet__item-link" style="display: block">Đăng ký</a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.user != null}">
+                                        <li class="nav-tablet__item js-sign">
+                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                               class="nav-tablet__item-link" style="display: block">Xin
+                                                chào ${sessionScope.user.firstName}</a>
+                                        </li>
+                                        <li class="nav-tablet__item js-sign">
+                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                               class="nav-tablet__item-link" style="display: block">Nhật ký</a>
+                                        </li>
+                                        <li class="nav-tablet__item js-sign">
+                                            <a href="${pageContext.request.contextPath}/login?action=logout"
+                                               class="nav-tablet__item-link" style="display: block">Đăng xuất</a>
+                                        </li>
+                                    </c:if>
                                 </ul>
                             </div>
                         </div>
@@ -189,7 +189,8 @@
                     <h3>${room.roomType.name}. ${room.building.name}</h3>
                 </div>
                 <div class="room-content__sub-heading">
-                    ${room.accomodatesCount} Khách · ${room.bedCount} phòng ngủ · ${room.bathCount} phòng tắm
+                    Địa chỉ: ${room.building.address} <br>
+                    ${room.accomodatesCount} Khách tối đa · ${room.bedCount} phòng ngủ · ${room.bathCount} phòng tắm
                 </div>
                 <div class="line-spacing"></div>
                 <div class="room-content__amenities-container">
@@ -241,6 +242,7 @@
                 <div class="line-spacing"></div>
                 <div class="room-content__des">
                     <p>
+                        Mô tả: <br>
                         ${room.description}
                     </p>
                 </div>
@@ -302,211 +304,216 @@
         </div>
 
         <div class="col-5 box-move">
-            <div id="booking-box-container" class="box booking-box-container">
-                <div class="booking-box-heading">
-                    <div class="booking-box-heading__price">
-                        $<span id="room_price">${room.price}</span> /đêm
-                    </div>
+            <form action="${pageContext.request.contextPath}/home/booking" method="post">
+                <input type="hidden" name="reviewCount" value="${reviewCount}">
+                <input type="hidden" name="idRoom" value="${room.id}">
+                <div id="booking-box-container" class="box booking-box-container">
+                    <div class="booking-box-heading">
+                        <div class="booking-box-heading__price">
+                            $<span id="room_price">${room.price}</span> /đêm
+                        </div>
 
-                    <div class="booking-box-heading__rate">
+                        <div class="booking-box-heading__rate">
                 <span
                         class="iconify room-subheading--star"
                         data-icon="bx:bxs-star"
                 ></span>
-                        <div class="room-rating">
-                            <strong> ${room.rating}/5 </strong>
-                            <a class="room-rating__count" href="">(${reviewCount} đánh giá)</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="booking-box-info">
-                    <div class="booking-box-date-container">
-                        <div class="booking-box-date--checkin change-date">
-                            <div class="booking-box-checkin-wrapper">
-                                <label
-                                        for="booking-box-checkin"
-                                        class="booking-box-checkin__label"
-                                >NHẬN PHÒNG</label
-                                >
-                                <input
-                                        value="${checkInDate}"
-                                        name="checkInDate"
-                                        readonly
-                                        type="text"
-                                        id="booking-box-checkin"
-                                        class="booking-box-checkin__input"
-                                        placeholder="Thêm ngày"
-                                />
-                            </div>
-                        </div>
-                        <div class="booking-box-date--checkout change-date">
-                            <div class="booking-box-checkout-wrapper">
-                                <label
-                                        for="booking-box-checkout"
-                                        class="booking-box-checkout__label"
-                                >TRẢ PHÒNG</label
-                                >
-                                <input
-                                        name="checkOutDate"
-                                        value="${checkOutDate}"
-                                        readonly
-                                        type="text"
-                                        id="booking-box-checkout"
-                                        class="booking-box-checkout__input"
-                                        placeholder="Thêm ngày"
-                                />
+                            <div class="room-rating">
+                                <strong> ${room.rating}/5 </strong>
+                                <a class="room-rating__count" href="">(${reviewCount} đánh giá)</a>
                             </div>
                         </div>
                     </div>
-                    <div id="booking-box-guests" class="booking-box-guests-container">
-                        <label
-                                class="booking-box-guests--label"
-                                for="booking-box-guests--input"
-                        >KHÁCH</label
-                        >
-                        <input
-                                name="quantityPeople"
-                                <c:if test="${quantityPeople == null}">
-                                    value="1 Khách"
-                                </c:if>
-                                <c:if test="${quantityPeople != null}">
-                                    value="${quantityPeople} Khách"
-                                </c:if>
-                                type="text"
-                                id="booking-box-guests--input"
-                                class="booking-box-guests--input"
-                                disabled
-                        />
-                        <div class="booking-box-guests-number">
-                            <div class="booking-box-guests-number-warning">
-                                Vui lòng nhập tuổi trẻ em.
+                    <div class="booking-box-info">
+                        <div class="booking-box-date-container">
+                            <div class="booking-box-date--checkin change-date">
+                                <div class="booking-box-checkin-wrapper">
+                                    <label
+                                            for="booking-box-checkin"
+                                            class="booking-box-checkin__label"
+                                    >NHẬN PHÒNG</label
+                                    >
+                                    <input
+                                            value="${checkInDate}"
+                                            name="checkInDate"
+                                            readonly
+                                            type="text"
+                                            id="booking-box-checkin"
+                                            class="booking-box-checkin__input"
+                                            placeholder="Thêm ngày"
+                                            required
+                                    />
+                                </div>
                             </div>
+                            <div class="booking-box-date--checkout change-date">
+                                <div class="booking-box-checkout-wrapper">
+                                    <label
+                                            for="booking-box-checkout"
+                                            class="booking-box-checkout__label"
+                                    >TRẢ PHÒNG</label
+                                    >
+                                    <input
+                                            name="checkOutDate"
+                                            value="${checkOutDate}"
+                                            readonly
+                                            type="text"
+                                            id="booking-box-checkout"
+                                            class="booking-box-checkout__input"
+                                            placeholder="Thêm ngày"
+                                            required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="booking-box-guests" class="booking-box-guests-container">
+                            <label
+                                    class="booking-box-guests--label"
+                                    for="booking-box-guests--input"
+                            >KHÁCH</label
+                            >
+                            <input
+                                    name="quantityPeople"
+                                    <c:if test="${quantityPeople == null}">
+                                        value="1 Khách"
+                                    </c:if>
+                                    <c:if test="${quantityPeople != null}">
+                                        value="${quantityPeople} Khách"
+                                    </c:if>
+                                    type="text"
+                                    id="booking-box-guests--input"
+                                    class="booking-box-guests--input"
+                                    required
+                            />
+                            <div class="booking-box-guests-number">
+                                <div class="booking-box-guests-number-warning">
+                                    Vui lòng nhập tuổi trẻ em.
+                                </div>
 
-                            <div class="booking-box-guests-number-wrapper">
-                                <div class="booking-box-guests__label">Người lớn</div>
-                                <div class="booking-box-guests__btn">
-                                    <div class="booking-box-guests__btn-adult-sub">
+                                <div class="booking-box-guests-number-wrapper">
+                                    <div class="booking-box-guests__label">Người lớn</div>
+                                    <div class="booking-box-guests__btn">
+                                        <div class="booking-box-guests__btn-adult-sub">
                         <span
                                 class="iconify booking-box-guests-icon"
                                 data-icon="carbon:subtract-alt"
                         ></span>
-                                    </div>
-                                    <div
-                                            id="booking-box-guests__count--adult"
-                                            class="booking-box-guests__count--adult"
-                                    >
-                                        1
-                                    </div>
-                                    <div class="booking-box-guests__btn-adult-add">
+                                        </div>
+                                        <div
+                                                id="booking-box-guests__count--adult"
+                                                class="booking-box-guests__count--adult"
+                                        >
+                                            1
+                                        </div>
+                                        <div class="booking-box-guests__btn-adult-add">
                         <span
                                 class="iconify booking-box-guests-icon"
                                 data-icon="fluent:add-circle-24-regular"
                         ></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="booking-box-guests-number-wrapper">
-                                <div class="booking-box-guests__label">Trẻ em</div>
-                                <div class="booking-box-guests__btn">
-                                    <div class="booking-box-guests__btn-child-sub">
+                                <div class="booking-box-guests-number-wrapper">
+                                    <div class="booking-box-guests__label">Trẻ em</div>
+                                    <div class="booking-box-guests__btn">
+                                        <div class="booking-box-guests__btn-child-sub">
                         <span
                                 class="iconify booking-box-guests-icon"
                                 data-icon="carbon:subtract-alt"
                         ></span>
-                                    </div>
-                                    <div
-                                            id="booking-box-guests__count--child"
-                                            class="booking-box-guests__count--child"
-                                    >
-                                        0
-                                    </div>
-                                    <div class="booking-box-guests__btn-child-add">
+                                        </div>
+                                        <div
+                                                id="booking-box-guests__count--child"
+                                                class="booking-box-guests__count--child"
+                                        >
+                                            0
+                                        </div>
+                                        <div class="booking-box-guests__btn-child-add">
                         <span
                                 class="iconify booking-box-guests-icon"
                                 data-icon="fluent:add-circle-24-regular"
                         ></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="booking-box-guests-number-wrapper__child">
-                                <select
-                                        name="booking-child-age"
-                                        id="booking-box-guests-age-child"
-                                        class="booking-box-guests-age-child"
-                                >
-                                    <option selected value="0">Dưới 1 tuổi</option>
-                                    <option value="1">1 tuổi</option>
-                                    <option value="2">2 tuổi</option>
-                                    <option value="3">3 tuổi</option>
-                                    <option value="4">4 tuổi</option>
-                                    <option value="5">5 tuổi</option>
-                                    <option value="6">6 tuổi</option>
-                                    <option value="7">7 tuổi</option>
-                                    <option value="8">8 tuổi</option>
-                                    <option value="9">9 tuổi</option>
-                                    <option value="10">10 tuổi</option>
-                                    <option value="11">11 tuổi</option>
-                                    <option value="12">12 tuổi</option>
-                                    <option value="13">13 tuổi</option>
-                                    <option value="14">14 tuổi</option>
-                                    <option value="15">15 tuổi</option>
-                                    <option value="16">16 tuổi</option>
-                                    <option value="17">17 tuổi</option>
-                                </select>
+                                <div class="booking-box-guests-number-wrapper__child">
+                                    <select
+                                            id="booking-box-guests-age-child"
+                                            class="booking-box-guests-age-child"
+                                    >
+                                        <option selected value="0">Dưới 1 tuổi</option>
+                                        <option value="1">1 tuổi</option>
+                                        <option value="2">2 tuổi</option>
+                                        <option value="3">3 tuổi</option>
+                                        <option value="4">4 tuổi</option>
+                                        <option value="5">5 tuổi</option>
+                                        <option value="6">6 tuổi</option>
+                                        <option value="7">7 tuổi</option>
+                                        <option value="8">8 tuổi</option>
+                                        <option value="9">9 tuổi</option>
+                                        <option value="10">10 tuổi</option>
+                                        <option value="11">11 tuổi</option>
+                                        <option value="12">12 tuổi</option>
+                                        <option value="13">13 tuổi</option>
+                                        <option value="14">14 tuổi</option>
+                                        <option value="15">15 tuổi</option>
+                                        <option value="16">16 tuổi</option>
+                                        <option value="17">17 tuổi</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <a
-                        id="booking-box-btn" href="" class="booking-box-btn box-fill">Đặt phòng</a>
-                <div class="booking-box-price-container">
-                    <div class="booking-box-price-wrapper">
-                        <div class="booking-box-price__label">
-                            $<span id="booking-box-price__room-price">${room.price}</span>
-                            x
-                            <span id="booking-box-price__days">${totalDay}</span> đêm
+                    <button id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
+                    <div class="booking-box-price-container">
+                        <div class="booking-box-price-wrapper">
+                            <div class="booking-box-price__label">
+                                $<span id="booking-box-price__room-price">${room.price}</span>
+                                x
+                                <span id="booking-box-price__days">${totalDay}</span> đêm
+                            </div>
+                            <div class="booking-box-price__label">
+                                $<span id="booking-box-price__room-price-total">${room.price*totalDay}</span>
+                            </div>
                         </div>
-                        <div class="booking-box-price__label">
-                            $<span id="booking-box-price__room-price-total">${room.price*totalDay}</span>
-                        </div>
-                    </div>
-                    <div class="booking-box-price-wrapper">
-                        <div class="booking-box-price__label">
+                        <div class="booking-box-price-wrapper">
+                            <div class="booking-box-price__label">
                   <span class="booking-box-price__fee-service"
                   >Phí dịch vụ</span
                   >
+                            </div>
+                            <div class="booking-box-price__label">
+                                $<span id="booking-box-price__fee-service-total">5</span>
+                            </div>
                         </div>
-                        <div class="booking-box-price__label">
-                            $<span id="booking-box-price__fee-service-total">5</span>
+                        <div class="booking-box-price-wrapper__discount">
+                            <div class="booking-box-price__label">
+                                <span class="booking-box-price__discount">Giảm giá</span>
+                            </div>
+                            <div class="booking-box-price__label">
+                                $<span id="booking-box-price__discount-total">-10</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="booking-box-price-wrapper__discount">
-                        <div class="booking-box-price__label">
-                            <span class="booking-box-price__discount">Giảm giá</span>
+                        <div class="line-spacing"></div>
+                        <div class="booking-box-price-wrapper">
+                            <div class="booking-box-price__label">
+                                <span class="booking-box-price__total-label">Tổng</span>
+                            </div>
+                            <div class="booking-box-price__label">
+                                $<span id="booking-box-price__total">${room.price*totalDay+5}</span>
+                            </div>
+                            <input
+                                    id="total_money"
+                                    name="totalPrice"
+                                    disabled
+                                    value="0"
+                                    type="hidden"
+                                    style="display: none"
+                            />
                         </div>
-                        <div class="booking-box-price__label">
-                            $<span id="booking-box-price__discount-total">-10</span>
-                        </div>
-                    </div>
-                    <div class="line-spacing"></div>
-                    <div class="booking-box-price-wrapper">
-                        <div class="booking-box-price__label">
-                            <span class="booking-box-price__total-label">Tổng</span>
-                        </div>
-                        <div class="booking-box-price__label">
-                            $<span id="booking-box-price__total">${room.price*totalDay+5}</span>
-                        </div>
-                        <input
-                                id="total_money"
-                                disabled
-                                value="0"
-                                type="text"
-                                style="display: none"
-                        />
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="col-12">
             <div class="room-policies-container">
@@ -652,7 +659,7 @@
                                         </div>
                                         <div class="room-review-comment-block__info-date">
                                             <span class="iconify" data-icon="la:pen"></span>
-                                            ${review.cmtDate}
+                                                ${review.cmtDate}
                                         </div>
                                     </div>
                                     <div class="room-review-comment-block__main-comment">
@@ -977,6 +984,9 @@
             </div>
         </div>
     </div>
+<%--    <h1><c:forEach var="date" items="${dateBlock}" >--%>
+<%--        ${date},--%>
+<%--    </c:forEach> </h1>--%>
 </div>
 <%--end footer--%>
 <!-- end main content -->
@@ -1011,7 +1021,9 @@
     var format = "DD-MM-YYYY";
     var today = moment();
     today.subtract(1, "days").format(format);
-    const disallowedDates = [["2001-01-01", today]];
+    const disallowedDates = [["2001-01-01", today],<c:forEach var="date" items="${dateBlock}" >
+        ${date},
+        </c:forEach>];
     var picker = new Litepicker({
         element: document.getElementById("booking-box-checkin"),
         elementEnd: document.getElementById("booking-box-checkout"),

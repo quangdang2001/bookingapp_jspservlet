@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Collection;
+import java.util.List;
 
 @WebServlet(urlPatterns = {"/adminPage/roomImage"})
 @MultipartConfig
@@ -54,12 +56,14 @@ public class RoomImageController extends HttpServlet {
         Long idRoom = Long.parseLong(request.getParameter("idRoom"));
         Room room = roomService.findById(idRoom);
 
-        Part part = request.getPart("img");
-        String realPath = request.getServletContext().getRealPath("/images");
-        String fileName = Path.of(part.getSubmittedFileName()).getFileName().toString();
-        String img= UpLoadFile.upLoad(realPath,fileName,part);
+        Collection<Part> parts = request.getParts();
+        String realPath = request.getServletContext().getRealPath("");
+        List<String> imgs= UpLoadFile.upLoad(parts,realPath);
 
-        roomImageService.saveRoomImage(new RoomImage(null,img,room));
+        for (String img : imgs){
+            roomImageService.saveRoomImage(new RoomImage(null,img,room));
+        }
+
         String referer = request.getHeader("Referer");
         response.sendRedirect(referer);
     }
