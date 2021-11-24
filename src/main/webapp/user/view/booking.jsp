@@ -449,8 +449,9 @@
 
     const disallowedDates = [
         ["2001-01-01", today],
-        "2021-12-1",
-        ["2021-11-21", "2021-11-22"],
+        <c:forEach var="date" items="${dateBlock}" >
+        ${date},
+        </c:forEach>
     ];
     let picker = new Litepicker({
         element: document.getElementById("booking-checkin"),
@@ -475,7 +476,7 @@
 
         picker.on("selected", (date1, date2) => {
             let start = picker.getStartDate().getTime();
-            let end = picker.getEndDate().getTime();
+            let end = picker.getEndDate().getTime();booking-content-edit-date
             const oneDay = 1000 * 60 * 60 * 24;
             const diffInTime = date2.getTime() - date1.getTime();
             const diffInDays = Math.round(diffInTime / oneDay);
@@ -501,19 +502,22 @@
     });
 </script>
 <script>
+    var maxPeople =${room.accomodatesCount};
+    var maxPeopleChild = maxPeople-1;
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         let temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML
         );
         let quantity = parseInt(document.getElementById("booking-guess").value);
 
-        if (temp < 5) {
+        if (temp < maxPeople) {
             temp += 1;
             quantity += 1;
             document.getElementById(
                 "booking-box-guests__count--adult"
             ).innerHTML = temp;
             document.getElementById("booking-guess").value = quantity + " Khách";
+            maxPeopleChild-=1;
         }
     });
     $(".booking-box-guests__btn-adult-sub").click(function (e) {
@@ -528,6 +532,7 @@
                 "booking-box-guests__count--adult"
             ).innerHTML = temp;
             document.getElementById("booking-guess").value = quantity + " Khách";
+            maxPeopleChild+=1;
         }
     });
     $(".booking-box-guests__btn-child-add").click(function (e) {
@@ -535,7 +540,7 @@
             document.getElementById("booking-box-guests__count--child").innerHTML
         );
         var quantity = parseInt(document.getElementById("booking-guess").value);
-        if (temp < 5) {
+        if (temp < maxPeopleChild) {
             temp += 1;
             quantity += 1;
             document.getElementById(
@@ -547,6 +552,7 @@
             document.querySelector(".booking-box-guests-age-child").className +=
                 " active";
             document.getElementById("booking-guess").value = quantity + " Khách";
+            maxPeople-=1;
         }
     });
     $(".booking-box-guests__btn-child-sub").click(function (e) {
@@ -570,6 +576,7 @@
                     .querySelector(".booking-box-guests-age-child")
                     .className.replace(" active", "");
             document.getElementById("booking-guess").value = quantity + " Khách";
+            maxPeople+=1;
         }
     });
 </script>

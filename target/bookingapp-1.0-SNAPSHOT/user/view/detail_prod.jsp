@@ -71,17 +71,23 @@
                                     </c:if>
                                     <c:if test="${sessionScope.user != null}">
                                         <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
-                                               class="nav-tablet__item-link" style="display: block">Xin
+                                            <a
+                                                    class="nav-tablet__item-link" style="display: block">Xin
                                                 chào ${sessionScope.user.firstName}</a>
                                         </li>
+                                        <li class="nav-tablet__item">
+                                            <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                                Cài đặt tài khoản
+                                            </a>
+                                        </li>
                                         <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                            <a href="${pageContext.request.contextPath}/home/history"
                                                class="nav-tablet__item-link" style="display: block">Nhật ký</a>
                                         </li>
                                         <li class="nav-tablet__item js-sign">
                                             <a href="${pageContext.request.contextPath}/login?action=logout"
-                                               class="nav-tablet__item-link" style="display: block">Đăng xuất</a>
+                                               class="nav-tablet__item-link" style="display: block">Đăng
+                                                xuất</a>
                                         </li>
                                     </c:if>
                                 </ul>
@@ -307,6 +313,7 @@
             <form action="${pageContext.request.contextPath}/home/booking" method="post">
                 <input type="hidden" name="reviewCount" value="${reviewCount}">
                 <input type="hidden" name="idRoom" value="${room.id}">
+                <input type="hidden" name="dateBlock" value="${dateBlock}">
                 <div id="booking-box-container" class="box booking-box-container">
                     <div class="booking-box-heading">
                         <div class="booking-box-heading__price">
@@ -383,6 +390,7 @@
                                     id="booking-box-guests--input"
                                     class="booking-box-guests--input"
                                     required
+                                    readonly
                             />
                             <div class="booking-box-guests-number">
                                 <div class="booking-box-guests-number-warning">
@@ -984,9 +992,6 @@
             </div>
         </div>
     </div>
-<%--    <h1><c:forEach var="date" items="${dateBlock}" >--%>
-<%--        ${date},--%>
-<%--    </c:forEach> </h1>--%>
 </div>
 <%--end footer--%>
 <!-- end main content -->
@@ -1073,6 +1078,8 @@
 </script>
 <script>
     // btn add sub
+    var maxPeople =${room.accomodatesCount};
+    var maxPeopleChild = maxPeople-1;
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         var temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML
@@ -1081,7 +1088,7 @@
             document.getElementById("booking-box-guests--input").value
         );
 
-        if (temp < 5) {
+        if (temp < maxPeople) {
             temp += 1;
             quantity += 1;
             document.getElementById(
@@ -1089,6 +1096,7 @@
             ).innerHTML = temp;
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
+            maxPeopleChild-=1;
         }
     });
     $(".booking-box-guests__btn-adult-sub").click(function (e) {
@@ -1106,6 +1114,7 @@
             ).innerHTML = temp;
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
+            maxPeopleChild+=1;
         }
     });
     $(".booking-box-guests__btn-child-add").click(function (e) {
@@ -1115,7 +1124,7 @@
         var quantity = parseInt(
             document.getElementById("booking-box-guests--input").value
         );
-        if (temp < 5) {
+        if (temp < maxPeopleChild) {
             temp += 1;
             quantity += 1;
             document.getElementById(
@@ -1128,6 +1137,7 @@
                 " active";
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
+            maxPeople-=1;
         }
     });
     $(".booking-box-guests__btn-child-sub").click(function (e) {
@@ -1154,6 +1164,7 @@
                     .className.replace(" active", "");
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
+            maxPeople+=1;
         }
     });
     // end

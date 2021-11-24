@@ -33,6 +33,7 @@ public class BookingController extends HttpServlet {
         String checkInDate = request.getParameter("checkInDate");
         String checkOutDate = request.getParameter("checkOutDate");
         String quantityPeople = request.getParameter("quantityPeople");
+
         quantityPeople = quantityPeople.substring(0,quantityPeople.indexOf(" "));
 
         Long idRoom = Long.parseLong(request.getParameter("idRoom"));
@@ -53,6 +54,7 @@ public class BookingController extends HttpServlet {
         request.setAttribute("checkOutDate",checkOutDate);
         request.setAttribute("quantityPeople",quantityPeople);
         request.setAttribute("totalPrice",totalPrice+5);
+        request.setAttribute("dateBlock",request.getParameter("dateBlock"));
 
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/booking.jsp");
         rd.forward(request,response);

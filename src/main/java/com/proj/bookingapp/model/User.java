@@ -29,6 +29,8 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String role;
+    private String address;
+    private String phone;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Review> reviews;

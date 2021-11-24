@@ -29,7 +29,7 @@
     <div class="container-main">
         <div class="nav">
             <div class="nav-content">
-                <a href="" class="logo">Travel Booking</a>
+                <a href="${pageContext.request.contextPath}/home" class="logo">Travel Booking</a>
                 <div class="header__nav-list">
                     <div id="header__nav-item-user" class="header__nav-item-user">
                         <div href="" class="header__nav-item-link">
@@ -46,25 +46,38 @@
 
                     <div class="nav-tablet">
                         <ul class="nav-tablet__list">
-                            <li class="nav-tablet__item js-sign">
-                                <a href="#" class="nav-tablet__item-link">Đăng ký</a>
-                            </li>
-                            <li class="nav-tablet__item js-sign">
-                                <a href="#" class="nav-tablet__item-link">Đăng nhập</a>
-                            </li>
-                            <li class="nav-tablet__item">
-                                <a href="#" class="nav-tablet__item-link">
-                                    Cài đặt tài khoản
-                                </a>
-                            </li>
-                            <li class="nav-tablet__item">
-                                <a href="#" class="nav-tablet__item-link">
-                                    Lịch sử chuyến đi
-                                </a>
-                            </li>
-                            <li class="nav-tablet__item">
-                                <a href="#" class="nav-tablet__item-link"> Đăng xuất </a>
-                            </li>
+                            <c:if test="${sessionScope.user == null}">
+                                <li class="nav-tablet__item js-sign">
+                                    <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                       class="nav-tablet__item-link" style="display: block">Đăng nhập</a>
+                                </li>
+                                <li class="nav-tablet__item js-sign">
+                                    <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                       class="nav-tablet__item-link" style="display: block">Đăng ký</a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.user != null}">
+                                <li class="nav-tablet__item js-sign">
+                                    <a
+                                            style="display: block"
+                                            class="nav-tablet__item-link">Xin chào ${sessionScope.user.firstName}</a>
+                                </li>
+                                <li class="nav-tablet__item">
+                                    <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                        Cài đặt tài khoản
+                                    </a>
+                                </li>
+                                <li class="nav-tablet__item js-sign">
+                                    <a href="${pageContext.request.contextPath}/home/history"
+                                       style="display: block"
+                                       class="nav-tablet__item-link">Nhật ký</a>
+                                </li>
+                                <li class="nav-tablet__item js-sign">
+                                    <a href="${pageContext.request.contextPath}/login?action=logout"
+                                       style="display: block"
+                                       class="nav-tablet__item-link">Đăng xuất</a>
+                                </li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -77,28 +90,33 @@
     <div class="row trip-container">
         <div class="col-12 trip-heading">Nhật kí chuyến đi</div>
         <div class="col-4">
-            <a href="">
+
+            <c:forEach var="booking" items="${bookings}">
+            <a href="${pageContext.request.contextPath}/home/room-detail?idRoom=${booking.room.id}">
                 <div class="trip-wrapper">
                     <div class="trip-wrapper-heading">
                         <div
-                                style="background-image: url(<c:url value="/user/images/bigsize.jpg"/>)"
+                                style="background-image: url(<c:url value="/images/${booking.room.roomImage[0].name}"/>)"
                                 class="trip-heading__image"
                         ></div>
                     </div>
                     <div class="trip-body">
                         <div id="trip-body-heading" class="trip-body-heading">
-                            khách sạn tòa nhà
+                            ${booking.room.name} - Trạng thái: <c:if test="${booking.transaction.status==true}">đã thanh toán</c:if>
+                                <c:if test="${booking.transaction.status==false}">chưa thanh toán</c:if>
                         </div>
                         <div id="trip-body-room" class="trip-body-items">
-                            phòng ngủ · phòng tắm
+                            ${booking.room.building.address} - ${booking.room.building.city.name}
                         </div>
                         <div id="trip-body-date" class="trip-body-items">
-                            22/22/22 - 11/11/11
+                            ${booking.checkInDate} <b>To</b> ${booking.checkOutDate}
                         </div>
-                        <div id="trip-body-guest" class="trip-body-items">1 Khách</div>
+                        <div id="trip-body-guest" class="trip-body-items">${booking.quantityPeople} Khách</div>
+                        <div  class="trip-body-items">Ngày đặt phòng: ${booking.bookingDate}</div>
                     </div>
                 </div>
             </a>
+            </c:forEach>
         </div>
     </div>
 </div>

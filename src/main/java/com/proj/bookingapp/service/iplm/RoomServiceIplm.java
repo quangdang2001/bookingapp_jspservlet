@@ -110,7 +110,8 @@ public class RoomServiceIplm implements RoomService {
             rooms.removeIf(room -> !roomTypes.contains(room.getRoomType().getName()));
         }
         if (star!=null){
-            rooms.removeIf(room -> !star.contains(room.getRating()));
+            int minStar =Collections.min(star);
+            rooms.removeIf(room -> room.getRating() < minStar);
         }
         if (lowPrice!= null & maxPrice!=null){
             rooms.removeIf(room -> room.getPrice() < lowPrice || room.getPrice() > maxPrice);

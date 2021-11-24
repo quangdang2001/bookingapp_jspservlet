@@ -87,10 +87,11 @@
                         </div>
                     </div>
                 </div>
-
+                <a href="${pageContext.request.contextPath}/home/history" >
                 <div class="booking-success-btn">
                     <span>Đến nhật kí</span>
                 </div>
+                </a>
             </div>
         </div>
     </div>

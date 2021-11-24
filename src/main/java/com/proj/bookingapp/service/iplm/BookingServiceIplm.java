@@ -42,7 +42,7 @@ public class BookingServiceIplm implements BookingService {
     }
 
     @Override
-    public Booking findByUserId(Long id) {
+    public List<Booking> findByUserId(Long id) {
         return bookingDAO.findByUserId(id);
     }
 

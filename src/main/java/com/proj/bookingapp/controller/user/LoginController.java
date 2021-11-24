@@ -10,15 +10,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/login","/register"})
+@WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
     @Inject
     private UserService userService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action == null) action="register";
-        if(action.equals("register")) saveNewAcc(req,resp);
+        if (action == null || action.equals("")){
+            resp.sendRedirect(req.getContextPath()+"/user/view/login.jsp");
+            return;
+        }
         if (action.equals("logout")) logout(req,resp);
     }
 
@@ -26,7 +28,6 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action == null) action="login";
-        if(action.equals("register")) saveNewAcc(req,resp);
         if(action.equals("login")) login(req,resp);
 
     }
@@ -54,11 +55,6 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("user",user);
 
-        Cookie cookie1 = new Cookie("username",user.getFirstName());
-        cookie1.setMaxAge(60 * 60 * 24 * 365); // set age to 1 years
-        cookie1.setPath("/");
-        response.addCookie(cookie1);
-
         Cookie cookie2 = new Cookie("email",user.getEmail());
         cookie2.setMaxAge(60 * 60 * 24 * 365); // set age to 1 years
         cookie2.setPath("/");
@@ -66,21 +62,5 @@ public class LoginController extends HttpServlet {
 
         response.sendRedirect(request.getContextPath()+"/home");
     }
-    private void saveNewAcc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        User user = new User(null,firstName,lastName,email,pass,"ROLE_USER",null,null);
-        User user1 = userService.findByEmail(user.getEmail());
-        if (user1 !=null){
-            request.setAttribute("message","Email already exists!");
-            request.setAttribute("action","register");
-            RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/login.jsp");
-            rd.forward(request,response);
-        }
-        userService.saveUser(user);
-        RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/login.jsp");
-        rd.forward(request,response);
-    }
+
 }

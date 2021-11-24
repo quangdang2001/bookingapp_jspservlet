@@ -10,7 +10,7 @@ public interface BookingService {
     Booking findById(Long id);
     void deleteBooking(Long id);
     int getTotalBooking();
-    Booking findByUserId(Long id);
+    List<Booking> findByUserId(Long id);
     List<Booking> findByBookingStatus(boolean status);
     List<Booking> findBookingByRoomId(Long id);
 }

@@ -51,15 +51,14 @@ public class RoomController extends HttpServlet {
         Calendar calendar = Calendar.getInstance();
         if(bookings!=null){
             for (Booking booking : bookings){
-                System.out.println(booking.getCheckInDate());
-                System.out.println(booking.getCheckOutDate());
+
                 calendar.setTime(booking.getCheckInDate());
                 String date1 = calendar.get(Calendar.YEAR)+"-"+ (calendar.get(Calendar.MONTH) + 1) +"-"+ calendar.get(Calendar.DAY_OF_MONTH);
                 calendar.setTime(booking.getCheckOutDate());
                 String date2 = calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH) + 1)+"-"+ calendar.get(Calendar.DAY_OF_MONTH);
 
                 dateBlock.add("[\""+date1+"\",\""+date2+"\"]");
-                System.out.println("[\""+date1+"\",\""+date2+"\"]");
+
             }
             request.setAttribute("dateBlock",dateBlock);
         }

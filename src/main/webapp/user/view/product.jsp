@@ -62,17 +62,17 @@
                                 </c:if>
                                 <c:if test="${sessionScope.user != null}">
                                     <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                        <a
                                            class="nav-tablet__item-link" style="display: block">Xin
                                             chào ${sessionScope.user.firstName}</a>
                                     </li>
                                     <li class="nav-tablet__item">
-                                        <a href="#" class="nav-tablet__item-link">
+                                        <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
                                             Cài đặt tài khoản
                                         </a>
                                     </li>
                                     <li class="nav-tablet__item js-sign">
-                                        <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                        <a href="${pageContext.request.contextPath}/home/history"
                                            class="nav-tablet__item-link" style="display: block">Nhật ký</a>
                                     </li>
                                     <li class="nav-tablet__item js-sign">
@@ -576,7 +576,7 @@
                                                                 class="iconify product-info-rank__icon"
                                                                 data-icon="carbon:star-filled"
                                                         ></span>${room.rating}/5</strong>
-                                                        <span>(200 đánh giá)</span>
+
                                                     </div>
                                                 </div>
                                                 <div class="product-container-info-price">

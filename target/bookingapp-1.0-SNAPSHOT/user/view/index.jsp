@@ -73,12 +73,17 @@
                                     </c:if>
                                     <c:if test="${sessionScope.user != null}">
                                         <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                            <a
                                                style="display: block"
                                                class="nav-tablet__item-link">Xin chào ${sessionScope.user.firstName}</a>
                                         </li>
+                                        <li class="nav-tablet__item">
+                                            <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                                Cài đặt tài khoản
+                                            </a>
+                                        </li>
                                         <li class="nav-tablet__item js-sign">
-                                            <a href="${pageContext.request.contextPath}/user/view/login.jsp"
+                                            <a href="${pageContext.request.contextPath}/home/history"
                                                style="display: block"
                                                class="nav-tablet__item-link">Nhật ký</a>
                                         </li>

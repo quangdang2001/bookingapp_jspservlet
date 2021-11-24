@@ -20,7 +20,7 @@ public class BookingDAOIplm implements BookingDAO {
         try {
             currentSession.beginTransaction();
             Query<Booking> theQuery =
-                    currentSession.createQuery("from Booking", Booking.class);
+                    currentSession.createQuery("from Booking order by bookingDate desc", Booking.class);
             bookings  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
@@ -98,15 +98,15 @@ public class BookingDAOIplm implements BookingDAO {
     }
 
     @Override
-    public Booking findByUserId(Long id) {
+    public List<Booking> findByUserId(Long id) {
         Session currentSession = HiberConfig.getSessionFactory().getCurrentSession();
-        Booking bookings = null;
+        List<Booking> bookings = null;
         try {
             currentSession.beginTransaction();
             Query<Booking> theQuery =
-                    currentSession.createQuery("from Booking b where b.user.id=:theid ", Booking.class);
+                    currentSession.createQuery("from Booking b where b.user.id=:theid order by bookingDate desc ", Booking.class);
             theQuery.setParameter("theid",id);
-            bookings  = theQuery.getSingleResult();
+            bookings  = theQuery.getResultList();
             currentSession.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Booking find by user id error");
@@ -124,7 +124,7 @@ public class BookingDAOIplm implements BookingDAO {
         try {
             currentSession.beginTransaction();
             Query<Booking> theQuery =
-                    currentSession.createQuery("from Booking b where b.status=:thestatus ", Booking.class);
+                    currentSession.createQuery("from Booking b where b.transaction.status=:thestatus ", Booking.class);
             theQuery.setParameter("thestatus",status);
             bookings  = theQuery.getResultList();
             currentSession.getTransaction().commit();

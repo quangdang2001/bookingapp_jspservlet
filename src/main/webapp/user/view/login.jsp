@@ -22,7 +22,7 @@
 <div class="container" id="container">
 </c:if>
     <div class="form-container sign-up-container">
-        <form action="${pageContext.request.contextPath}/register" method="get">
+        <form action="${pageContext.request.contextPath}/register" method="post">
             <h1></h1>
             <div class="social-container">
                 <a href="#" class="social"
@@ -39,7 +39,7 @@
                 ></a>
             </div>
             <span>${message}</span>
-            <input type="hidden" name="action" value="register">
+            <input type="hidden" name="action" value="verify">
             <input required name="firstName" type="text" placeholder="First name"/>
             <input required name="lastName" type="text" placeholder="Last name"/>
             <input required name="email" type="email" placeholder="Email"/>

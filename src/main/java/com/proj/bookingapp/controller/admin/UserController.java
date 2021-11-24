@@ -95,7 +95,7 @@ public class UserController extends HttpServlet {
         String password = request.getParameter("password");
         String role = request.getParameter("role");
 
-        userService.saveUser(new User(id,firstName,lastName,email,password,role,reviews,bookings));
+        userService.saveUser(new User(id,firstName,lastName,email,password,role,null,null,reviews,bookings));
 
         response.sendRedirect("user");
     }
