@@ -347,9 +347,10 @@
                             <input
                                     name="quantityPeople"
                                     required
+                                    readonly
                                     type="text"
                                     <c:if test="${quantityPeople == null}">
-                                        value="1 Khách"
+                                        value="0 Khách"
                                     </c:if>
                                     <c:if test="${quantityPeople != null}">
                                         value="${quantityPeople} Khách"
@@ -751,7 +752,9 @@
         if (
             parseInt(
                 document.getElementById("room-people__count--child").innerHTML
-            ) >= 1
+            ) >= 1 && parseInt(
+                document.getElementById("room-people__count--adult").innerHTML
+            )===1
         ) {
             return 0;
         }
@@ -761,7 +764,7 @@
         var temp = parseInt(
             document.getElementById("room-people__count--adult").innerHTML
         );
-        if (temp > 1) {
+        if (temp > 0) {
             temp -= 1;
             quantity -= 1;
             document.getElementById("room-people__count--adult").innerHTML = temp;
