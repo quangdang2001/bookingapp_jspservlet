@@ -1392,7 +1392,6 @@ input[type="text"]:disabled {
   outline: 1px solid rgba(0, 0, 0, 0.2);
   color: var(--primary-color);
   user-select: none;
-
   margin: 16px auto;
 }
 
@@ -1400,143 +1399,6 @@ input[type="text"]:disabled {
   color: var(--primary-hover);
   outline: 1px solid var(--primary-hover);
 }
-
-.room-host-container {
-  padding: 24px;
-  margin-top: 24px;
-  border-radius: 10px;
-  background-color: #fff;
-}
-
-.room-hosted-owner {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.room-hosted-owner img {
-  width: 64px;
-  height: 64px;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border-radius: 64px;
-  -webkit-box-ordinal-group: 3;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
-.room-hosted-owner-profile {
-  margin-left: 12px;
-}
-
-.room-hosted-owner-profile-name {
-  display: block;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.room-hosted-owner-profile-joineddate {
-  font-size: 14px;
-  font-weight: 400;
-  color: #717171;
-}
-
-.room-hosted-details {
-  display: flex;
-  grid-gap: 50px;
-}
-
-.room-hosted-details-left-feature {
-  display: flex;
-  justify-content: space-between;
-}
-
-.room-hosted-details-left-feature-item {
-  display: flex;
-  justify-content: center;
-}
-
-.room-hosted-details-left-feature-item-name {
-  font-size: 15px;
-  font-weight: 450;
-}
-
-.room-hosted-details-left {
-  width: 40%;
-}
-
-.room-hosted-details-left-details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 16px;
-}
-
-.room-hosted-details-left-details-heading {
-  display: block;
-  font-size: 16px;
-  line-height: 20px;
-  color: #222;
-  font-weight: 600;
-}
-
-.room-hosted-details-left-details-text {
-  margin-top: 8px;
-  font-size: 14px;
-  line-height: 24px;
-  color: #222;
-  font-weight: 400;
-}
-
-.room-hosted-details-right {
-  width: 40%;
-}
-
-.room-hosted-details-right-hostinfo {
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  row-gap: 16px;
-}
-
-.room-hosted-details-right-hostinfo-item {
-  font-size: 14px;
-}
-
-.room-hosted-details-right-contacthost {
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 450;
-  cursor: pointer;
-  width: 50%;
-  text-align: center;
-  outline: 1px solid rgba(0, 0, 0, 0.2);
-  color: var(--primary-color);
-  user-select: none;
-  margin: 16px 0;
-}
-
-.room-hosted-details-right-contacthost:hover {
-  color: var(--primary-hover);
-  outline: 1px solid var(--primary-hover);
-}
-
-.room-hosted-details-right-protectmoney {
-  display: flex;
-  justify-content: center;
-}
-
-.room-hosted-details-right-protectmoney-text {
-  font-size: 10px;
-}
-
-
 
 /* end css detail product page */
 
@@ -1630,7 +1492,10 @@ input[type="text"]:disabled {
   justify-content: space-evenly;
   position: relative;
 }
+input[type=checkbox]:focus, input[type=file]:focus, input[type=radio]:focus {
+  outline: 0;
 
+}
 .room-review-comment-container {
   scroll-behavior: smooth;
   max-height: 500px;

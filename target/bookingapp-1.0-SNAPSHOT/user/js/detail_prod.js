@@ -8,21 +8,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// show room people
-
-$("html").click(function (e) {
-  $(".booking-box-guests-number").removeClass("active");
-});
-
-$("#booking-box-guests").click(function (e) {
-  e.stopPropagation();
-});
-
-$("#booking-box-guests").click(function (e) {
-  $(".booking-box-guests-number").addClass("active");
-});
 // review score
-
 // score bar
 
 function init() {

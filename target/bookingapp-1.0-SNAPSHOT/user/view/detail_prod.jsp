@@ -76,7 +76,8 @@
                                                 chào ${sessionScope.user.firstName}</a>
                                         </li>
                                         <li class="nav-tablet__item">
-                                            <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                            <a href="${pageContext.request.contextPath}/home/user?action=load"
+                                               class="nav-tablet__item-link">
                                                 Cài đặt tài khoản
                                             </a>
                                         </li>
@@ -381,7 +382,7 @@
                             <input
                                     name="quantityPeople"
                                     <c:if test="${quantityPeople == null}">
-                                        value="1 Khách"
+                                        value="0 Khách"
                                     </c:if>
                                     <c:if test="${quantityPeople != null}">
                                         value="${quantityPeople} Khách"
@@ -410,7 +411,7 @@
                                                 id="booking-box-guests__count--adult"
                                                 class="booking-box-guests__count--adult"
                                         >
-                                            1
+                                            0
                                         </div>
                                         <div class="booking-box-guests__btn-adult-add">
                         <span
@@ -517,6 +518,7 @@
                                     value="0"
                                     type="hidden"
                                     style="display: none"
+                                    required
                             />
                         </div>
                     </div>
@@ -775,101 +777,7 @@
             </div>
 
             <div class="col-12">
-                <div class="room-host-container">
-                    <div class="room-hosted-owner">
-                        <div class="room-hosted-owner__img">
-                            <img src="/images/quang.jpg" alt=""/>
-                        </div>
-                        <div class="room-hosted-owner-profile">
-                <span class="room-hosted-owner-profile-name"
-                >Chủ nhà Quang đần</span
-                >
-                            <span class="room-hosted-owner-profile-joineddate"
-                            >Tham gia tháng 3 năm 2016</span
-                            >
-                        </div>
-                    </div>
-                    <div class="room-hosted-details">
-                        <div class="room-hosted-details-left">
-                            <div class="room-hosted-details-left-feature">
-                                <div class="room-hosted-details-left-feature-item">
-                    <span
-                            style="color: #ee6c4d"
-                            class="iconify"
-                            data-icon="bi:star-fill"
-                    ></span>
-                                    <span class="room-hosted-details-left-feature-item-name"
-                                    >80 Đánh giá</span
-                                    >
-                                </div>
-                                <div class="room-hosted-details-left-feature-item">
-                    <span
-                            class="iconify"
-                            data-icon="bx:bxs-badge-check"
-                            style="color: #ee6c4d"
-                    ></span>
-                                    <span class="room-hosted-details-left-feature-item-name"
-                                    >Đã xác minh</span
-                                    >
-                                </div>
-                                <div class="room-hosted-details-left-feature-item">
-                    <span
-                            class="iconify"
-                            data-icon="ri:medal-2-fill"
-                            style="color: #ee6c4d"
-                    ></span>
-                                    <span class="room-hosted-details-left-feature-item-name"
-                                    >Siêu chủ nhà</span
-                                    >
-                                </div>
-                            </div>
-                            <div class="room-hosted-details-left-details">
-                  <span class="room-hosted-details-left-details-heading"
-                  >Giới thiệu</span
-                  >
-                                <span class="room-hosted-details-left-details-text"
-                                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </span>
-                            </div>
-                            <div class="room-hosted-details-left-details">
-                  <span class="room-hosted-details-left-details-heading"
-                  >Quang là một Chủ nhà siêu cấp</span
-                  >
-                                <span class="room-hosted-details-left-details-text"
-                                >Chủ nhà siêu cấp là những người có kinh nghiệm, được đánh
-                    giá cao và cam kết mang lại kỳ nghỉ tuyệt vời cho
-                    khách.</span
-                                >
-                            </div>
-                        </div>
-                        <div class="room-hosted-details-right">
-                            <div class="room-hosted-details-right-hostinfo">
-                  <span class="room-hosted-details-right-hostinfo-item"
-                  >Tỉ lệ phản hồi: 100%
-                  </span>
-                                <span class="room-hosted-details-right-hostinfo-item"
-                                >Thời gian phản hồi: Vài giờ đồng hồ
-                  </span>
-                            </div>
-                            <div class="room-hosted-details-right-contacthost box">
-                                Liên hệ với chủ nhà
-                            </div>
-                            <div class="room-hosted-details-right-protectmoney">
-                  <span
-                          class="iconify"
-                          data-icon="fluent:shield-error-20-filled"
-                          style="color: #ffce45"
-                          data-height="30"
-                          data-width="30"
-                  ></span>
-                                <span class="room-hosted-details-right-protectmoney-text"
-                                >Để bảo vệ khoản thanh toán của bạn, tuyệt đối không chuyển
-                    tiền hoặc liên lạc bên ngoài trang web hoặc ứng dụng.
-                  </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -1023,63 +931,34 @@
 
 </script>
 <script>
-    var format = "DD-MM-YYYY";
-    var today = moment();
-    today.subtract(1, "days").format(format);
-    const disallowedDates = [["2001-01-01", today],<c:forEach var="date" items="${dateBlock}" >
-        ${date},
-        </c:forEach>];
-    var picker = new Litepicker({
-        element: document.getElementById("booking-box-checkin"),
-        elementEnd: document.getElementById("booking-box-checkout"),
-        singleMode: false,
-        autoApply: false,
-        numberOfColumns: 2,
-        numberOfMonths: 2,
-        format: "DD/MM/YYYY",
-        lockDays: disallowedDates,
-        tooltipText: {
-            one: "night",
-            other: "nights",
-        },
-        tooltipNumber: (totalDays) => {
-            return totalDays - 1;
-        },
+    $("html").click(function (e) {
+        $(".booking-box-guests-number").removeClass("active");
+        $(".booking-box-guests-number-warning").removeClass("active");
+        $(".booking-box-guests-age-child").removeClass("active");
+
     });
 
-    $(".change-date").click(function (e) {
-        picker.show();
+    $("#booking-box-guests").click(function (e) {
+        e.stopPropagation();
+    });
 
-        picker.on("selected", (date1, date2) => {
-            var start = picker.getStartDate().getTime();
-            var end = picker.getEndDate().getTime();
-            const oneDay = 1000 * 60 * 60 * 24;
-            const diffInTime = date2.getTime() - date1.getTime();
-            const diffInDays = Math.round(diffInTime / oneDay);
-            document.getElementById("booking-box-price__days").innerHTML =
-                diffInDays;
-            var price_room = parseFloat(
-                document.getElementById("room_price").innerHTML
-            );
-            var fee = parseFloat(
-                document.getElementById("booking-box-price__fee-service-total")
-                    .innerHTML
-            );
-            document.getElementById(
-                "booking-box-price__room-price-total"
-            ).innerHTML = price_room * diffInDays;
-            document.getElementById("booking-box-price__total").innerHTML =
-                price_room * diffInDays + fee;
-
-            document.getElementById("total_money").value =
-                price_room * diffInDays + fee;
-        });
+    $("#booking-box-guests").click(function (e) {
+        $(".booking-box-guests-number").addClass("active");
+        if(parseInt(
+            document.getElementById("booking-box-guests__count--child").innerHTML
+        )!=0){
+            $(".booking-box-guests-number").addClass("active");
+            $(".booking-box-guests-number-warning").addClass("active");
+            $(".booking-box-guests-age-child").addClass("active");
+        }
     });
 </script>
 <script>
+
     // btn add sub
-    var maxPeople =${room.accomodatesCount};
-    var maxPeopleChild = maxPeople-1;
+    <%--<var maxPeople = 1;         //${room.accomodatesCount}&ndash;%&gt;--%>
+    var maxPeople = 10;
+    var maxPeopleChild = maxPeople - 1;
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         var temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML
@@ -1096,17 +975,26 @@
             ).innerHTML = temp;
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
-            maxPeopleChild-=1;
+            maxPeopleChild -= 1;
         }
     });
     $(".booking-box-guests__btn-adult-sub").click(function (e) {
+        if (
+            parseInt(
+                document.getElementById("booking-box-guests__count--child").innerHTML
+            ) >= 1 && parseInt(
+                document.getElementById("booking-box-guests__count--adult").innerHTML
+            )===1
+        ) {
+            return 0;
+        }
         var quantity = parseInt(
             document.getElementById("booking-box-guests--input").value
         );
         var temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML
         );
-        if (temp > 1) {
+        if (temp > 0) {
             temp -= 1;
             quantity -= 1;
             document.getElementById(
@@ -1114,10 +1002,17 @@
             ).innerHTML = temp;
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
-            maxPeopleChild+=1;
+            maxPeopleChild += 1;
         }
     });
     $(".booking-box-guests__btn-child-add").click(function (e) {
+        if (
+            parseInt(
+                document.getElementById("booking-box-guests__count--adult").innerHTML
+            ) === 0
+        ) {
+            return 0;
+        }
         var temp = parseInt(
             document.getElementById("booking-box-guests__count--child").innerHTML
         );
@@ -1137,7 +1032,7 @@
                 " active";
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
-            maxPeople-=1;
+            maxPeople -= 1;
         }
     });
     $(".booking-box-guests__btn-child-sub").click(function (e) {
@@ -1164,10 +1059,63 @@
                     .className.replace(" active", "");
             document.getElementById("booking-box-guests--input").value =
                 quantity + " Khách";
-            maxPeople+=1;
+            maxPeople += 1;
         }
     });
     // end
 </script>
+<script>
+    var format = "DD-MM-YYYY";
+    var today = moment();
+    today.subtract(1, "days").format(format);
+    const disallowedDates = [["2001-01-01", today], <c:forEach var="date" items="${dateBlock}" >
+        ${date},
+        </c:forEach>]
+    var picker = new Litepicker({
+        element: document.getElementById("booking-box-checkin"),
+        elementEnd: document.getElementById("booking-box-checkout"),
+        singleMode: false,
+        autoApply: false,
+        numberOfColumns: 2,
+        numberOfMonths: 2,
+        format: "DD/MM/YYYY",
+        lockDays: disallowedDates,
+        tooltipText: {
+            one: "night",
+            other: "nights",
+        },
+        tooltipNumber: (totalDays) => {
+            return totalDays - 1;
+        },
+    });
+
+    $(".change-date").click(function (e) {
+        picker.show();
+
+        picker.on("selected", (date1, date2) => {
+            const oneDay = 1000 * 60 * 60 * 24;
+            const diffInTime = date2.getTime() - date1.getTime();
+            const diffInDays = Math.round(diffInTime / oneDay);
+            document.getElementById("booking-box-price__days").innerHTML =
+                diffInDays;
+            var price_room = parseFloat(
+                document.getElementById("room_price").innerHTML
+            );
+            var fee = parseFloat(
+                document.getElementById("booking-box-price__fee-service-total")
+                    .innerHTML
+            );
+            document.getElementById(
+                "booking-box-price__room-price-total"
+            ).innerHTML = price_room * diffInDays;
+            document.getElementById("booking-box-price__total").innerHTML =
+                price_room * diffInDays + fee;
+
+            document.getElementById("total_money").value =
+                price_room * diffInDays + fee;
+        });
+    });
+</script>
+
 </body>
 </html>

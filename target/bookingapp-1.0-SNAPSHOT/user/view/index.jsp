@@ -125,6 +125,7 @@
                             <div id="search_location" class="search__item-link">
                                 <h3 class="search__item-heading">Địa điểm</h3>
                                 <input
+                                        required
                                         name="destination"
                                         type="text"
                                         class="search__item-input"
@@ -275,6 +276,7 @@
                         <li class="search__item search__item--width">
                             <h3 class="search__item-heading">Nhận phòng</h3>
                             <input
+                                    required
                                     name="checkInDate"
                                     value="${checkInDate}"
                                     placeholder="Thêm ngày"
@@ -289,6 +291,7 @@
                             <div class="search__item-link">
                                 <h3 class="search__item-heading">Trả phòng</h3>
                                 <input
+                                        required
                                         name="checkOutDate"
                                         placeholder="Thêm ngày"
                                         value="${checkOutDate}"
@@ -324,6 +327,7 @@
                                         >${quantityPeople} Khách</span>
                                     </c:if>
                                     <input
+                                            required
                                             name="quantityPeople"
                                             <c:if test="${quantityPeople == null}">
                                                 value="0 Khách"
@@ -690,7 +694,7 @@
                     </div>
                     <a href="" class="web__content-banner-link">
                         <div class="web__content-banner" style="background: url(
-                        <c:url value="/user/images/banner.jpg"/> ) center / cover no-repeat ">
+                        <c:url value="/user/images/backcate.jpg"/> ) center / cover no-repeat ">
                             <div class="web__content-banner-info">
                                 <h2 class="web__content-banner-heading">
                                     Thử đón tiếp khách
@@ -1031,9 +1035,27 @@
 
 </script>
 <script>
+    $("html").click(function () {
+        $(".room-people-number").removeClass("active");
+        $(".room-people-number-warning").removeClass("active");
+        $(".room-people-age-child").removeClass("active");
+    });
+    $("#room-people").click(function (e) {
+        e.stopPropagation();
+    });
+    $("#room-people").click(function (e) {
+        $(".room-people-number").addClass("active");
+        if (parseInt(
+            document.getElementById("room-people__count--child").innerHTML) != 0) {
+            $(".room-people-number-warning").addClass("active");
+            $(".room-people-age-child").addClass("active");
+        }
+    });
+</script>
+<script>
     // btn add sub
     var max_people = 5;
-    var min_people = 0;
+
     $(".room-people__btn-adult-add").click(function (e) {
         var temp = parseInt(
             document.getElementById("room-people__count--adult").innerHTML
@@ -1059,7 +1081,9 @@
         if (
             parseInt(
                 document.getElementById("room-people__count--child").innerHTML
-            ) >= 1
+            ) >= 1 && parseInt(
+                document.getElementById("room-people__count--adult").innerHTML
+            )===1
         ) {
             return 0;
         }
@@ -1069,7 +1093,7 @@
         var temp = parseInt(
             document.getElementById("room-people__count--adult").innerHTML
         );
-        if (temp > min_people) {
+        if (temp > 0) {
             temp -= 1;
             quantity -= 1;
             document.getElementById("room-people__count--adult").innerHTML = temp;
@@ -1120,7 +1144,7 @@
         var quantity = parseInt(
             document.getElementById("room-people_btn").value
         );
-        if (temp > min_people) {
+        if (temp > 0) {
             temp -= 1;
             quantity -= 1;
             document.getElementById("room-people__count--child").innerHTML = temp;

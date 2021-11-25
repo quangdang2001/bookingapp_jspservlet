@@ -148,12 +148,7 @@
                                     readonly
                             />
                         </div>
-                        <div class="account-body-items-right">
-                            <span id="account-email-edit">Chỉnh sửa</span>
-                            <span style="display: none" id="account-email-cancel"
-                            >Hủy</span
-                            >
-                        </div>
+
                     </div>
 
                     <div class="account-body-items">

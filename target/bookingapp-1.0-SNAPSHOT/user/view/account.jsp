@@ -99,19 +99,19 @@
                 <div class="account-body">
                     <div class="account-body-items">
                         <div class="account-body-items-left">
-                            <label for="account-name">Tên riêng</label>
+                            <label for="account-fname">Tên riêng</label>
                             <input
                                     name="fName"
                                     class="account-body-items-input"
-                                    id="account-name"
+                                    id="account-fname"
                                     type="text"
                                     value="${sessionScope.user.firstName}"
                                     readonly
                             />
                         </div>
                         <div class="account-body-items-right">
-                            <span id="account-name-edit">Chỉnh sửa</span>
-                            <span style="display: none" id="account-name-cancel"
+                            <span id="account-fname-edit">Chỉnh sửa</span>
+                            <span style="display: none" id="account-fname-cancel"
                             >Hủy</span
                             >
                         </div>
@@ -119,19 +119,19 @@
 
                     <div class="account-body-items">
                         <div class="account-body-items-left">
-                            <label for="account-name">Họ</label>
+                            <label for="account-lname">Họ</label>
                             <input
                                     name="lName"
+                                    id="account-lname"
                                     class="account-body-items-input"
-
                                     type="text"
                                     value="${sessionScope.user.lastName}"
                                     readonly
                             />
                         </div>
                         <div class="account-body-items-right">
-                            <span>Chỉnh sửa</span>
-                            <span style="display: none"
+                            <span id="account-lname-edit">Chỉnh sửa</span>
+                            <span style="display: none" id="account-lname-cancel"
                             >Hủy</span
                             >
                         </div>
@@ -153,19 +153,19 @@
 
                     <div class="account-body-items">
                         <div class="account-body-items-left">
-                            <label for="account-name">Mật khẩu</label>
+                            <label for="account-password">Mật khẩu</label>
                             <input
                                     name="password"
+                                    id="account-password"
                                     class="account-body-items-input"
-
-                                    type="text"
+                                    type="password"
                                     value="${sessionScope.user.password}"
                                     readonly
                             />
                         </div>
                         <div class="account-body-items-right">
-                            <span>Chỉnh sửa</span>
-                            <span style="display: none"
+                            <span id="account-password-edit">Chỉnh sửa</span>
+                            <span style="display: none" id="account-password-cancel"
                             >Hủy</span
                             >
                         </div>
@@ -283,32 +283,45 @@
 </div>
 <script>
     // name
-    $("#account-name-edit").click(function (e) {
-        document.getElementById("account-name-edit").style.display = "none";
-        document.getElementById("account-name-cancel").style.display = "block";
-        document.getElementById("account-name").readOnly = false;
-        document.getElementById("account-name").focus();
+    $("#account-fname-edit").click(function (e) {
+        document.getElementById("account-fname-edit").style.display = "none";
+        document.getElementById("account-fname-cancel").style.display = "block";
+        document.getElementById("account-fname").readOnly = false;
+        document.getElementById("account-fname").focus();
     });
-    $("#account-name-cancel").click(function (e) {
-        document.getElementById("account-name-edit").style.display = "block";
-        document.getElementById("account-name-cancel").style.display = "none";
-        document.getElementById("account-name").readOnly = true;
+    $("#account-fname-cancel").click(function (e) {
+        document.getElementById("account-fname-edit").style.display = "block";
+        document.getElementById("account-fname-cancel").style.display = "none";
+        document.getElementById("account-fname").readOnly = true;
+
+    });
+    //   end
+    $("#account-lname-edit").click(function (e) {
+        document.getElementById("account-lname-edit").style.display = "none";
+        document.getElementById("account-lname-cancel").style.display = "block";
+        document.getElementById("account-lname").readOnly = false;
+        document.getElementById("account-lname").focus();
+    });
+    $("#account-lname-cancel").click(function (e) {
+        document.getElementById("account-lname-edit").style.display = "block";
+        document.getElementById("account-lname-cancel").style.display = "none";
+        document.getElementById("account-lname").readOnly = true;
     });
     //   end
 
-    $("#account-birthday-edit").click(function (e) {
-        document.getElementById("account-birthday-edit").style.display = "none";
-        document.getElementById("account-birthday-cancel").style.display =
+    $("#account-password-edit").click(function (e) {
+        document.getElementById("account-password-edit").style.display = "none";
+        document.getElementById("account-password-cancel").style.display =
             "block";
-        document.getElementById("account-birthday").readOnly = false;
-        document.getElementById("account-birthday").focus();
+        document.getElementById("account-password").readOnly = false;
+        document.getElementById("account-password").focus();
     });
-    $("#account-birthday-cancel").click(function (e) {
-        document.getElementById("account-birthday-edit").style.display =
+    $("#account-password-cancel").click(function (e) {
+        document.getElementById("account-password-edit").style.display =
             "block";
-        document.getElementById("account-birthday-cancel").style.display =
+        document.getElementById("account-password-cancel").style.display =
             "none";
-        document.getElementById("account-birthday").readOnly = true;
+        document.getElementById("account-password").readOnly = true;
     });
     //   end
 

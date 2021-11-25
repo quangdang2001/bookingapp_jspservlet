@@ -80,7 +80,7 @@
                     Để giữ kết nối với chúng tôi vui lòng điền thông tin cá nhân của
                     bạn
                 </p>
-                <button class="ghost" id="signIn">Sign In</button>
+                <button class="ghost" id="signIn">Đăng nhập</button>
             </div>
             <div class="overlay-panel overlay-right">
                 <h1>Chào mừng bạn đến với Travel Booking!</h1>

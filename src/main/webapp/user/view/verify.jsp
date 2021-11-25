@@ -30,7 +30,7 @@
     <div class="container-main">
         <div class="nav">
             <div class="nav-content">
-                <a href="" class="logo">Travel Booking</a>
+                <a href="${pageContext.request.contextPath}/home" class="logo">Travel Booking</a>
             </div>
         </div>
     </div>
@@ -39,31 +39,36 @@
 <div class="container-main">
     <div class="row">
         <div class="col-2"></div>
+
         <div class="col-8">
-            <div class="email-verify-container">
-                <div class="email-verify-heading">
-                    <h2>Xác nhận địa chỉ email</h2>
+            <form action="${pageContext.request.contextPath}/register" method="post">
+                <div class="email-verify-container">
+                    <div class="email-verify-heading">
+                        <h2>Xác nhận địa chỉ email</h2>
+                    </div>
+                    <div class="email-verify-subheading">
+                        <p>
+                            Nhập mã xác thực chúng tôi đã gửi đến <strong>email</strong>.
+                            Nếu bạn không thấy hãy kiểm tra hộp thư Spam.
+                        </p>
+                    </div>
+
+                    <input type="hidden" name="action" value="save">
+                    <div class="email-verify-input-wrapper">
+                        ${message}
+                        <input
+                                name="code"
+                                type="number"
+                                maxlength="6"
+                                id="email-verify-input"
+                                required
+                        />
+                    </div>
+                    <button class="email-verify-btn__verify">Xác nhận</button>
                 </div>
-                <div class="email-verify-subheading">
-                    <p>
-                        Nhập mã xác thực chúng tôi đã gửi đến <strong>email</strong>.
-                        Nếu bạn không thấy hãy kiểm tra hộp thư Spam.
-                    </p>
-                </div>
-                <div class="email-verify-input-wrapper">
-                    <input
-                            type="number"
-                            maxlength="6"
-                            id="email-verify-input"
-                            required
-                    />
-                </div>
-                <button class="email-verify-btn__verify">Xác nhận</button>
-                <button class="email-verify-btn__resend">
-                    Gửi lại mã xác nhận
-                </button>
-            </div>
+            </form>
         </div>
+
     </div>
 </div>
 

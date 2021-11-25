@@ -9,18 +9,8 @@ $("#search_location").click(function (e) {
 $("#search_location").click(function (e) {
   $(".location-search-select-list").addClass("active");
 });
+//open room people form
 
-$("html").click(function () {
-  $(".room-people-number").removeClass("active");
-});
-
-$("#input_customer").click(function (e) {
-  e.stopPropagation();
-});
-
-$("#input_customer").click(function (e) {
-  $(".room-people-number").addClass("active");
-});
 
 
 
