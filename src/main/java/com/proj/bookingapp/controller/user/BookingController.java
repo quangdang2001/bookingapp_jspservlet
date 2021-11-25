@@ -1,7 +1,10 @@
 package com.proj.bookingapp.controller.user;
 
+import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.Room;
+import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.RoomService;
+import com.proj.bookingapp.utils.DateUtil;
 import lombok.SneakyThrows;
 
 import javax.inject.Inject;
@@ -15,12 +18,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet(urlPatterns = {"/home/booking"})
 public class BookingController extends HttpServlet {
     @Inject
     private RoomService roomService;
-
+    @Inject
+    private BookingService bookingService;
     @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,6 +52,12 @@ public class BookingController extends HttpServlet {
 
         Double totalPrice = totalDay*room.getPrice();
 
+        List<Booking> bookings = bookingService.findBookingByRoomId(idRoom);
+        if (bookings!=null){
+            List<String> dateBlock = DateUtil.getBlockDate(bookings);
+            request.setAttribute("dateBlock",dateBlock);
+        }
+
         request.setAttribute("totalDay",totalDay);
         request.setAttribute("reviewCount",request.getParameter("reviewCount"));
         request.setAttribute("room",room);
@@ -54,7 +65,6 @@ public class BookingController extends HttpServlet {
         request.setAttribute("checkOutDate",checkOutDate);
         request.setAttribute("quantityPeople",quantityPeople);
         request.setAttribute("totalPrice",totalPrice+5);
-        request.setAttribute("dateBlock",request.getParameter("dateBlock"));
 
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/booking.jsp");
         rd.forward(request,response);

@@ -3,11 +3,12 @@ package com.proj.bookingapp.controller.user;
 import com.proj.bookingapp.dto.UserDTO;
 import com.proj.bookingapp.model.User;
 import com.proj.bookingapp.service.UserService;
-import utils.EmailUtil;
+import com.proj.bookingapp.utils.EmailUtil;
+
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package utils;
+package com.proj.bookingapp.utils;
 
 import javax.mail.*;
 import javax.mail.internet.AddressException;

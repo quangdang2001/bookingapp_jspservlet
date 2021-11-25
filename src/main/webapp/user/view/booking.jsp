@@ -447,12 +447,9 @@
     let today = moment();
     today.subtract(1, "days").format(format);
 
-    const disallowedDates = [
-        ["2001-01-01", today],
-        <c:forEach var="date" items="${dateBlock}" >
+    const disallowedDates = [["2001-01-01", today],<c:forEach var="date" items="${dateBlock}" >
         ${date},
-        </c:forEach>
-    ];
+        </c:forEach>];
     let picker = new Litepicker({
         element: document.getElementById("booking-checkin"),
         singleMode: false,
