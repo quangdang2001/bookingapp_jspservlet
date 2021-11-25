@@ -1,11 +1,11 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Travel Booking</title>
     <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
@@ -14,9 +14,9 @@
     <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="<c:url value="/user/styles/root.css" />" />
-    <link rel="stylesheet" href="<c:url value="/user/styles/grid.css" />" />
-    <link rel="stylesheet" href="<c:url value="/user/styles/account.css" /> " />
+    <link rel="stylesheet" href="<c:url value="/user/styles/root.css" />"/>
+    <link rel="stylesheet" href="<c:url value="/user/styles/grid.css" />"/>
+    <link rel="stylesheet" href="<c:url value="/user/styles/account.css" /> "/>
     <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
@@ -63,7 +63,8 @@
                                             class="nav-tablet__item-link">Xin chào ${sessionScope.user.firstName}</a>
                                 </li>
                                 <li class="nav-tablet__item">
-                                    <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                    <a href="${pageContext.request.contextPath}/home/user?action=load"
+                                       class="nav-tablet__item-link">
                                         Cài đặt tài khoản
                                     </a>
                                 </li>
@@ -89,35 +90,37 @@
 <div class="container-main">
     <div class="row trip-container">
         <div class="col-12 trip-heading">Nhật kí chuyến đi</div>
-        <div class="col-4">
-
-            <c:forEach var="booking" items="${bookings}">
-            <a href="${pageContext.request.contextPath}/home/room-detail?idRoom=${booking.room.id}">
-                <div class="trip-wrapper">
-                    <div class="trip-wrapper-heading">
-                        <div
-                                style="background-image: url(<c:url value="/images/${booking.room.roomImage[0].name}"/>)"
-                                class="trip-heading__image"
-                        ></div>
-                    </div>
-                    <div class="trip-body">
-                        <div id="trip-body-heading" class="trip-body-heading">
-                            ${booking.room.name} - Trạng thái: <c:if test="${booking.transaction.status==true}">đã thanh toán</c:if>
+        <c:forEach var="booking" items="${bookings}">
+            <div class="col-4">
+                <a href="${pageContext.request.contextPath}/home/room-detail?idRoom=${booking.room.id}">
+                    <div class="trip-wrapper">
+                        <div class="trip-wrapper-heading">
+                            <div
+                                    style="background-image: url(<c:url
+                                            value="/images/${booking.room.roomImage[0].name}"/>)"
+                                    class="trip-heading__image"
+                            ></div>
+                        </div>
+                        <div class="trip-body">
+                            <div id="trip-body-heading" class="trip-body-heading">
+                                    ${booking.room.name} - Trạng thái: <c:if
+                                    test="${booking.transaction.status==true}">đã thanh toán</c:if>
                                 <c:if test="${booking.transaction.status==false}">chưa thanh toán</c:if>
+                            </div>
+                            <div id="trip-body-room" class="trip-body-items">
+                                    ${booking.room.building.address} - ${booking.room.building.city.name}
+                            </div>
+                            <div id="trip-body-date" class="trip-body-items">
+                                    ${booking.checkInDate} <b>To</b> ${booking.checkOutDate}
+                            </div>
+                            <div id="trip-body-guest" class="trip-body-items">${booking.quantityPeople} Khách</div>
+                            <div class="trip-body-items">Ngày đặt phòng: ${booking.bookingDate}</div>
                         </div>
-                        <div id="trip-body-room" class="trip-body-items">
-                            ${booking.room.building.address} - ${booking.room.building.city.name}
-                        </div>
-                        <div id="trip-body-date" class="trip-body-items">
-                            ${booking.checkInDate} <b>To</b> ${booking.checkOutDate}
-                        </div>
-                        <div id="trip-body-guest" class="trip-body-items">${booking.quantityPeople} Khách</div>
-                        <div  class="trip-body-items">Ngày đặt phòng: ${booking.bookingDate}</div>
                     </div>
-                </div>
-            </a>
-            </c:forEach>
-        </div>
+                </a>
+
+            </div>
+        </c:forEach>
     </div>
 </div>
 

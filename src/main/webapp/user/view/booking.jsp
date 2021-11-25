@@ -198,23 +198,23 @@
                                     name="payment"
                                     class="box-outline booking-payment-transfer active"
                             >
-                  <span
-                          class="iconify"
-                          data-icon="uil:transaction"
-                          data-width="30"
-                          data-height="30"
-                  ></span>
+                            <span
+                                    class="iconify"
+                                    data-icon="uil:transaction"
+                                    data-width="30"
+                                    data-height="30"
+                            ></span>
                                 <div class="booking-payment-select__text">Chuyển khoản</div>
                             </button>
-                            <button
-                                    type="button"
-                                    name="payment"
-                                    id="booking-payment-paypal"
-                                    class="box-outline booking-payment-paypal"
-                            >
-                                <span class="iconify" data-icon="fontisto:paypal"></span>
-                                <div class="booking-payment-select__text">Paypal</div>
-                            </button>
+<%--                            <button--%>
+<%--                                    type="button"--%>
+<%--                                    name="payment"--%>
+<%--                                    id="booking-payment-paypal"--%>
+<%--                                    class="box-outline booking-payment-paypal"--%>
+<%--                            >--%>
+<%--                                <span class="iconify" data-icon="fontisto:paypal"></span>--%>
+<%--                                <div class="booking-payment-select__text">Paypal</div>--%>
+<%--                            </button>--%>
                         </div>
                         <div class="booking-transfer-container active">
                             <p>
@@ -224,20 +224,20 @@
                                 thanh toán trên, đơn phòng sẽ tự động bị hủy.
                             </p>
                         </div>
-                        <div class="booking-paypal-container">
-                            <div class="booking-paypal-heading">
-                                Đăng nhập để sử dụng PayPal.
-                            </div>
-                            <a
-                                    href="https://www.paypal.com/uk/home"
-                                    class="booking-paypal-direct"
-                            >
-                                <div class="booking-paypal-btn">
-                                    <span class="iconify" data-icon="uim:paypal"></span>
-                                    PayPal
-                                </div>
-                            </a>
-                        </div>
+<%--                        <div class="booking-paypal-container">--%>
+<%--                            <div class="booking-paypal-heading">--%>
+<%--                                Đăng nhập để sử dụng PayPal.--%>
+<%--                            </div>--%>
+<%--                            <a--%>
+<%--                                    href="https://www.paypal.com/uk/home"--%>
+<%--                                    class="booking-paypal-direct"--%>
+<%--                            >--%>
+<%--                                <div class="booking-paypal-btn">--%>
+<%--                                    <span class="iconify" data-icon="uim:paypal"></span>--%>
+<%--                                    PayPal--%>
+<%--                                </div>--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
                     </div>
 
                     <div class="line-space"></div>
@@ -447,7 +447,7 @@
     let today = moment();
     today.subtract(1, "days").format(format);
 
-    const disallowedDates = [["2001-01-01", today],<c:forEach var="date" items="${dateBlock}" >
+    const disallowedDates = [["2001-01-01", today], <c:forEach var="date" items="${dateBlock}" >
         ${date},
         </c:forEach>];
     let picker = new Litepicker({
@@ -473,7 +473,8 @@
 
         picker.on("selected", (date1, date2) => {
             let start = picker.getStartDate().getTime();
-            let end = picker.getEndDate().getTime();booking-content-edit-date
+            let end = picker.getEndDate().getTime();
+            booking - content - edit - date
             const oneDay = 1000 * 60 * 60 * 24;
             const diffInTime = date2.getTime() - date1.getTime();
             const diffInDays = Math.round(diffInTime / oneDay);
@@ -500,7 +501,7 @@
 </script>
 <script>
     var maxPeople =${room.accomodatesCount};
-    var maxPeopleChild = maxPeople-1;
+    var maxPeopleChild = maxPeople - 1;
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         let temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML
@@ -514,7 +515,7 @@
                 "booking-box-guests__count--adult"
             ).innerHTML = temp;
             document.getElementById("booking-guess").value = quantity + " Khách";
-            maxPeopleChild-=1;
+            maxPeopleChild -= 1;
         }
     });
     $(".booking-box-guests__btn-adult-sub").click(function (e) {
@@ -529,7 +530,7 @@
                 "booking-box-guests__count--adult"
             ).innerHTML = temp;
             document.getElementById("booking-guess").value = quantity + " Khách";
-            maxPeopleChild+=1;
+            maxPeopleChild += 1;
         }
     });
     $(".booking-box-guests__btn-child-add").click(function (e) {
@@ -549,7 +550,7 @@
             document.querySelector(".booking-box-guests-age-child").className +=
                 " active";
             document.getElementById("booking-guess").value = quantity + " Khách";
-            maxPeople-=1;
+            maxPeople -= 1;
         }
     });
     $(".booking-box-guests__btn-child-sub").click(function (e) {
@@ -573,7 +574,7 @@
                     .querySelector(".booking-box-guests-age-child")
                     .className.replace(" active", "");
             document.getElementById("booking-guess").value = quantity + " Khách";
-            maxPeople+=1;
+            maxPeople += 1;
         }
     });
 </script>

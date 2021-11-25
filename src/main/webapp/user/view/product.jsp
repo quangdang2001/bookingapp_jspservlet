@@ -63,11 +63,12 @@
                                 <c:if test="${sessionScope.user != null}">
                                     <li class="nav-tablet__item js-sign">
                                         <a
-                                           class="nav-tablet__item-link" style="display: block">Xin
+                                                class="nav-tablet__item-link" style="display: block">Xin
                                             chào ${sessionScope.user.firstName}</a>
                                     </li>
                                     <li class="nav-tablet__item">
-                                        <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                        <a href="${pageContext.request.contextPath}/home/user?action=load"
+                                           class="nav-tablet__item-link">
                                             Cài đặt tài khoản
                                         </a>
                                     </li>
@@ -118,7 +119,7 @@
                                     autocomplete="off"
                                     id="location-search-input"
                                     value="${destination}"
-                                    class
+                                    required
                             />
                         </div>
                         <div
@@ -295,6 +296,7 @@
                         >Nhận phòng</label
                         >
                         <input
+                                required
                                 name="checkInDate"
                                 placeholder="DD/MM/YYYY"
                                 readonly
@@ -326,6 +328,7 @@
                                 type="text"
                                 id="check_out"
                                 readonly
+                                required
                         />
                     </div>
                 </div>
@@ -343,7 +346,7 @@
                             >
                             <input
                                     name="quantityPeople"
-
+                                    required
                                     type="text"
                                     <c:if test="${quantityPeople == null}">
                                         value="1 Khách"
@@ -373,7 +376,7 @@
                                             class="room-people__count--adult"
                                     >
                                         <c:if test="${quantityPeople == null}">
-                                            1
+                                            0
                                         </c:if>
                                         <c:if test="${quantityPeople != null}">
                                             ${quantityPeople}
@@ -703,7 +706,30 @@
 </script>
 <!-- btn add sub -->
 <script>
+
+    $("html").click(function () {
+        $(".room-people-number").removeClass("active");
+        $(".room-people-number-warning").removeClass("active");
+        $(".room-people-age-child").removeClass("active");
+    });
+
+    $("#room-people").click(function (e) {
+        e.stopPropagation();
+    });
+
+    $("#room-people").click(function (e) {
+        $(".room-people-number").addClass("active");
+        if (parseInt(
+            document.getElementById("room-people__count--child").innerHTML) != 0) {
+            $(".room-people-number-warning").addClass("active");
+            $(".room-people-age-child").addClass("active");
+        }
+    });
+</script>
+<script>
     // btn add sub
+    let maxPeople = 5;
+
     $(".room-people__btn-adult-add").click(function (e) {
         let temp = parseInt(
             document.getElementById("room-people__count--adult").innerHTML
@@ -711,7 +737,7 @@
         var quantity = parseInt(
             document.getElementById("room-people_btn").value
         );
-        if (temp < 5) {
+        if (temp < maxPeople) {
             temp = temp + 1;
             quantity = quantity + 1;
             console.log(temp);
@@ -722,6 +748,13 @@
         }
     });
     $(".room-people__btn-adult-sub").click(function (e) {
+        if (
+            parseInt(
+                document.getElementById("room-people__count--child").innerHTML
+            ) >= 1
+        ) {
+            return 0;
+        }
         var quantity = parseInt(
             document.getElementById("room-people_btn").value
         );
@@ -737,13 +770,20 @@
         }
     });
     $(".room-people__btn-child-add").click(function (e) {
+        if (
+            parseInt(
+                document.getElementById("room-people__count--adult").innerHTML
+            ) === 0
+        ) {
+            return 0;
+        }
         var temp = parseInt(
             document.getElementById("room-people__count--child").innerHTML
         );
         var quantity = parseInt(
             document.getElementById("room-people_btn").value
         );
-        if (temp < 5) {
+        if (temp < maxPeople) {
             temp += 1;
             quantity += 1;
             document.getElementById("room-people__count--child").innerHTML = temp;

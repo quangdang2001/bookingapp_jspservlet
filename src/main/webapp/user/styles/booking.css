@@ -109,13 +109,13 @@
   color: var(--txt-color);
 }
 
-.booking-payment-paypal:hover,
-.booking-payment-transfer:hover,
-.booking-payment-transfer.active,
-.booking-payment-paypal.active {
-  color: #fff;
-  background-color: var(--primary-hover);
-}
+/*.booking-payment-paypal:hover,*/
+/*.booking-payment-transfer:hover,*/
+/*.booking-payment-transfer.active,*/
+/*.booking-payment-paypal.active {*/
+/*  color: #fff;*/
+/*  background-color: var(--primary-hover);*/
+/*}*/
 .booking-transfer-container {
   padding: 12px 0;
   color: var(--txt-color);
@@ -609,3 +609,51 @@ input[type="text"]:disabled {
   margin-top: 24px;
   font-size: 12px;
 }
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.email-verify-container {
+  background-color: #fff;
+  color: var(--txt-color);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.email-verify-heading {
+  margin: 12px 0 26px 0;
+}
+.email-verify-subheading {
+  text-align: center;
+  width: 60%;
+  font-size: 14px;
+  font-weight: 350;
+  margin-bottom: 24px;
+}
+.email-verify-input-wrapper input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+.email-verify-btn__verify {
+  font-size: 14px;
+  background-color: var(--primary-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.email-verify-btn__resend {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+

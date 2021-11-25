@@ -125,6 +125,7 @@
                             <div id="search_location" class="search__item-link">
                                 <h3 class="search__item-heading">Địa điểm</h3>
                                 <input
+                                        required
                                         name="destination"
                                         type="text"
                                         class="search__item-input"
@@ -275,6 +276,7 @@
                         <li class="search__item search__item--width">
                             <h3 class="search__item-heading">Nhận phòng</h3>
                             <input
+                                    required
                                     name="checkInDate"
                                     value="${checkInDate}"
                                     placeholder="Thêm ngày"
@@ -289,6 +291,7 @@
                             <div class="search__item-link">
                                 <h3 class="search__item-heading">Trả phòng</h3>
                                 <input
+                                        required
                                         name="checkOutDate"
                                         placeholder="Thêm ngày"
                                         value="${checkOutDate}"
@@ -324,6 +327,7 @@
                                         >${quantityPeople} Khách</span>
                                     </c:if>
                                     <input
+                                            required
                                             name="quantityPeople"
                                             <c:if test="${quantityPeople == null}">
                                                 value="0 Khách"
@@ -1033,7 +1037,7 @@
 <script>
     // btn add sub
     var max_people = 5;
-    var min_people = 0;
+
     $(".room-people__btn-adult-add").click(function (e) {
         var temp = parseInt(
             document.getElementById("room-people__count--adult").innerHTML
@@ -1069,7 +1073,7 @@
         var temp = parseInt(
             document.getElementById("room-people__count--adult").innerHTML
         );
-        if (temp > min_people) {
+        if (temp > 0) {
             temp -= 1;
             quantity -= 1;
             document.getElementById("room-people__count--adult").innerHTML = temp;
@@ -1120,7 +1124,7 @@
         var quantity = parseInt(
             document.getElementById("room-people_btn").value
         );
-        if (temp > min_people) {
+        if (temp > 0) {
             temp -= 1;
             quantity -= 1;
             document.getElementById("room-people__count--child").innerHTML = temp;
