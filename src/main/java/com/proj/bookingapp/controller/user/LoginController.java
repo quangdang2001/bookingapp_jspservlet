@@ -22,6 +22,12 @@ public class LoginController extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/user/view/login.jsp");
             return;
         }
+        if (action.equals("login")){
+            String mess = req.getParameter("message");
+            req.setAttribute("message",mess);
+            RequestDispatcher rd= req.getServletContext().getRequestDispatcher("/user/view/login.jsp");
+            rd.forward(req,resp);
+        }
         if (action.equals("logout")) logout(req,resp);
     }
 
@@ -34,12 +40,16 @@ public class LoginController extends HttpServlet {
     }
 
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0); //delete the cookie
+            cookie.setPath("/"); //allow the download application to access it
+            response.addCookie(cookie);
+        }
         HttpSession session = request.getSession();
         session.removeAttribute("user");
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie1 : cookies){
-            cookie1.setMaxAge(0);
-        }
+
         String referer = request.getHeader("Referer");
         response.sendRedirect(referer);
     }

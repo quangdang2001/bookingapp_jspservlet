@@ -28,4 +28,12 @@
         <param-name>pass</param-name>
         <param-value>ztmsrwdikpifoevt</param-value>
     </context-param>
+    <filter>
+        <filter-name>Authorizationlogin</filter-name>
+        <filter-class>com.proj.bookingapp.filter.authorization</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Authorizationlogin</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

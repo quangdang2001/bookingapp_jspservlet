@@ -86,29 +86,29 @@
                 </div>
                 <form action="${pageContext.request.contextPath}/adminPage/user" method="post">
                     <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="id" value="${user.id}">
+                    <input type="hidden" name="id" value="${user1.id}">
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">First name:</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="firstname" class="form-control" type="text" value="${user.firstName}">
+                            <input name="firstname" class="form-control" type="text" value="${user1.firstName}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Last name:</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="lastname" class="form-control" type="text" value="${user.lastName}">
+                            <input name="lastname" class="form-control" type="text" value="${user1.lastName}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Email:</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="email" class="form-control" type="text" value="${user.email}">
+                            <input name="email" class="form-control" type="text" value="${user1.email}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Password:</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="password" class="form-control" type="text" value="${user.password}">
+                            <input name="password" class="form-control" type="text" value="${user1.password}">
                         </div>
                     </div>
                     <div class="form-group row">

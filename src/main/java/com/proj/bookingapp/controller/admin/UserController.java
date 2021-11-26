@@ -51,7 +51,7 @@ public class UserController extends HttpServlet {
             throws ServletException, IOException{
 
         User user = userService.findById(Long.parseLong(request.getParameter("id")));
-        request.setAttribute("user",user);
+        request.setAttribute("user1",user);
 
         List<User> users = userService.findAll();
         request.setAttribute("users",users);
