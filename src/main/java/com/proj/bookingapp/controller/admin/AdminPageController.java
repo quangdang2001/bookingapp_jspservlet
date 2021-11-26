@@ -2,7 +2,7 @@ package com.proj.bookingapp.controller.admin;
 
 import com.proj.bookingapp.service.CityService;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.query.Query;
 
-import javax.inject.Inject;
+
 import javax.transaction.Transactional;
 import java.util.List;
 

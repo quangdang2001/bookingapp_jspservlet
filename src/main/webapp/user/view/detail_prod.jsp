@@ -350,7 +350,7 @@
                                     <input
                                             value="${checkInDate}"
                                             name="checkInDate"
-                                            readonly
+                                            autocomplete="off"
                                             type="text"
                                             id="booking-box-checkin"
                                             class="booking-box-checkin__input"
@@ -369,7 +369,7 @@
                                     <input
                                             name="checkOutDate"
                                             value="${checkOutDate}"
-                                            readonly
+                                            autocomplete="off"
                                             type="text"
                                             id="booking-box-checkout"
                                             class="booking-box-checkout__input"
@@ -388,7 +388,7 @@
                             <input
                                     name="quantityPeople"
                                     <c:if test="${quantityPeople == null}">
-                                        value="0 Khách"
+                                        value="1 Khách"
                                     </c:if>
                                     <c:if test="${quantityPeople != null}">
                                         value="${quantityPeople} Khách"
@@ -398,6 +398,7 @@
                                     class="booking-box-guests--input"
                                     required
                                     readonly
+
                             />
                             <div class="booking-box-guests-number">
                                 <div class="booking-box-guests-number-warning">
@@ -417,7 +418,7 @@
                                                 id="booking-box-guests__count--adult"
                                                 class="booking-box-guests__count--adult"
                                         >
-                                            0
+                                            1
                                         </div>
                                         <div class="booking-box-guests__btn-adult-add">
                         <span
@@ -479,7 +480,7 @@
                             </div>
                         </div>
                     </div>
-                    <div  id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</div>
+                    <button  id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
                     <div class="booking-box-price-container">
                         <div class="booking-box-price-wrapper">
                             <div class="booking-box-price__label">
@@ -971,7 +972,7 @@
 
     // btn add sub
     <%--<var maxPeople = 1;         //${room.accomodatesCount}&ndash;%&gt;--%>
-    var maxPeople = 10;
+    var maxPeople = ${room.accomodatesCount};
     var maxPeopleChild = maxPeople - 1;
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         var temp = parseInt(

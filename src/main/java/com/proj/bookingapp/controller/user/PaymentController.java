@@ -5,10 +5,14 @@ import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.PaymentService;
 import com.proj.bookingapp.service.RoomService;
 import com.proj.bookingapp.service.UserService;
+import com.proj.bookingapp.service.iplm.BookingServiceIplm;
+import com.proj.bookingapp.service.iplm.PaymentServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
+import com.proj.bookingapp.service.iplm.UserServiceIplm;
 import com.proj.bookingapp.utils.EmailUtil;
 import lombok.SneakyThrows;
 
-import javax.inject.Inject;
+
 import javax.mail.MessagingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -32,8 +36,8 @@ public class PaymentController extends HttpServlet {
     private String username;
     private String pass;
 
-    @Inject
-    private UserService userService;
+
+    private UserService userService = new UserServiceIplm();
 
     @Override
     public void init() throws ServletException {
@@ -45,12 +49,12 @@ public class PaymentController extends HttpServlet {
     }
 
 
-    @Inject
-    private RoomService roomService;
-    @Inject
-    private BookingService bookingService;
-    @Inject
-    private PaymentService paymentService;
+
+    private RoomService roomService= new RoomServiceIplm();
+
+    private BookingService bookingService = new BookingServiceIplm();
+
+    private PaymentService paymentService = new PaymentServiceIplm();
 
     @SneakyThrows
     @Override

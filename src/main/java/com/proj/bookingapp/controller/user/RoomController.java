@@ -6,9 +6,12 @@ import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.ReviewService;
 import com.proj.bookingapp.service.RoomService;
+import com.proj.bookingapp.service.iplm.BookingServiceIplm;
+import com.proj.bookingapp.service.iplm.ReviewServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
 import com.proj.bookingapp.utils.DateUtil;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,12 +26,12 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/home/room-detail"})
 public class RoomController extends HttpServlet {
-    @Inject
-    private RoomService roomService;
-    @Inject
-    private ReviewService reviewService;
-    @Inject
-    private BookingService bookingService;
+
+    private RoomService roomService= new RoomServiceIplm();
+
+    private ReviewService reviewService =new ReviewServiceIplm();
+
+    private BookingService bookingService = new BookingServiceIplm();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         showDetail(req,resp);

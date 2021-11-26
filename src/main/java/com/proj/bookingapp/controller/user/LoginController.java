@@ -2,8 +2,9 @@ package com.proj.bookingapp.controller.user;
 
 import com.proj.bookingapp.model.User;
 import com.proj.bookingapp.service.UserService;
+import com.proj.bookingapp.service.iplm.UserServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +13,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
-    @Inject
-    private UserService userService;
+
+    private UserService userService = new UserServiceIplm();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");

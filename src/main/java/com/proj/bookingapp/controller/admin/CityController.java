@@ -2,8 +2,9 @@ package com.proj.bookingapp.controller.admin;
 
 import com.proj.bookingapp.model.City;
 import com.proj.bookingapp.service.CityService;
+import com.proj.bookingapp.service.iplm.CityServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +18,8 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/adminPage/city"})
 public class CityController extends HttpServlet {
 
-    @Inject
-    private CityService cityService;
+
+    private CityService cityService= new CityServiceIplm();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

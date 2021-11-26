@@ -2,8 +2,9 @@ package com.proj.bookingapp.controller.admin;
 
 import com.proj.bookingapp.model.*;
 import com.proj.bookingapp.service.UserService;
+import com.proj.bookingapp.service.iplm.UserServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +18,8 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/adminPage/user"})
 public class UserController extends HttpServlet {
 
-    @Inject
-    private UserService userService;
+
+    private UserService userService= new UserServiceIplm();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

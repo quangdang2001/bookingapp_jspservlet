@@ -3,9 +3,10 @@ package com.proj.bookingapp.controller.user;
 import com.proj.bookingapp.model.City;
 import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.service.RoomService;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
 import lombok.SneakyThrows;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +24,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/home/rooms"})
 public class SearchRoom extends HttpServlet {
-    @Inject
-    private RoomService roomService;
+
+    private RoomService roomService= new RoomServiceIplm();
 
     @SneakyThrows
     @Override

@@ -2,8 +2,12 @@ package com.proj.bookingapp.controller.admin;
 
 import com.proj.bookingapp.model.*;
 import com.proj.bookingapp.service.*;
+import com.proj.bookingapp.service.iplm.BuildingServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomImageServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomTypeServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,14 +26,14 @@ import java.util.List;
 public class RoomController extends HttpServlet {
 
 
-    @Inject
-    private RoomService roomService;
-    @Inject
-    private BuildingService buildingService;
-    @Inject
-    private RoomTypeService roomTypeService;
-    @Inject
-    private RoomImageService roomImageService;
+
+    private RoomService roomService= new RoomServiceIplm();
+
+    private BuildingService buildingService = new BuildingServiceIplm();
+
+    private RoomTypeService roomTypeService= new RoomTypeServiceIplm();
+
+    private RoomImageService roomImageService = new RoomImageServiceIplm();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

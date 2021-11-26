@@ -4,8 +4,9 @@ import com.proj.bookingapp.model.City;
 import com.proj.bookingapp.model.Payment;
 import com.proj.bookingapp.service.CityService;
 import com.proj.bookingapp.service.PaymentService;
+import com.proj.bookingapp.service.iplm.PaymentServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +19,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/adminPage/payment"})
 public class PaymentController extends HttpServlet {
-    @Inject
-    private PaymentService paymentService;
+
+    private PaymentService paymentService= new PaymentServiceIplm();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

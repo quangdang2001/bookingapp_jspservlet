@@ -4,10 +4,12 @@ import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.RoomService;
+import com.proj.bookingapp.service.iplm.BookingServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
 import com.proj.bookingapp.utils.DateUtil;
 import lombok.SneakyThrows;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +24,10 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/home/booking"})
 public class BookingController extends HttpServlet {
-    @Inject
-    private RoomService roomService;
-    @Inject
-    private BookingService bookingService;
+
+    private RoomService roomService= new RoomServiceIplm();
+
+    private BookingService bookingService= new BookingServiceIplm();
     @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

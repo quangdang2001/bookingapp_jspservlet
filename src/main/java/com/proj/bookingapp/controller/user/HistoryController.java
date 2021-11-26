@@ -3,8 +3,9 @@ package com.proj.bookingapp.controller.user;
 import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.model.User;
 import com.proj.bookingapp.service.BookingService;
+import com.proj.bookingapp.service.iplm.BookingServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +18,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/home/history")
 public class HistoryController extends HttpServlet {
-    @Inject
-    private BookingService bookingService;
+
+    private BookingService bookingService= new BookingServiceIplm();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         showHistory(request,response);

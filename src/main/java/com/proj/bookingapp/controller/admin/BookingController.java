@@ -5,9 +5,11 @@ import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.RoomService;
 import com.proj.bookingapp.service.TransactionService;
 import com.proj.bookingapp.service.UserService;
+import com.proj.bookingapp.service.iplm.BookingServiceIplm;
+import com.proj.bookingapp.service.iplm.TransactionServiceIplm;
 import lombok.SneakyThrows;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +25,10 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/adminPage/booking"})
 public class BookingController extends HttpServlet {
 
-    @Inject
-    private BookingService bookingService;
-    @Inject
-    private TransactionService transactionService;
+
+    private BookingService bookingService = new BookingServiceIplm();
+
+    private TransactionService transactionService = new TransactionServiceIplm();
 
     @SneakyThrows
     @Override

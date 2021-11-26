@@ -4,8 +4,9 @@ import com.proj.bookingapp.model.Payment;
 import com.proj.bookingapp.model.RoomType;
 import com.proj.bookingapp.service.PaymentService;
 import com.proj.bookingapp.service.RoomTypeService;
+import com.proj.bookingapp.service.iplm.RoomTypeServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +19,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/adminPage/roomtype"})
 public class RoomTypeController extends HttpServlet {
-    @Inject
-    private RoomTypeService roomTypeService;
+
+    private RoomTypeService roomTypeService= new RoomTypeServiceIplm();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

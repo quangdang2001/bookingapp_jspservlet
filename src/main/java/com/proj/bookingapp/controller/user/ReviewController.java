@@ -6,8 +6,11 @@ import com.proj.bookingapp.model.User;
 import com.proj.bookingapp.service.ReviewService;
 import com.proj.bookingapp.service.RoomService;
 import com.proj.bookingapp.service.UserService;
+import com.proj.bookingapp.service.iplm.ReviewServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
+import com.proj.bookingapp.service.iplm.UserServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +22,12 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/review"})
 public class ReviewController extends HttpServlet {
 
-    @Inject
-    private ReviewService reviewService;
-    @Inject
-    private UserService userService;
-    @Inject
-    private RoomService roomService;
+
+    private ReviewService reviewService= new ReviewServiceIplm();
+
+    private UserService userService = new UserServiceIplm();
+
+    private RoomService roomService = new RoomServiceIplm();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         postCmt(req,resp);

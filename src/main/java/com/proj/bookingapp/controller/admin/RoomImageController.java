@@ -6,8 +6,10 @@ import com.proj.bookingapp.model.RoomImage;
 import com.proj.bookingapp.service.RoomImageService;
 import com.proj.bookingapp.service.RoomService;
 import com.proj.bookingapp.service.UpLoadFile;
+import com.proj.bookingapp.service.iplm.RoomImageServiceIplm;
+import com.proj.bookingapp.service.iplm.RoomServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +26,10 @@ import java.util.List;
 @MultipartConfig
 public class RoomImageController extends HttpServlet {
 
-    @Inject
-    private RoomService roomService;
-    @Inject
-    private RoomImageService roomImageService;
+
+    private RoomService roomService= new RoomServiceIplm();
+
+    private RoomImageService roomImageService = new RoomImageServiceIplm();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1104,20 +1104,9 @@
   display: none;
 }
 
-.input-customer-checked:checked ~ .add-customer {
-  display: block;
-}
-
-.input-customer-checked:checked ~ .cancel-customer {
-  display: block;
-}
-
 .open {
   display: block;
 }
-
-
-
 
 .header__nav-item-link-js {
   text-decoration: none;
@@ -1502,6 +1491,7 @@ input:focus {
   opacity: 0;
   transition: all 0.3s ease-in-out;
   height: auto;
+  display: block;
 }
 .room-people-number.active {
   visibility: visible;

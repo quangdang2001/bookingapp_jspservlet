@@ -332,6 +332,12 @@
                             </div>
                         </div>
                     </div>
+                    <div  class="alert alert-warning" id="warning-alert" style="display: none">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+                        <strong>Please fill all the blank </strong> to continue booking!
+                    </div>
                     <div class="booking-box-info">
                         <div class="booking-box-date-container">
                             <div class="booking-box-date--checkin change-date">
@@ -344,7 +350,7 @@
                                     <input
                                             value="${checkInDate}"
                                             name="checkInDate"
-                                            readonly
+                                            autocomplete="off"
                                             type="text"
                                             id="booking-box-checkin"
                                             class="booking-box-checkin__input"
@@ -363,7 +369,7 @@
                                     <input
                                             name="checkOutDate"
                                             value="${checkOutDate}"
-                                            readonly
+                                            autocomplete="off"
                                             type="text"
                                             id="booking-box-checkout"
                                             class="booking-box-checkout__input"
@@ -382,7 +388,7 @@
                             <input
                                     name="quantityPeople"
                                     <c:if test="${quantityPeople == null}">
-                                        value="0 Khách"
+                                        value="1 Khách"
                                     </c:if>
                                     <c:if test="${quantityPeople != null}">
                                         value="${quantityPeople} Khách"
@@ -392,6 +398,7 @@
                                     class="booking-box-guests--input"
                                     required
                                     readonly
+
                             />
                             <div class="booking-box-guests-number">
                                 <div class="booking-box-guests-number-warning">
@@ -411,7 +418,7 @@
                                                 id="booking-box-guests__count--adult"
                                                 class="booking-box-guests__count--adult"
                                         >
-                                            0
+                                            1
                                         </div>
                                         <div class="booking-box-guests__btn-adult-add">
                         <span
@@ -473,7 +480,7 @@
                             </div>
                         </div>
                     </div>
-                    <button id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
+                    <button  id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
                     <div class="booking-box-price-container">
                         <div class="booking-box-price-wrapper">
                             <div class="booking-box-price__label">
@@ -909,12 +916,20 @@
 <script>
     $("#booking-box-btn").click(function (e) {
         if (parseInt(document.getElementById("booking-box-guests--input").value) === 0
-            || document.getElementById("booking-box-checkin").value === null || document.getElementById("booking-box-checkout").value == null) {
-            return 0;
-        } else {
+        || document.getElementById("booking-box-checkin").value === ''
+            || document.getElementById("booking-box-checkout").value == ''
+        ) {
+            document.getElementById("warning-alert").style.display="block"
+            $("#warning-alert").fadeTo(2000, 500).slideUp(500, function(){
+                $("#warning-alert").slideUp(500);
+            });
+
+        }
+        else {
             document.getElementById("booking-box-btn").href = '${pageContext.request.contextPath}/view/booking.jsp';
         }
     })
+
 </script>
 
 <script>
@@ -957,7 +972,7 @@
 
     // btn add sub
     <%--<var maxPeople = 1;         //${room.accomodatesCount}&ndash;%&gt;--%>
-    var maxPeople = 10;
+    var maxPeople = ${room.accomodatesCount};
     var maxPeopleChild = maxPeople - 1;
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         var temp = parseInt(

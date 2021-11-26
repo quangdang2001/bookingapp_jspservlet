@@ -6,8 +6,10 @@ import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.model.RoomType;
 import com.proj.bookingapp.service.BuildingService;
 import com.proj.bookingapp.service.CityService;
+import com.proj.bookingapp.service.iplm.BuildingServiceIplm;
+import com.proj.bookingapp.service.iplm.CityServiceIplm;
 
-import javax.inject.Inject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +22,10 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/adminPage/building"})
 public class BuildingController extends HttpServlet {
-    @Inject
-    private BuildingService buildingService;
-    @Inject
-    private CityService cityService;
+
+    private BuildingService buildingService = new BuildingServiceIplm();
+
+    private CityService cityService = new CityServiceIplm();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

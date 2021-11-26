@@ -3,10 +3,11 @@ package com.proj.bookingapp.controller.user;
 import com.proj.bookingapp.dto.UserDTO;
 import com.proj.bookingapp.model.User;
 import com.proj.bookingapp.service.UserService;
+import com.proj.bookingapp.service.iplm.UserServiceIplm;
 import com.proj.bookingapp.utils.EmailUtil;
 
 
-import javax.inject.Inject;
+
 import javax.mail.MessagingException;
 
 import javax.servlet.RequestDispatcher;
@@ -26,8 +27,8 @@ public class RegisterController extends HttpServlet {
     private String username;
     private String pass;
 
-    @Inject
-    private UserService userService;
+
+    private UserService userService= new UserServiceIplm();
 
     @Override
     public void init() throws ServletException {
