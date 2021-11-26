@@ -332,6 +332,12 @@
                             </div>
                         </div>
                     </div>
+                    <div  class="alert alert-warning" id="warning-alert" style="display: none">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+                        <strong>Please fill all the blank </strong> to continue booking!
+                    </div>
                     <div class="booking-box-info">
                         <div class="booking-box-date-container">
                             <div class="booking-box-date--checkin change-date">
@@ -473,7 +479,7 @@
                             </div>
                         </div>
                     </div>
-                    <button id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
+                    <div  id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</div>
                     <div class="booking-box-price-container">
                         <div class="booking-box-price-wrapper">
                             <div class="booking-box-price__label">
@@ -909,12 +915,20 @@
 <script>
     $("#booking-box-btn").click(function (e) {
         if (parseInt(document.getElementById("booking-box-guests--input").value) === 0
-            || document.getElementById("booking-box-checkin").value === null || document.getElementById("booking-box-checkout").value == null) {
-            return 0;
-        } else {
+        || document.getElementById("booking-box-checkin").value === ''
+            || document.getElementById("booking-box-checkout").value == ''
+        ) {
+            document.getElementById("warning-alert").style.display="block"
+            $("#warning-alert").fadeTo(2000, 500).slideUp(500, function(){
+                $("#warning-alert").slideUp(500);
+            });
+
+        }
+        else {
             document.getElementById("booking-box-btn").href = '${pageContext.request.contextPath}/view/booking.jsp';
         }
     })
+
 </script>
 
 <script>

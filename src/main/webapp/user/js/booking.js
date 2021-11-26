@@ -33,15 +33,6 @@ $("#booking-payment-paypal").click(function (e) {
 
 // edit btn
 
-//date
-$(".booking-content-edit-date").click(function (e) {
-  e.stopPropagation();
-});
-
-$(".booking-content-edit-date").click(function (e) {
-  $(".booking-box-date-container").addClass("active");
-});
-
 //guess
 
 $(".booking-content-edit-guess").click(function (e) {

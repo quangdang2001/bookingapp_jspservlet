@@ -1,4 +1,4 @@
- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
@@ -59,7 +59,7 @@
                     </ul>
                     <ul id="header__nav-item-user" class="header__nav-list header__nav-list--hover">
                         <li class="header__nav-item header__nav-item-user">
-                            <div  class="nav-tablet">
+                            <div class="nav-tablet">
                                 <ul class="nav-tablet__list">
                                     <c:if test="${sessionScope.user == null}">
                                         <li class="nav-tablet__item js-sign">
@@ -74,11 +74,13 @@
                                     <c:if test="${sessionScope.user != null}">
                                         <li class="nav-tablet__item js-sign">
                                             <a
-                                               style="display: block"
-                                               class="nav-tablet__item-link">Xin chào ${sessionScope.user.firstName}</a>
+                                                    style="display: block"
+                                                    class="nav-tablet__item-link">Xin
+                                                chào ${sessionScope.user.firstName}</a>
                                         </li>
                                         <li class="nav-tablet__item">
-                                            <a href="${pageContext.request.contextPath}/home/user?action=load" class="nav-tablet__item-link">
+                                            <a href="${pageContext.request.contextPath}/home/user?action=load"
+                                               class="nav-tablet__item-link">
                                                 Cài đặt tài khoản
                                             </a>
                                         </li>
@@ -103,12 +105,12 @@
                               data-height="25"
                               data-weight="25"
                       ></span>
-                      <span
-                              class="iconify header__nav-item-icon-user"
-                              data-icon="bx:bxs-user"
-                              data-height="25"
-                              data-weight="25"
-                      ></span>
+                                <span
+                                        class="iconify header__nav-item-icon-user"
+                                        data-icon="bx:bxs-user"
+                                        data-height="25"
+                                        data-weight="25"
+                                ></span>
 
                             </div>
                         </li>
@@ -303,16 +305,9 @@
                             </div>
                         </li>
                         <div class="border"></div>
-                        <li id="input_customer" class="search__item">
-                            <div class="search__item-link search__item-link-two">
-                                <input
-                                        type="checkbox"
-                                        hidden
-                                        class="input-customer-checked"
-                                        id="input-customer-check"
-                                />
-
-                                <label for="input-customer-check" class="link-text">
+                        <li id="room-people" class="search__item">
+                            <div  class="search__item-link search__item-link-two">
+                                <div  class="link-text">
                                     <h3 class="search__item-heading">Khách</h3>
                                     <c:if test="${quantityPeople == null}">
                                         <span
@@ -341,7 +336,7 @@
                                             id="room-people_btn"
                                             class="room-people_btn"
                                     />
-                                </label>
+                                </div>
                             </div>
 
                             <div class="room-people-number">
@@ -352,10 +347,10 @@
                                     <div class="room-people__label">Người lớn</div>
                                     <div class="room-people__btn">
                                         <div class="room-people__btn-adult-sub">
-                        <span
-                                class="iconify room-people-icon"
-                                data-icon="carbon:subtract-alt"
-                        ></span>
+                                        <span
+                                          class="iconify room-people-icon"
+                                          data-icon="carbon:subtract-alt"
+                                        ></span>
                                         </div>
                                         <div
                                                 id="room-people__count--adult"
@@ -1083,7 +1078,7 @@
                 document.getElementById("room-people__count--child").innerHTML
             ) >= 1 && parseInt(
                 document.getElementById("room-people__count--adult").innerHTML
-            )===1
+            ) === 1
         ) {
             return 0;
         }
