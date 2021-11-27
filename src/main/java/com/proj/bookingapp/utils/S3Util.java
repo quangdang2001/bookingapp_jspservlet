@@ -13,9 +13,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class S3Util {
-    private static String awsId="AKIA5QHSOL46OJJPU2WO";
-    private static String awsKey="QFL+NFwL1ziMvd7WMtcqXm3wdUUzCzKYwtUs0jco";
-    private static String bucketName="bookingappltw";
+    private static String awsId="";
+    private static String awsKey="";
+    private static String bucketName="";
     private static String urlReturn;
     private final static AmazonS3 s3client = new AmazonS3Client(new BasicAWSCredentials(awsId, awsKey));
 
