@@ -22,7 +22,8 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-
+    <link rel="icon" type="image/png" href="<c:url value="/user/images/favicon-16x16.png" />" sizes="16x16">
+    <link rel="icon" type="image/png" href="<c:url value="/user/images/favicon-32x32.png" />" sizes="32x32">
     <link rel="stylesheet" href="<c:url value="/user/styles/index.css" />"/>
     <link rel="stylesheet" href="<c:url value="/user/styles/index_base.css" />"/>
     <link rel="stylesheet" href="<c:url value="/user/styles/reponsive.css" />"/>
@@ -135,144 +136,7 @@
                                         value="${destination}"
                                 />
                             </div>
-                            <div
-                                    id="location-search-select-list"
-                                    class="location-search-select-list"
-                            >
-                                <div class="location-search-select-label">
-                                    Địa điểm nổi bật
-                                </div>
-                                <button type="button"
-                                        id="location-search-suggest-1"
-                                        class="location-search-select-wrapper"
-                                >
-                                    <div class="location-search-select-wrapper__icons">
-                      <span
-                              class="iconify location-search-select-icons"
-                              data-icon="ci:location"
-                      ></span>
-                                    </div>
-                                    <div class="location-search-select-wrapper__content">
-                                        <div
-                                                class="location-search-select-wrapper__content__title"
-                                        >
-                                            Đà nẵng
-                                        </div>
-                                        <div
-                                                class="
-                          location-search-select-wrapper__content__sub-title
-                        "
-                                        >
-                                            Địa điểm
-                                        </div>
-                                    </div>
-                                </button>
-                                <button
-                                        type="button"
-                                        id="location-search-suggest-2"
-                                        class="location-search-select-wrapper"
-                                >
-                                    <div class="location-search-select-wrapper__icons">
-                      <span
-                              class="iconify location-search-select-icons"
-                              data-icon="icon-park-outline:hotel"
-                      ></span>
-                                    </div>
-                                    <div class="location-search-select-wrapper__content">
-                                        <div
-                                                class="location-search-select-wrapper__content__title"
-                                        >
-                                            Sheraton
-                                        </div>
-                                        <div
-                                                class="
-                          location-search-select-wrapper__content__sub-title
-                        "
-                                        >
-                                            Khách sạn
-                                        </div>
-                                    </div>
-                                </button>
 
-                                <button
-                                        type="button"
-                                        id="location-search-suggest-4"
-                                        class="location-search-select-wrapper"
-                                >
-                                    <div class="location-search-select-wrapper__icons">
-                      <span
-                              class="iconify location-search-select-icons"
-                              data-icon="ci:location"
-                      ></span>
-                                    </div>
-                                    <div class="location-search-select-wrapper__content">
-                                        <div
-                                                class="location-search-select-wrapper__content__title"
-                                        >
-                                            Đà nẵng
-                                        </div>
-                                        <div
-                                                class="
-                          location-search-select-wrapper__content__sub-title
-                        "
-                                        >
-                                            Địa điểm
-                                        </div>
-                                    </div>
-                                </button>
-                                <button
-                                        type="button"
-                                        id="location-search-suggest-5"
-                                        class="location-search-select-wrapper"
-                                >
-                                    <div class="location-search-select-wrapper__icons">
-                      <span
-                              class="iconify location-search-select-icons"
-                              data-icon="ci:location"
-                      ></span>
-                                    </div>
-                                    <div class="location-search-select-wrapper__content">
-                                        <div
-                                                class="location-search-select-wrapper__content__title"
-                                        >
-                                            Đà nẵng
-                                        </div>
-                                        <div
-                                                class="
-                          location-search-select-wrapper__content__sub-title
-                        "
-                                        >
-                                            Địa điểm
-                                        </div>
-                                    </div>
-                                </button>
-                                <button
-                                        type="button"
-                                        id="location-search-suggest-6"
-                                        class="location-search-select-wrapper"
-                                >
-                                    <div class="location-search-select-wrapper__icons">
-                      <span
-                              class="iconify location-search-select-icons"
-                              data-icon="ci:location"
-                      ></span>
-                                    </div>
-                                    <div class="location-search-select-wrapper__content">
-                                        <div
-                                                class="location-search-select-wrapper__content__title"
-                                        >
-                                            Đà nẵng
-                                        </div>
-                                        <div
-                                                class="
-                          location-search-select-wrapper__content__sub-title
-                        "
-                                        >
-                                            Địa điểm
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
                         </li>
                         <div class="border"></div>
                         <li class="search__item search__item--width">
@@ -528,7 +392,7 @@
                                 <div class="home__product-place">
                                     <div class="home__product-img">
                                         <img
-                                                src="${pageContext.request.contextPath}/user/images/Móng Cái.png"
+                                                src="${pageContext.request.contextPath}/user/images/mongcai.png"
                                                 alt=""
                                                 class="home__product-img-place"
                                         />
@@ -560,7 +424,7 @@
                                 <div class="home__product-place">
                                     <div class="home__product-img">
                                         <img
-                                                src="${pageContext.request.contextPath}/user/images/LụcNam.png"
+                                                src="${pageContext.request.contextPath}/user/images/lucnam.png"
                                                 alt=""
                                                 class="home__product-img-place"
                                         />
@@ -576,7 +440,7 @@
                                 <div class="home__product-place">
                                     <div class="home__product-img">
                                         <img
-                                                src="${pageContext.request.contextPath}/user/images/Huế.jpg"
+                                                src="${pageContext.request.contextPath}/user/images/hue.jpg"
                                                 alt=""
                                                 class="home__product-img-place"
                                         />
@@ -620,7 +484,7 @@
                             >
                                 <div class="home__category-item">
                                     <img
-                                            src="${pageContext.request.contextPath}/user/images/Nghỉ dưỡng.jpg"
+                                            src="${pageContext.request.contextPath}/user/images/nghiduong.jpg"
                                             alt=""
                                             class="home__category-item-img"
                                     />
@@ -689,7 +553,7 @@
                     </div>
                     <a href="" class="web__content-banner-link">
                         <div class="web__content-banner" style="background: url(
-                        <c:url value="/user/images/backcate.jpg"/> ) center / cover no-repeat ">
+                        <c:url value="/user/images/chunha.jpg"/> ) center / cover no-repeat ">
                             <div class="web__content-banner-info">
                                 <h2 class="web__content-banner-heading">
                                     Thử đón tiếp khách
