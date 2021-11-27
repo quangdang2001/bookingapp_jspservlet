@@ -96,10 +96,9 @@ public class PaymentController extends HttpServlet {
                 ,Integer.parseInt(quantityPeople),null,user,transaction,room);
 
         bookingService.saveBooking(booking);
-        String logoAdd = request.getContextPath()+"/user/images/travel.jpg";
-        System.out.println(logoAdd);
+
         boolean test = sendEmailConfirm(checkInDate,checkOutDate,room.getName(),room.getBuilding().getAddress(),
-                booking.getBookingDate().toString(),quantityPeople,user.getEmail(),String.valueOf(booking.getId()),logoAdd);
+                booking.getBookingDate().toString(),quantityPeople,user.getEmail(),String.valueOf(booking.getId()),totalPrice);
         if (test==false){
             //trang gởi mail lỗi
         }
@@ -113,7 +112,7 @@ public class PaymentController extends HttpServlet {
     }
 
     private boolean sendEmailConfirm(String checkInDate, String checkOutDate,String roomName,String address,
-                                     String bookingDate,String quantityPeople,String email,String id, String logoAdd){
+                                     String bookingDate,String quantityPeople,String email,String id, double price){
 
         String message = "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -307,6 +306,7 @@ public class PaymentController extends HttpServlet {
                 "              <p style=\"margin: 0;\">ID: "+ id +" </p>\n" +
                 "              <p style=\"margin: 0;\">Thời gian: "+ checkInDate +" - "+ checkOutDate +" </p>\n" +
                 "              <p style=\"margin: 0;\">Số khách: "+quantityPeople+" </p>\n" +
+                "              <p style=\"margin: 0;\">Tổng tiền: "+price+" </p>\n"+
                 "            </td>\n" +
                 "          </tr>\n" +
                 "          <!-- end button -->\n" +

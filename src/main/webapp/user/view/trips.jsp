@@ -113,9 +113,10 @@
                                     ${booking.room.building.address} - ${booking.room.building.city.name}
                             </div>
                             <div id="trip-body-date" class="trip-body-items">
-                                    ${booking.checkInDate} <b>To</b> ${booking.checkOutDate}
+                                <b>From</b> ${booking.checkInDate} <b>To</b> ${booking.checkOutDate}
                             </div>
                             <div id="trip-body-guest" class="trip-body-items">${booking.quantityPeople} Khách</div>
+                            <div class="trip-body-items">Tổng tiền: ${booking.priceForStay}</div>
                             <div class="trip-body-items">Ngày đặt phòng: ${booking.bookingDate}</div>
                         </div>
                     </div>
