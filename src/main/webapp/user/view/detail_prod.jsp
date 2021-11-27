@@ -313,7 +313,7 @@
         </div>
 
         <div class="col-5 box-move">
-            <form action="${pageContext.request.contextPath}/home/booking" method="post" novalidate>
+            <form action="${pageContext.request.contextPath}/home/booking" method="post">
                 <input type="hidden" name="reviewCount" value="${reviewCount}">
                 <input type="hidden" name="idRoom" value="${room.id}">
                 <input type="hidden" name="dateBlock" value="${dateBlock}">

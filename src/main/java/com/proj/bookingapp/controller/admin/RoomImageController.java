@@ -48,7 +48,7 @@ public class RoomImageController extends HttpServlet {
     private void delete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         Long id = Long.valueOf(request.getParameter("idImg"));
-        roomImageService.deleteRoomImage(id);
+        roomImageService.deleteRoomImage(id,request.getServletContext().getRealPath(""));
         String referer = request.getHeader("Referer");
         response.sendRedirect(referer);
     }

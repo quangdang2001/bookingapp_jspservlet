@@ -46,12 +46,14 @@
             <div class="col-7">
                 <div class="booking-content-container">
                     <div class="booking-content-heading">
+                        <a href="javascript:history.back()">
                         <div class="booking-content-heading__icons">
                 <span
                         class="iconify"
                         data-icon="akar-icons:chevron-left"
                 ></span>
                         </div>
+                        </a>
                         <h1>Xác nhận và thanh toán</h1>
                     </div>
                     <div id="booking-trip" class="booking-content-wrapper">

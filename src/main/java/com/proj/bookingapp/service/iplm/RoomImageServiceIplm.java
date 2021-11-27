@@ -5,6 +5,9 @@ import com.proj.bookingapp.dao.iplm.RoomImageDAOIplm;
 import com.proj.bookingapp.model.RoomImage;
 import com.proj.bookingapp.service.RoomImageService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.net.http.HttpRequest;
 import java.util.List;
 
 public class RoomImageServiceIplm implements RoomImageService {
@@ -31,7 +34,15 @@ public class RoomImageServiceIplm implements RoomImageService {
     }
 
     @Override
-    public void deleteRoomImage(Long id) {
+    public void deleteRoomImage(Long id, String contextPath) {
+        String urlImg = roomImageDAO.findById(id).getName();
         roomImageDAO.deleteRoomImage(id);
+        File f= new File(contextPath+"/images/" +urlImg);
+        if (f.delete()){
+            System.out.println("Deleted img");
+        }
+        else {
+            System.out.println("Error delete img");
+        }
     }
 }
