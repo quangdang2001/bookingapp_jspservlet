@@ -1,5 +1,7 @@
 package com.proj.bookingapp.service;
 
+import com.proj.bookingapp.utils.S3Util;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ public class UpLoadFile {
         String SAVE_DIRECTORY = "images";
 
         String fullSavePath=null;
-        if (appPath.endsWith("/")) {
+        if (appPath.endsWith("/") || appPath.endsWith("\\")) {
             fullSavePath = appPath + SAVE_DIRECTORY;
         } else {
             fullSavePath = appPath + "/" + SAVE_DIRECTORY;
@@ -29,18 +31,27 @@ public class UpLoadFile {
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
-
+        String temp="";
         List<String> listFileName= new ArrayList<>();
         String fileName ="";
         for (Part part : parts) {
             fileName = extractFileName(part);
             if (fileName != null && fileName.length() > 0) {
-                String filePath = fullSavePath + File.separator + generateFileName(fileName);
-                listFileName.add(generateFileName(fileName));
+                String temp1= generateFileName(fileName);
+                String filePath = fullSavePath + File.separator + temp1;
+                //listFileName.add(generateFileName(fileName));
                 System.out.println("Write attachment to file: " + filePath);
 
-
                 part.write(filePath);
+                temp= S3Util.upload(generateFileName(fileName),filePath);
+                System.out.println(temp);
+                if (temp!=null){
+                    listFileName.add(temp);
+                }
+                else {
+                    System.out.println("Upload img to S3 fail");
+                }
+
             }
 
         }

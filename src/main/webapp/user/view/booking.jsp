@@ -281,7 +281,7 @@
                 <div class="booking-move-wrapper">
                     <div class="booking-move-heading-wrapper">
                         <div class="booking-move-heading__image">
-                            <img src="${pageContext.request.contextPath}/images/${room.roomImage[0].name}" alt=""/>
+                            <img src="${room.roomImage[0].name}" alt=""/>
                         </div>
                         <div class="booking-move-heading__content">
                 <span class="booking-move-heading__content-heading"

@@ -152,7 +152,7 @@
                         <c:forEach var="img" items="${room.roomImage}">
                             <div class="col-md-4">
                                 <div class="thumbnail">
-                                    <img src="${pageContext.request.contextPath}/images/${img.name}" alt=""
+                                    <img src="${img.name}" alt=""
                                          style="width:100%">
                                     <div class="caption">
                                         <form action="${pageContext.request.contextPath}/adminPage/roomImage"

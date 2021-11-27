@@ -140,7 +140,7 @@
                     <div class="row">
                         <div class="col-6 image__bigsize-wrapper">
                             <div class="image__bigsize">
-                                <img src="${pageContext.request.contextPath}/images/${room.roomImage[0].name}"
+                                <img src="${room.roomImage[0].name}"
                                 />
                             </div>
                         </div>
@@ -149,7 +149,7 @@
 
                                 <div class="col-6 image__small-wrapper">
                                     <div class="image-sub__smallsize">
-                                        <img src="${pageContext.request.contextPath}/images/${room.roomImage[1].name}"
+                                        <img src="${room.roomImage[1].name}"
                                         />
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@
 
                                 <div class="col-6 image__small-wrapper">
                                     <div class="image-sub__smallsize child_2">
-                                        <img src="${pageContext.request.contextPath}/images/${room.roomImage[2].name}"
+                                        <img src="${room.roomImage[2].name}"
                                         />
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
 
                                 <div class="col-6 image__small-wrapper">
                                     <div class="image-sub__smallsize">
-                                        <img src="${pageContext.request.contextPath}/images/${room.roomImage[3].name}"
+                                        <img src="${room.roomImage[3].name}"
                                         />
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                                 <div class="col-6 image__small-wrapper last-img">
 
                                     <div class="image-sub__smallsize">
-                                        <img src="${pageContext.request.contextPath}/images/${room.roomImage[4].name}"/>
+                                        <img src="${room.roomImage[4].name}"/>
                                     </div>
 
                                     <div class="image-sub_smallsize--btn">
@@ -809,14 +809,14 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <img
-                                    src="${pageContext.request.contextPath}/images/${room.roomImage[0].name}"
+                                    src="${room.roomImage[0].name}"
                                     style="width: 100%"
                             />
                         </div>
                         <c:forEach var="img" items="${room.roomImage}" begin="1">
                             <div class="item">
                                 <img
-                                        src="${pageContext.request.contextPath}/images/${img.name}"
+                                        src="${img.name}"
                                         style="width: 100%"
                                 />
                             </div>

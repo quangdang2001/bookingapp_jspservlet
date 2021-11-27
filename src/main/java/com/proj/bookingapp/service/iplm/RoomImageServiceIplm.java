@@ -4,6 +4,7 @@ import com.proj.bookingapp.dao.RoomImageDAO;
 import com.proj.bookingapp.dao.iplm.RoomImageDAOIplm;
 import com.proj.bookingapp.model.RoomImage;
 import com.proj.bookingapp.service.RoomImageService;
+import com.proj.bookingapp.utils.S3Util;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -37,12 +38,12 @@ public class RoomImageServiceIplm implements RoomImageService {
     public void deleteRoomImage(Long id, String contextPath) {
         String urlImg = roomImageDAO.findById(id).getName();
         roomImageDAO.deleteRoomImage(id);
-        File f= new File(contextPath+"/images/" +urlImg);
-        if (f.delete()){
-            System.out.println("Deleted img");
-        }
-        else {
-            System.out.println("Error delete img");
+
+        boolean temp = S3Util.deleteObj(urlImg);
+        if (!temp){
+            System.out.println("Fail delete S3");
+        }else {
+            System.out.println("Delete Img S3 successful");
         }
     }
 }

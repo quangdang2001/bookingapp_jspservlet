@@ -397,7 +397,7 @@
                                         <div class="col-4">
                                             <div class="product-container-img">
                                                 <div class="product-img">
-                                                    <img src="${pageContext.request.contextPath}/images/${room.roomImage[0].name}"
+                                                    <img src="${room.roomImage[0].name}"
                                                          alt=""/>
                                                 </div>
                                             </div>

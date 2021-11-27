@@ -98,8 +98,7 @@
                     <div class="trip-wrapper">
                         <div class="trip-wrapper-heading">
                             <div
-                                    style="background-image: url(<c:url
-                                            value="/images/${booking.room.roomImage[0].name}"/>)"
+                                    style="background-image: url(${booking.room.roomImage[0].name})"
                                     class="trip-heading__image"
                             ></div>
                         </div>
@@ -116,7 +115,7 @@
                                 <b>From</b> ${booking.checkInDate} <b>To</b> ${booking.checkOutDate}
                             </div>
                             <div id="trip-body-guest" class="trip-body-items">${booking.quantityPeople} Khách</div>
-                            <div class="trip-body-items">Tổng tiền: ${booking.priceForStay}</div>
+                            <div class="trip-body-items">Tổng tiền: ${booking.priceForStay}$</div>
                             <div class="trip-body-items">Ngày đặt phòng: ${booking.bookingDate}</div>
                         </div>
                     </div>
