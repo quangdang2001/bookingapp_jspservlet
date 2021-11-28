@@ -26,22 +26,21 @@ public class authorization implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String url = request.getRequestURI();
 
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String email ="";
+        if (user==null) {
+            Cookie[] cookie = request.getCookies();
+            email = CookieUtil.getCookieValue(cookie,"email");
+            if (email!=null && !email.equals("")){
+                user = userService.findByEmail(email);
+                session.setAttribute("user",user);
+            }
+        }
         if (url.contains("/adminPage") || url.contains("/review") || url.contains("/home/booking") || url.contains("/home/booking/payment") ){
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
             if (user==null){
-                Cookie[] cookie = request.getCookies();
-                String email = CookieUtil.getCookieValue(cookie,"email");
                 if (email==null || email.equals("")) {
                     response.sendRedirect(request.getContextPath()+"/login?action=login&message=Login first");
-                }
-                else {
-                    user = userService.findByEmail(email);
-                    session.setAttribute("user",user);
-                    if (url.contains("/adminPage") && !user.getRole().equals("ROLE_ADMIN")) {
-                        response.sendRedirect(request.getContextPath()+"/login?action=login&message=Not permission");
-                    }else
-                    chain.doFilter(request,response);
                 }
             }else {
                 if (url.contains("/adminPage") && !user.getRole().equals("ROLE_ADMIN")) {

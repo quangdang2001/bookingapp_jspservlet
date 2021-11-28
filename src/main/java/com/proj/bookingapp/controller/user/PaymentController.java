@@ -25,6 +25,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -91,16 +93,21 @@ public class PaymentController extends HttpServlet {
         Double totalPrice = totalDay*room.getPrice() + 5;
 
         Payment payment = paymentService.findByName("Chuyển Khoản");
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formatDateTime = now.format(format);
+
         Transaction transaction = new Transaction(null,false,payment,null);
         Booking booking = new Booking(null,checkInDateD,checkOutDateD,totalPrice,null
-                ,Integer.parseInt(quantityPeople),null,user,transaction,room);
+                ,Integer.parseInt(quantityPeople),now,user,transaction,room);
 
         bookingService.saveBooking(booking);
 
         boolean test = sendEmailConfirm(checkInDate,checkOutDate,room.getName(),room.getBuilding().getAddress(),
-                booking.getBookingDate().toString(),quantityPeople,user.getEmail(),String.valueOf(booking.getId()),totalPrice);
+                formatDateTime,quantityPeople,user.getEmail(),String.valueOf(booking.getId()),totalPrice);
         if (test==false){
-            //trang gởi mail lỗi
+            response.sendRedirect(request.getContextPath()+"/user/view/failed_booking.jsp");
         }
 
         request.setAttribute("room",room);
@@ -292,7 +299,7 @@ public class PaymentController extends HttpServlet {
                 "          <!-- start copy -->\n" +
                 "          <tr>\n" +
                 "            <td align=\"left\" bgcolor=\"#ffffff\" style=\"padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;\">\n" +
-                "              <p style=\"margin: 0;\">Đặt phòng của bạn dưới đây chưa được hoàn tất, vui lòng thanh toán đến STK: 4510205140307 (AGRIBANK) để hoàn tất đặt phòng.</p>\n" +
+                "              <p style=\"margin: 0;\">Đơn đặt phòng của bạn dưới đây chưa được hoàn tất, vui lòng thanh toán đến STK: 4510205140307 (AGRIBANK) trong vòng 2 ngày để hoàn tất đặt phòng.</p>\n" +
                 "            </td>\n" +
                 "          </tr>\n" +
                 "          <!-- end copy -->\n" +

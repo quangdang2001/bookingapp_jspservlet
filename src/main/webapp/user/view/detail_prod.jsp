@@ -198,6 +198,7 @@
                     <h3>${room.roomType.name}. ${room.building.name}</h3>
                 </div>
                 <div class="room-content__sub-heading">
+                    ${room.roomType.description} <br>
                     Địa chỉ: ${room.building.address} <br>
                     ${room.accomodatesCount} Khách tối đa · ${room.bedCount} phòng ngủ · ${room.bathCount} phòng tắm
                 </div>

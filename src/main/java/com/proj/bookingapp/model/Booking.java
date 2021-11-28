@@ -32,9 +32,8 @@ public class Booking {
     private int quantityPeople;
     @Column(length = 5)
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    private Date bookingDate;
+    @Basic
+    private LocalDateTime  bookingDate;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private User user;
@@ -45,10 +44,6 @@ public class Booking {
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Room room;
 
-    public void addUser(User tempUser){
-        user=tempUser;
-        if (tempUser.getBookings().equals(null)) tempUser.setBookings(new ArrayList<>());
-        tempUser.getBookings().add(this);
-    }
+
 
 }

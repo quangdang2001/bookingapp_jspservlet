@@ -1,5 +1,6 @@
 package com.proj.bookingapp.controller.admin;
 
+import com.proj.bookingapp.dto.BookingDTO;
 import com.proj.bookingapp.model.*;
 import com.proj.bookingapp.service.BookingService;
 import com.proj.bookingapp.service.RoomService;
@@ -19,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -75,7 +78,12 @@ public class BookingController extends HttpServlet {
         if (action.equals("update")){
             Long id = Long.parseLong(request.getParameter("id"));
             Booking booking = bookingService.findById(id);
-            request.setAttribute("booking",booking);
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String bookingdate = booking.getBookingDate().format(format);
+            BookingDTO bookingDTO= new BookingDTO(booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
+                    booking.getPriceForStay(),booking.getQuantityPeople(),bookingdate,booking.getTransaction(),
+                    booking.getRoom(),booking.getUser(),booking.getCancelDate());
+            request.setAttribute("booking",bookingDTO);
         }
 
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/admin/view/bookingform.jsp");
@@ -93,7 +101,16 @@ public class BookingController extends HttpServlet {
 
         List<Booking> bookings = bookingService.findAll();
 
-        request.setAttribute("bookings",bookings);
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
+        for (Booking booking : bookings){
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String bookingdate = booking.getBookingDate().format(format);
+            bookingDTOS.add(new BookingDTO(booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
+                    booking.getPriceForStay(),booking.getQuantityPeople(),bookingdate,booking.getTransaction(),
+                    booking.getRoom(),booking.getUser(),booking.getCancelDate()));
+        }
+
+        request.setAttribute("bookings",bookingDTOS);
 
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/admin/view/bookingview.jsp");
         rd.forward(request,response);
@@ -112,7 +129,7 @@ public class BookingController extends HttpServlet {
         Date cancelDate= null;
         String cancelDateS = request.getParameter("cancelDate");
         if (cancelDateS!=null && !cancelDateS.equals("")){
-            SimpleDateFormat hiberFormat=new SimpleDateFormat("dd MMM yyyy");
+            SimpleDateFormat hiberFormat=new SimpleDateFormat("yyyy-MM-dd");
             cancelDate =hiberFormat.parse(cancelDateS);
         }
 

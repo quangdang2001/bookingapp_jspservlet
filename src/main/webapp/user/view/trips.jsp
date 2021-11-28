@@ -1,3 +1,6 @@
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="com.proj.bookingapp.model.Booking" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -116,6 +119,7 @@
                             </div>
                             <div id="trip-body-guest" class="trip-body-items">${booking.quantityPeople} Khách</div>
                             <div class="trip-body-items">Tổng tiền: ${booking.priceForStay}$</div>
+
                             <div class="trip-body-items">Ngày đặt phòng: ${booking.bookingDate}</div>
                         </div>
                     </div>

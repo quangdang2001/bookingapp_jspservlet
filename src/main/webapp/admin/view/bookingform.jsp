@@ -85,8 +85,8 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Cancel date</label>
                         <div class="col-sm-12 col-md-10">
-                            <input name="cancelDate" class="form-control date-picker"
-                                   placeholder="Select Date" type="text" value="${booking.cancelDate}">
+                            <input name="cancelDate"
+                                  autocomplete="off" placeholder="Select Date" type="date" value="${booking.cancelDate}">
                         </div>
                     </div>
 
