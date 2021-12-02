@@ -319,7 +319,7 @@
                                     <input type="radio" name="sortByPrice" id="sort-1" value="low_to_high"/>
                                     <label for="sort-1">Sắp xếp giá tăng dần</label><br/>
                                     <input type="radio" name="sortByPrice" id="sort-2" value="high_to_low"/>
-                                    <label for="sort-1">Sắp xếp giá giãm dần</label><br/>
+                                    <label for="sort-1">Sắp xếp giá giảm dần</label><br/>
                                 </div>
                                 <div class="filter-product-label">Loại phòng</div>
                                 <div class="filter-product-room-type-wrapper">
@@ -414,7 +414,7 @@
                                         class="iconify product-info-location-icon"
                                         data-icon="ci:location"
                                 ></span>
-                                                        <span> ${room.building.name} </span>
+                                                        <span>${room.building.address} - ${room.building.name}</span>
                                                     </div>
                                                     <div class="product-info-room-type">
                                                             ${room.roomType.name}

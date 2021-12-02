@@ -17,7 +17,6 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/home/user"})
 public class UserController extends HttpServlet {
 
-
     private UserService userService= new UserServiceIplm();
 
     @Override
@@ -27,6 +26,7 @@ public class UserController extends HttpServlet {
         if (action.equals("load")) showUser(req,resp);
         if (action.equals("update")) updateUser(req,resp);
     }
+
     private void showUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -35,6 +35,7 @@ public class UserController extends HttpServlet {
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/account.jsp");
         rd.forward(request,response);
     }
+
     private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fName= request.getParameter("fName");
         String lName = request.getParameter("lName");

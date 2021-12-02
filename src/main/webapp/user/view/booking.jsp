@@ -127,7 +127,12 @@
                                                 id="booking-box-guests__count--adult"
                                                 class="booking-box-guests__count--adult"
                                         >
-                                            1
+                                            <c:if test="${quantityPeople == null}">
+                                                1
+                                            </c:if>
+                                            <c:if test="${quantityPeople != null}">
+                                                ${quantityPeople}
+                                            </c:if>
                                         </div>
                                         <div class="booking-box-guests__btn-adult-add">
                         <span
@@ -210,15 +215,7 @@
                             ></span>
                                 <div class="booking-payment-select__text">Chuyển khoản</div>
                             </button>
-<%--                            <button--%>
-<%--                                    type="button"--%>
-<%--                                    name="payment"--%>
-<%--                                    id="booking-payment-paypal"--%>
-<%--                                    class="box-outline booking-payment-paypal"--%>
-<%--                            >--%>
-<%--                                <span class="iconify" data-icon="fontisto:paypal"></span>--%>
-<%--                                <div class="booking-payment-select__text">Paypal</div>--%>
-<%--                            </button>--%>
+
                         </div>
                         <div class="booking-transfer-container active">
                             <p>
@@ -228,20 +225,7 @@
                                 thanh toán trên, đơn phòng sẽ tự động bị hủy.
                             </p>
                         </div>
-<%--                        <div class="booking-paypal-container">--%>
-<%--                            <div class="booking-paypal-heading">--%>
-<%--                                Đăng nhập để sử dụng PayPal.--%>
-<%--                            </div>--%>
-<%--                            <a--%>
-<%--                                    href="https://www.paypal.com/uk/home"--%>
-<%--                                    class="booking-paypal-direct"--%>
-<%--                            >--%>
-<%--                                <div class="booking-paypal-btn">--%>
-<%--                                    <span class="iconify" data-icon="uim:paypal"></span>--%>
-<%--                                    PayPal--%>
-<%--                                </div>--%>
-<%--                            </a>--%>
-<%--                        </div>--%>
+
                     </div>
 
                     <div class="line-space"></div>
@@ -505,7 +489,7 @@
 </script>
 <script>
     var maxPeople =${room.accomodatesCount};
-    var maxPeopleChild = maxPeople - 1;
+    var maxPeopleChild = maxPeople - ${quantityPeople};
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         let temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML

@@ -56,9 +56,13 @@ public class RoomImageController extends HttpServlet {
             throws ServletException, IOException{
 
         Long idRoom = Long.parseLong(request.getParameter("idRoom"));
+        String urlImg = request.getParameter("imgUrl");
         Room room = roomService.findById(idRoom);
-
+        if (urlImg!=null){
+            roomImageService.saveRoomImage(new RoomImage(null,urlImg,room));
+        }
         Collection<Part> parts = request.getParts();
+
         String realPath = request.getServletContext().getRealPath("");
         List<String> imgs= UpLoadFile.upLoad(parts,realPath);
 

@@ -251,9 +251,7 @@
                 </div>
                 <div class="line-spacing"></div>
                 <div class="room-content__des">
-                    <p>
-                        Mô tả: <br>
-                        ${room.description}
+                    <p style="white-space:pre-wrap">Mô tả: <br>${room.description}
                     </p>
                 </div>
                 <div class="line-spacing"></div>
@@ -335,158 +333,163 @@
                             </div>
                         </div>
                     </div>
-                    <div  class="alert alert-warning" id="warning-alert" style="display: none">
+                    <div class="alert alert-warning" id="warning-alert" style="display: none">
                         <button type="button" class="close" data-dismiss="alert">
                             x
                         </button>
                         <strong>Please fill all the blank </strong> to continue booking!
                     </div>
 
-                        <div class="booking-box-info">
-                            <div class="booking-box-date-container">
-                                <div class="booking-box-date--checkin change-date">
-                                    <div class="booking-box-checkin-wrapper">
-                                        <label
-                                                for="booking-box-checkin"
-                                                class="booking-box-checkin__label"
-                                        >NHẬN PHÒNG</label
-                                        >
-                                        <input
-                                                value="${checkInDate}"
-                                                name="checkInDate"
-                                                autocomplete="off"
-                                                type="text"
-                                                id="booking-box-checkin"
-                                                class="booking-box-checkin__input"
-                                                placeholder="Thêm ngày"
-                                                required
-                                        />
-                                    </div>
-                                </div>
-                                <div class="booking-box-date--checkout change-date">
-                                    <div class="booking-box-checkout-wrapper">
-                                        <label
-                                                for="booking-box-checkout"
-                                                class="booking-box-checkout__label"
-                                        >TRẢ PHÒNG</label
-                                        >
-                                        <input
-                                                name="checkOutDate"
-                                                value="${checkOutDate}"
-                                                autocomplete="off"
-                                                type="text"
-                                                id="booking-box-checkout"
-                                                class="booking-box-checkout__input"
-                                                placeholder="Thêm ngày"
-                                                required
-                                        />
-                                    </div>
+                    <div class="booking-box-info">
+                        <div class="booking-box-date-container">
+                            <div class="booking-box-date--checkin change-date">
+                                <div class="booking-box-checkin-wrapper">
+                                    <label
+                                            for="booking-box-checkin"
+                                            class="booking-box-checkin__label"
+                                    >NHẬN PHÒNG</label
+                                    >
+                                    <input
+                                            value="${checkInDate}"
+                                            name="checkInDate"
+                                            autocomplete="off"
+                                            type="text"
+                                            id="booking-box-checkin"
+                                            class="booking-box-checkin__input"
+                                            placeholder="Thêm ngày"
+                                            required
+                                    />
                                 </div>
                             </div>
-                            <div id="booking-box-guests" class="booking-box-guests-container">
-                                <label
-                                        class="booking-box-guests--label"
-                                        for="booking-box-guests--input"
-                                >KHÁCH</label
-                                >
-                                <input
-                                        name="quantityPeople"
-                                        <c:if test="${quantityPeople == null}">
-                                            value="1 Khách"
-                                        </c:if>
-                                        <c:if test="${quantityPeople != null}">
-                                            value="${quantityPeople} Khách"
-                                        </c:if>
-                                        type="text"
-                                        id="booking-box-guests--input"
-                                        class="booking-box-guests--input"
-                                        required
-                                        readonly
-
-                                />
-                                <div class="booking-box-guests-number">
-                                    <div class="booking-box-guests-number-warning">
-                                        Vui lòng nhập tuổi trẻ em.
-                                    </div>
-
-                                    <div class="booking-box-guests-number-wrapper">
-                                        <div class="booking-box-guests__label">Người lớn</div>
-                                        <div class="booking-box-guests__btn">
-                                            <div class="booking-box-guests__btn-adult-sub">
-                        <span
-                                class="iconify booking-box-guests-icon"
-                                data-icon="carbon:subtract-alt"
-                        ></span>
-                                            </div>
-                                            <div
-                                                    id="booking-box-guests__count--adult"
-                                                    class="booking-box-guests__count--adult"
-                                            >
-                                                1
-                                            </div>
-                                            <div class="booking-box-guests__btn-adult-add">
-                        <span
-                                class="iconify booking-box-guests-icon"
-                                data-icon="fluent:add-circle-24-regular"
-                        ></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="booking-box-guests-number-wrapper">
-                                        <div class="booking-box-guests__label">Trẻ em</div>
-                                        <div class="booking-box-guests__btn">
-                                            <div class="booking-box-guests__btn-child-sub">
-                        <span
-                                class="iconify booking-box-guests-icon"
-                                data-icon="carbon:subtract-alt"
-                        ></span>
-                                            </div>
-                                            <div
-                                                    id="booking-box-guests__count--child"
-                                                    class="booking-box-guests__count--child"
-                                            >
-                                                0
-                                            </div>
-                                            <div class="booking-box-guests__btn-child-add">
-                        <span
-                                class="iconify booking-box-guests-icon"
-                                data-icon="fluent:add-circle-24-regular"
-                        ></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="booking-box-guests-number-wrapper__child">
-                                        <select
-                                                id="booking-box-guests-age-child"
-                                                class="booking-box-guests-age-child"
-                                        >
-                                            <option selected value="0">Dưới 1 tuổi</option>
-                                            <option value="1">1 tuổi</option>
-                                            <option value="2">2 tuổi</option>
-                                            <option value="3">3 tuổi</option>
-                                            <option value="4">4 tuổi</option>
-                                            <option value="5">5 tuổi</option>
-                                            <option value="6">6 tuổi</option>
-                                            <option value="7">7 tuổi</option>
-                                            <option value="8">8 tuổi</option>
-                                            <option value="9">9 tuổi</option>
-                                            <option value="10">10 tuổi</option>
-                                            <option value="11">11 tuổi</option>
-                                            <option value="12">12 tuổi</option>
-                                            <option value="13">13 tuổi</option>
-                                            <option value="14">14 tuổi</option>
-                                            <option value="15">15 tuổi</option>
-                                            <option value="16">16 tuổi</option>
-                                            <option value="17">17 tuổi</option>
-                                        </select>
-                                    </div>
+                            <div class="booking-box-date--checkout change-date">
+                                <div class="booking-box-checkout-wrapper">
+                                    <label
+                                            for="booking-box-checkout"
+                                            class="booking-box-checkout__label"
+                                    >TRẢ PHÒNG</label
+                                    >
+                                    <input
+                                            name="checkOutDate"
+                                            value="${checkOutDate}"
+                                            autocomplete="off"
+                                            type="text"
+                                            id="booking-box-checkout"
+                                            class="booking-box-checkout__input"
+                                            placeholder="Thêm ngày"
+                                            required
+                                    />
                                 </div>
                             </div>
                         </div>
+                        <div id="booking-box-guests" class="booking-box-guests-container">
+                            <label
+                                    class="booking-box-guests--label"
+                                    for="booking-box-guests--input"
+                            >KHÁCH</label
+                            >
+                            <input
+                                    name="quantityPeople"
+                                    <c:if test="${quantityPeople == null}">
+                                        value="1 Khách"
+                                    </c:if>
+                                    <c:if test="${quantityPeople != null}">
+                                        value="${quantityPeople} Khách"
+                                    </c:if>
+                                    type="text"
+                                    id="booking-box-guests--input"
+                                    class="booking-box-guests--input"
+                                    required
+                                    readonly
+
+                            />
+                            <div class="booking-box-guests-number">
+                                <div class="booking-box-guests-number-warning">
+                                    Vui lòng nhập tuổi trẻ em.
+                                </div>
+
+                                <div class="booking-box-guests-number-wrapper">
+                                    <div class="booking-box-guests__label">Người lớn</div>
+                                    <div class="booking-box-guests__btn">
+                                        <div class="booking-box-guests__btn-adult-sub">
+                        <span
+                                class="iconify booking-box-guests-icon"
+                                data-icon="carbon:subtract-alt"
+                        ></span>
+                                        </div>
+                                        <div
+                                                id="booking-box-guests__count--adult"
+                                                class="booking-box-guests__count--adult"
+                                        >
+                                            <c:if test="${quantityPeople == null}">
+                                                1
+                                            </c:if>
+                                            <c:if test="${quantityPeople != null}">
+                                                ${quantityPeople}
+                                            </c:if>
+                                        </div>
+                                        <div class="booking-box-guests__btn-adult-add">
+                        <span
+                                class="iconify booking-box-guests-icon"
+                                data-icon="fluent:add-circle-24-regular"
+                        ></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="booking-box-guests-number-wrapper">
+                                    <div class="booking-box-guests__label">Trẻ em</div>
+                                    <div class="booking-box-guests__btn">
+                                        <div class="booking-box-guests__btn-child-sub">
+                        <span
+                                class="iconify booking-box-guests-icon"
+                                data-icon="carbon:subtract-alt"
+                        ></span>
+                                        </div>
+                                        <div
+                                                id="booking-box-guests__count--child"
+                                                class="booking-box-guests__count--child"
+                                        >
+                                            0
+                                        </div>
+                                        <div class="booking-box-guests__btn-child-add">
+                        <span
+                                class="iconify booking-box-guests-icon"
+                                data-icon="fluent:add-circle-24-regular"
+                        ></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="booking-box-guests-number-wrapper__child">
+                                    <select
+                                            id="booking-box-guests-age-child"
+                                            class="booking-box-guests-age-child"
+                                    >
+                                        <option selected value="0">Dưới 1 tuổi</option>
+                                        <option value="1">1 tuổi</option>
+                                        <option value="2">2 tuổi</option>
+                                        <option value="3">3 tuổi</option>
+                                        <option value="4">4 tuổi</option>
+                                        <option value="5">5 tuổi</option>
+                                        <option value="6">6 tuổi</option>
+                                        <option value="7">7 tuổi</option>
+                                        <option value="8">8 tuổi</option>
+                                        <option value="9">9 tuổi</option>
+                                        <option value="10">10 tuổi</option>
+                                        <option value="11">11 tuổi</option>
+                                        <option value="12">12 tuổi</option>
+                                        <option value="13">13 tuổi</option>
+                                        <option value="14">14 tuổi</option>
+                                        <option value="15">15 tuổi</option>
+                                        <option value="16">16 tuổi</option>
+                                        <option value="17">17 tuổi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                    <button  id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
+                    <button id="booking-box-btn" class="booking-box-btn box-fill">Đặt phòng</button>
                     <div class="booking-box-price-container">
                         <div class="booking-box-price-wrapper">
                             <div class="booking-box-price__label">
@@ -922,16 +925,15 @@
 <script>
     $("#booking-box-btn").click(function (e) {
         if (parseInt(document.getElementById("booking-box-guests--input").value) === 0
-        || document.getElementById("booking-box-checkin").value === ''
+            || document.getElementById("booking-box-checkin").value === ''
             || document.getElementById("booking-box-checkout").value == ''
         ) {
-            document.getElementById("warning-alert").style.display="block"
-            $("#warning-alert").fadeTo(2000, 500).slideUp(500, function(){
+            document.getElementById("warning-alert").style.display = "block"
+            $("#warning-alert").fadeTo(2000, 500).slideUp(500, function () {
                 $("#warning-alert").slideUp(500);
             });
 
-        }
-        else {
+        } else {
             document.getElementById("booking-box-btn").href = '${pageContext.request.contextPath}/view/booking.jsp';
         }
     })
@@ -965,9 +967,9 @@
 
     $("#booking-box-guests").click(function (e) {
         $(".booking-box-guests-number").addClass("active");
-        if(parseInt(
+        if (parseInt(
             document.getElementById("booking-box-guests__count--child").innerHTML
-        )!=0){
+        ) != 0) {
             $(".booking-box-guests-number").addClass("active");
             $(".booking-box-guests-number-warning").addClass("active");
             $(".booking-box-guests-age-child").addClass("active");
@@ -979,7 +981,13 @@
     // btn add sub
     <%--<var maxPeople = 1;         //${room.accomodatesCount}&ndash;%&gt;--%>
     var maxPeople = ${room.accomodatesCount};
-    var maxPeopleChild = maxPeople - 1;
+
+    <c:if test="${quantityPeople == null}">
+        var maxPeopleChild = maxPeople - 1;
+    </c:if>
+    <c:if test="${quantityPeople != null}">
+        var maxPeopleChild = maxPeople - ${quantityPeople};
+    </c:if>
     $(".booking-box-guests__btn-adult-add").click(function (e) {
         var temp = parseInt(
             document.getElementById("booking-box-guests__count--adult").innerHTML
@@ -1005,7 +1013,7 @@
                 document.getElementById("booking-box-guests__count--child").innerHTML
             ) >= 1 && parseInt(
                 document.getElementById("booking-box-guests__count--adult").innerHTML
-            )===1
+            ) === 1
         ) {
             return 0;
         }

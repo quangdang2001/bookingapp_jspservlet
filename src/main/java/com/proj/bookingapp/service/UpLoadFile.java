@@ -41,7 +41,6 @@ public class UpLoadFile {
                 String filePath = fullSavePath + File.separator + temp1;
                 //listFileName.add(generateFileName(fileName));
                 System.out.println("Write attachment to file: " + filePath);
-
                 part.write(filePath);
                 temp= S3Util.upload(generateFileName(fileName),filePath);
                 System.out.println(temp);

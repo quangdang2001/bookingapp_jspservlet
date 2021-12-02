@@ -39,11 +39,14 @@ public class RoomImageServiceIplm implements RoomImageService {
         String urlImg = roomImageDAO.findById(id).getName();
         roomImageDAO.deleteRoomImage(id);
 
-        boolean temp = S3Util.deleteObj(urlImg);
-        if (!temp){
-            System.out.println("Fail delete S3");
-        }else {
-            System.out.println("Delete Img S3 successful");
+        if (urlImg.contains("s3.amazonaws.com")){
+            boolean temp = S3Util.deleteObj(urlImg);
+            if (!temp){
+                System.out.println("Fail delete S3");
+            }else {
+                System.out.println("Delete Img S3 successful");
+            }
         }
+
     }
 }

@@ -313,7 +313,7 @@ public class PaymentController extends HttpServlet {
                 "              <p style=\"margin: 0;\">ID: "+ id +" </p>\n" +
                 "              <p style=\"margin: 0;\">Thời gian: "+ checkInDate +" - "+ checkOutDate +" </p>\n" +
                 "              <p style=\"margin: 0;\">Số khách: "+quantityPeople+" </p>\n" +
-                "              <p style=\"margin: 0;\">Tổng tiền: "+price+" </p>\n"+
+                "              <p style=\"margin: 0;\">Tổng tiền: "+price+"$ </p>\n"+
                 "            </td>\n" +
                 "          </tr>\n" +
                 "          <!-- end button -->\n" +

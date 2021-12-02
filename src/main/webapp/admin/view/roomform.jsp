@@ -36,8 +36,7 @@
                         <h4 class="text-blue h4">Form add buidling</h4>
                     </div>
                 </div>
-                <form action="${pageContext.request.contextPath}/adminPage/room" method="get"
-                      enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/adminPage/room" method="get">
 
                     <input type="hidden" name="action" value="add">
 
@@ -179,6 +178,12 @@
                         <label>Image:</label>
                         <input name="img" type="file" accept="image/png, image/jpeg" multiple
                                class="form-control-file form-control height-auto">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Image Url</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="imgUrl" class="form-control" type="text">
+                        </div>
                     </div>
                     <c:if test="${room.id != null}" >
                     <input type="submit" class="btn btn-primary " value="Save image">
