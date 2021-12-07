@@ -36,7 +36,6 @@ public class LoginController extends HttpServlet {
         String action = req.getParameter("action");
         if (action == null) action="login";
         if(action.equals("login")) login(req,resp);
-
     }
 
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,10 +57,12 @@ public class LoginController extends HttpServlet {
         String email = request.getParameter("email");
         String pass = request.getParameter("password");
         User user = userService.findByEmailAndPass(email,pass);
+
         if (user == null) {
             request.setAttribute("message","Incorrect email or password");
             RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/login.jsp");
             rd.forward(request,response);
+            return;
         }
         HttpSession session = request.getSession();
         session.setAttribute("user",user);

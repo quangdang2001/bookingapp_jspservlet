@@ -132,10 +132,6 @@ public class RoomController extends HttpServlet {
 
         roomService.saveRoom(room);
 
-//        request.setAttribute("action","update");
-//        request.setAttribute("id",room.getId());
-//        RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/adminPage/room");
-//        rd.forward(request,response);
         response.sendRedirect("room?action=update&id="+room.getId());
     }
 

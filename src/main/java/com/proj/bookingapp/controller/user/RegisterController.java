@@ -369,6 +369,7 @@ public class RegisterController extends HttpServlet {
             request.setAttribute("message","Bạn đã nhập sai mã xác nhận");
             RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/verify.jsp");
             rd.forward(request,response);
+            return;
         }
 
 

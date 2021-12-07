@@ -51,22 +51,7 @@ public class RoomController extends HttpServlet {
         List<Review> reviews = reviewService.findReviewByRoom(idRoom);
 
         List<Booking> bookings = bookingService.findBookingByRoomId(idRoom);
-//        List<String> dateBlock= new ArrayList<>();
-//        Calendar calendar = Calendar.getInstance();
-//
-//        if(bookings!=null){
-//            for (Booking booking : bookings){
-//
-//                calendar.setTime(booking.getCheckInDate());
-//                String date1 = calendar.get(Calendar.YEAR)+"-"+ (calendar.get(Calendar.MONTH) + 1) +"-"+ calendar.get(Calendar.DAY_OF_MONTH);
-//                calendar.setTime(booking.getCheckOutDate());
-//                String date2 = calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH) + 1)+"-"+ calendar.get(Calendar.DAY_OF_MONTH);
-//
-//                dateBlock.add("[\""+date1+"\",\""+date2+"\"]");
-//
-//            }
-//            request.setAttribute("dateBlock",dateBlock);
-//        }
+
         if (bookings!=null){
             List<String> dateBlock = DateUtil.getBlockDate(bookings);
             request.setAttribute("dateBlock",dateBlock);

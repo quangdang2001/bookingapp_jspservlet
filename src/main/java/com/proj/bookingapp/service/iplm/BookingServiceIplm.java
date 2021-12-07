@@ -2,10 +2,13 @@ package com.proj.bookingapp.service.iplm;
 
 import com.proj.bookingapp.dao.BookingDAO;
 import com.proj.bookingapp.dao.iplm.BookingDAOIplm;
+import com.proj.bookingapp.dto.BookingDTO;
 import com.proj.bookingapp.model.Booking;
 import com.proj.bookingapp.service.BookingService;
 import lombok.RequiredArgsConstructor;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingServiceIplm implements BookingService {
@@ -17,8 +20,18 @@ public class BookingServiceIplm implements BookingService {
     }
 
     @Override
-    public List<Booking> findAll() {
-        return bookingDAO.findAll();
+    public List<BookingDTO> findAll() {
+        List<Booking> bookings = bookingDAO.findAll();
+
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
+        for (Booking booking : bookings){
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String bookingdate = booking.getBookingDate().format(format);
+            bookingDTOS.add(new BookingDTO(booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
+                    booking.getPriceForStay(),booking.getQuantityPeople(),bookingdate,booking.getTransaction(),
+                    booking.getRoom(),booking.getUser(),booking.getCancelDate()));
+        }
+        return bookingDTOS;
     }
 
     @Override
@@ -42,8 +55,17 @@ public class BookingServiceIplm implements BookingService {
     }
 
     @Override
-    public List<Booking> findByUserId(Long id) {
-        return bookingDAO.findByUserId(id);
+    public List<BookingDTO> findByUserId(Long id) {
+        List<Booking> bookings = bookingDAO.findByUserId(id);
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
+        for (Booking booking : bookings){
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String bookingdate = booking.getBookingDate().format(format);
+            bookingDTOS.add(new BookingDTO(booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
+                    booking.getPriceForStay(),booking.getQuantityPeople(),bookingdate,booking.getTransaction(),
+                    booking.getRoom(),null,null));
+        }
+        return  bookingDTOS;
     }
 
     @Override

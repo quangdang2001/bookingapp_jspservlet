@@ -17,6 +17,7 @@ public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false,unique = true)
     @Nationalized
     private String name;
@@ -31,6 +32,5 @@ public class Building {
     @OneToMany(mappedBy = "building",fetch = FetchType.EAGER, cascade =
             {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Room> rooms;
-
 
 }

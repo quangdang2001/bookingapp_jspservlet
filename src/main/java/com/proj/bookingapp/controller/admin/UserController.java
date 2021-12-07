@@ -18,7 +18,6 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/adminPage/user"})
 public class UserController extends HttpServlet {
 
-
     private UserService userService= new UserServiceIplm();
 
     @Override

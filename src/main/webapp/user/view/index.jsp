@@ -366,8 +366,8 @@
                                         />
                                     </div>
                                     <div class="home__prodcut-info">
-                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Ninh+Bình&checkInDate=&checkOutDate=&quantityPeople=1"
-                                           class="home__prodcut-info-place atag">Ninh Bình</a>
+                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Quảng+Ngãi&checkInDate=&checkOutDate=&quantityPeople=1"
+                                           class="home__prodcut-info-place atag">Quảng Ngãi</a>
                                         <p class="home__prodcut-info-time">2 giờ lái xe</p>
                                     </div>
                                 </div>
@@ -398,8 +398,8 @@
                                         />
                                     </div>
                                     <div class="home__prodcut-info">
-                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Móng+Cái&checkInDate=&checkOutDate=&quantityPeople=1"
-                                           class="home__prodcut-info-place atag">Móng Cái</a>
+                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Hồ+Chí+Minh&checkInDate=&checkOutDate=&quantityPeople=1"
+                                           class="home__prodcut-info-place atag">TP. Hồ Chí Minh</a>
                                         <p class="home__prodcut-info-time">4.5 giờ lái xe</p>
                                     </div>
                                 </div>
@@ -414,8 +414,8 @@
                                         />
                                     </div>
                                     <div class="home__prodcut-info">
-                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Bắc+Giang&checkInDate=&checkOutDate=&quantityPeople=1"
-                                           class="home__prodcut-info-place atag">Bắc Giang</a>
+                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Đắk+Lắk&checkInDate=&checkOutDate=&quantityPeople=1"
+                                           class="home__prodcut-info-place atag">Đắk Lắk</a>
                                         <p class="home__prodcut-info-time">1 giờ lái xe</p>
                                     </div>
                                 </div>
@@ -430,8 +430,8 @@
                                         />
                                     </div>
                                     <div class="home__prodcut-info">
-                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Lục+Nam&checkInDate=&checkOutDate=&quantityPeople=1"
-                                           class="home__prodcut-info-place atag">Lục Nam</a>
+                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Đà+Nẵng&checkInDate=&checkOutDate=&quantityPeople=1"
+                                           class="home__prodcut-info-place atag">Đà Nẵng</a>
                                         <p class="home__prodcut-info-time">2 giờ lái xe</p>
                                     </div>
                                 </div>
@@ -462,8 +462,8 @@
                                         />
                                     </div>
                                     <div class="home__prodcut-info">
-                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Cẩm+Lý&checkInDate=&checkOutDate=&quantityPeople=1"
-                                           class="home__prodcut-info-place atag">Cẩm Lý</a>
+                                        <a href="${pageContext.request.contextPath}/home/rooms?action=search&destination=Hội+An&checkInDate=&checkOutDate=&quantityPeople=1"
+                                           class="home__prodcut-info-place atag">Hội An</a>
                                         <p class="home__prodcut-info-time">4.5 giờ lái xe</p>
                                     </div>
                                 </div>

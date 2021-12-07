@@ -10,6 +10,7 @@ public interface RoomService {
     void saveRoom(Room room);
     Room findById(Long id);
     void deleteRoom(Long id);
+
     int getTotalRoom();
     List<Room> searchRoom(String city, Integer acom, Date bookingDateF, Date bookingDayL);
     List<Room> descendingPriceRoom(List<Room> rooms);

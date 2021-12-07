@@ -25,12 +25,11 @@ public class Booking {
     @Temporal(TemporalType.DATE)
     private Date checkOutDate;
     private double priceForStay;
-    @Temporal(TemporalType.DATE)
 
+    @Temporal(TemporalType.DATE)
     private Date cancelDate;
 
     private int quantityPeople;
-    @Column(length = 5)
 
     @Basic
     private LocalDateTime  bookingDate;
@@ -43,7 +42,5 @@ public class Booking {
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Room room;
-
-
 
 }

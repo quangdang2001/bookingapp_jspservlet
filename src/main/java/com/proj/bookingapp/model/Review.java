@@ -30,7 +30,7 @@ public class Review {
     @CreationTimestamp
     private Date cmtDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private User user;
 
     @ManyToOne

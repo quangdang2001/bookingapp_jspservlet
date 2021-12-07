@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Accomodate</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Accommodate</label>
                         <div class="col-sm-12 col-md-10">
                             <input name="accomodatesCount" class="form-control" type="text"
                                    value="${room.accomodatesCount}">

@@ -32,16 +32,9 @@ public class HistoryController extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user!=null){
-            List<Booking> bookings = bookingService.findByUserId(user.getId());
-            List<BookingDTO> bookingDTOS = new ArrayList<>();
-            for (Booking booking : bookings){
-                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-                String bookingdate = booking.getBookingDate().format(format);
-                bookingDTOS.add(new BookingDTO(booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
-                        booking.getPriceForStay(),booking.getQuantityPeople(),bookingdate,booking.getTransaction(),
-                        booking.getRoom(),null,null));
-            }
-            request.setAttribute("bookings",bookingDTOS);
+            List<BookingDTO> bookings = bookingService.findByUserId(user.getId());
+
+            request.setAttribute("bookings",bookings);
         }
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/user/view/trips.jsp");
         rd.forward(request,response);

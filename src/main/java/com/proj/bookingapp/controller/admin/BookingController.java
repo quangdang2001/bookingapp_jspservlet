@@ -99,18 +99,9 @@ public class BookingController extends HttpServlet {
     private void load(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
 
-        List<Booking> bookings = bookingService.findAll();
+        List<BookingDTO> bookings = bookingService.findAll();
 
-        List<BookingDTO> bookingDTOS = new ArrayList<>();
-        for (Booking booking : bookings){
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-            String bookingdate = booking.getBookingDate().format(format);
-            bookingDTOS.add(new BookingDTO(booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
-                    booking.getPriceForStay(),booking.getQuantityPeople(),bookingdate,booking.getTransaction(),
-                    booking.getRoom(),booking.getUser(),booking.getCancelDate()));
-        }
-
-        request.setAttribute("bookings",bookingDTOS);
+        request.setAttribute("bookings",bookings);
 
         RequestDispatcher rd= request.getServletContext().getRequestDispatcher("/admin/view/bookingview.jsp");
         rd.forward(request,response);

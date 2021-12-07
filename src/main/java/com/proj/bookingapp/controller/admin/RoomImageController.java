@@ -1,6 +1,5 @@
 package com.proj.bookingapp.controller.admin;
 
-import com.proj.bookingapp.model.Payment;
 import com.proj.bookingapp.model.Room;
 import com.proj.bookingapp.model.RoomImage;
 import com.proj.bookingapp.service.RoomImageService;

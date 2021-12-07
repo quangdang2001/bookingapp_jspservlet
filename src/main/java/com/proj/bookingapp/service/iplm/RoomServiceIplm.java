@@ -144,6 +144,4 @@ public class RoomServiceIplm implements RoomService {
         room.setRating(newRate);
         roomDAO.saveRoom(room);
     }
-
-
 }

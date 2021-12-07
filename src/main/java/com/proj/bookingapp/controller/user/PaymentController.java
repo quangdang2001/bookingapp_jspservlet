@@ -76,9 +76,6 @@ public class PaymentController extends HttpServlet {
 
         String id = request.getParameter("idRoom");
 
-
-
-
         SimpleDateFormat hiberFormat=new SimpleDateFormat("dd/MM/yyyy");
         Date checkInDateD = hiberFormat.parse(checkInDate);
         Date checkOutDateD = hiberFormat.parse(checkOutDate);

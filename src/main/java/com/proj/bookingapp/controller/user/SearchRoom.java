@@ -129,8 +129,6 @@ public class SearchRoom extends HttpServlet {
 
         request.setAttribute("rooms",rooms);
 
-
-
         session.setAttribute("destination",destination);
         session.setAttribute("checkInDate",request.getParameter("checkInDate"));
         session.setAttribute("checkOutDate",request.getParameter("checkOutDate"));
